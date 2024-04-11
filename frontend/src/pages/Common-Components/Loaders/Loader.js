@@ -1,5 +1,5 @@
 import React from "react";
-import LoaderStyle from "./Loader.Module.css";
+import LoaderStyle from "./Loader.module.css";
 function Loader() {
   return (
     <div className={LoaderStyle.postLoaderContainer}>

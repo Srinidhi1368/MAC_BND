@@ -9,13 +9,24 @@ import { IoMicOutline } from "react-icons/io5";
 import { IoMicOffOutline } from "react-icons/io5";
 import { VscSettings } from "react-icons/vsc";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import Tooltip from "@mui/material/Tooltip";
 function JobSeekerLayout() {
   const { pathname } = useLocation();
   const navigateTO = useNavigate();
 
   useEffect(() => {
-    if (pathname === "/") {
+    if (
+      pathname === "/" ||
+      (pathname !== "/assessment" &&
+        pathname !== "/analytics" &&
+        pathname !== "/myjobs" &&
+        pathname !== "/myresume" &&
+        pathname !== "/application" &&
+        pathname !== "/interviews" &&
+        pathname !== "/settings" &&
+        pathname !== "/assessment-Instructions" &&
+        pathname !== "/assessment-test" &&
+        pathname !== "/assessment-result")
+    ) {
       navigateTO("/dashboard");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,15 +114,9 @@ function DashboardTopComponent() {
       </div>
 
       <div className={JobSeekerStyle.FilterAndNotificationBox}>
-        <Tooltip title="Filter" arrow placement="right-end">
-          <VscSettings className={JobSeekerStyle.filterBox_ICON} />
-        </Tooltip>
+        <VscSettings className={JobSeekerStyle.filterBox_ICON} />
 
-        <Tooltip title="Notifications" arrow placement="right-end">
-          <IoIosNotificationsOutline
-            className={JobSeekerStyle.filterBox_ICON}
-          />
-        </Tooltip>
+        <IoIosNotificationsOutline className={JobSeekerStyle.filterBox_ICON} />
       </div>
     </div>
   );

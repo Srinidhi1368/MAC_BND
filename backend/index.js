@@ -15,15 +15,20 @@ app.use(
 
 ConnectDb();
 
-
 //!  Assessments Related  Routes and import
-
 const { assessmentRoute } = require("./routes/Assessment.Route");
 const assesmentQuestionRouter = require("./Routes/AssessmentQuestion.Route");
 app.use("/api/assessment", assessmentRoute);
 app.use("/api/questions", assesmentQuestionRouter);
+//!  Assessments Related  Routes and import
 
+//!  Assessments Related  Routes and import
+const userRoutes = require("./Routes/UserRoutes");
+app.use("/api", userRoutes);
 
+const HrRoutes = require("./Routes/HrRoutes");
+app.use("/api/hr", HrRoutes);
+//!  Assessments Related  Routes and import
 
 const Port = process.env.Port;
 app.listen(Port, () => {

@@ -12,6 +12,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
+import {useSelector, useDispatch} from 'react-redux'
+import { handleUserLogOut } from "../../../../Redux/ReduxSlice";
+import {useNavigate} from "react-router-dom"
 const menuItems = [
   {
     path: "/dashboard",
@@ -61,6 +64,15 @@ const menuItems = [
 ];
 
 function SideNavbar() {
+const dispatch = useDispatch();
+const navigateTO = useNavigate()
+const {name}=   useSelector((state)=> state.Assessment.currentUser);
+
+const handleLogoutClick = ()=>{
+  dispatch(handleUserLogOut());
+  navigateTO("/user-login")
+
+}
   return (
     <div className={navStyle.SidenavBar__Container}>
       <div className={navStyle.sidenavBar__AppLOGOBOX}>
@@ -80,9 +92,9 @@ function SideNavbar() {
                 isActive ? navStyle.active : navStyle.JobSeeker_navITEM_LINK
               }
             >
-              <Tooltip title={data.name} arrow placement="right-end">
+              <Tooltip title={data.name} arrow placement="right-end" className={navStyle.toolTip}>
                 <p className={navStyle.JobSeeker__navItem}>
-                  {data.icon}{" "}
+                  {data.icon}
                   <span className={navStyle.navTextHIDE}>{data.name}</span>
                 </p>
               </Tooltip>
@@ -101,14 +113,14 @@ function SideNavbar() {
         </Tooltip>
 
         <p className={navStyle.sidenavBar__userName}>
-          Anshuman Kumar
+          {name && name}
           <button className={navStyle.editProfileButton}>Edit Profile</button>
         </p>
 
-        <DropDownMENU />
+        <DropDownMENU userName= {name} userLogOut= {handleLogoutClick}/>
       </div>
 
-      <button className={navStyle.logOutButton}>
+      <button className={navStyle.logOutButton}  onClick={handleLogoutClick} >
         <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
         Log Out
       </button>
@@ -118,12 +130,12 @@ function SideNavbar() {
 
 export default SideNavbar;
 
-function DropDownMENU() {
+function DropDownMENU({userName,userLogOut}) {
   return (
     <div className={navStyle.ProfileDropDownContainer}>
-      <p className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Name}`}>Anshuman Kumar</p>
+      <p className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Name}`}> {userName && userName}</p>
       <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`}>Edit Profile</button>
-      <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`}>  <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
+      <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`} onClick={userLogOut}>  <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
         Log Out </button>
     </div>
   );

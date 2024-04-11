@@ -73,12 +73,17 @@
     border-radius: 0px 38.8199px 38.8199px 0px;
 }
 
+.toolTip {
+    height: 100%;
+    margin: 0;
+}
+
 .JobSeeker__navItem {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
-    width: 175px;
+    width: 75%;
 }
 
 .JobSeeker_navITEMICON {
