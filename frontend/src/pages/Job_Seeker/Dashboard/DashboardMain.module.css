@@ -222,6 +222,12 @@
   color: rgba(69, 69, 69, 1);
 }
 
+.rec_company_offer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .rec_company_location_details {
   border: 1px solid rgba(225, 220, 217, 1);
   border-left: none;

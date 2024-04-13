@@ -1,0 +1,210 @@
+.selection {
+    height: 9vh;
+    width: 58vw;
+    border: 2px solid black;
+    margin-left: 1vw;
+    margin-top: 5vh;
+    border-radius: 35px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Select {
+    position: relative;
+    top: 1.5vh;
+    display: flex;
+    width: 18vw;
+    height: 6vh;
+    border-radius: 35px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.2vw;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Select:hover {
+    background-color: blue;
+    color: white;
+}
+
+.check {
+    color: green;
+}
+
+.cross {
+    color: red;
+}
+
+/*--------company applied-------------------*/
+.company_applied {
+    height: 28vh;
+    width: 55vw;
+    border: 2px solid black;
+    position: relative;
+    top: 10vh;
+    left: 3vw;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px grey;
+    font-size: 18px;
+}
+
+.Company_Details {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3vh;
+}
+
+.Company_logo {
+    height: 12vh;
+    width: 6vw;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Clogo {
+    width: 75%;
+    height: 80%;
+}
+
+.Product_Discription {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Product_Discription1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.Product_Discription2 {
+    font-size: 20px;
+    color: grey;
+}
+
+
+.money {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.note {
+    font-size: 28px;
+    color: green;
+}
+
+.money p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.money span {
+    color: rgb(107, 107, 107);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.view_status_button {
+    width: 13vw;
+    background-color: rgb(153, 152, 152);
+    height: 5vh;
+    color: white;
+    font-size: 22px;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 15px;
+    margin-top: 7vh;
+}
+
+.Company_Address {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    margin-top: 7vh;
+    font-weight: bold;
+}
+
+.Company_Address_details {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1vw;
+}
+
+
+/*-------------RIght-Side-Profile---------------------*/
+.Profile_Main {
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    width: 18vw;
+    top: 14vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.container_right1 {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+}
+
+.profile {
+    height: 32vh;
+}
+
+.profile_image {
+    height: 12vh;
+    width: 6vw;
+    background-color: skyblue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(7, 72, 83);
+    box-shadow: 0px 4px 4px grey;
+}
+
+.profile_image1 {
+    font-size: 38px;
+    color: white;
+}
+
+.jobTitle {
+    font-size: 22px;
+    color: gray;
+    font-weight: bold;
+}
+
+.Edit_Profile_btn {
+    width: 10vw;
+    height: 5vh;
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px;
+    border-color: rgb(177, 175, 175);
+}
+
+.experience {
+    height: 50vh;
+}
+
+.ViewProfile_button {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    width: 12vw;
+    padding: 10px;
+    border-radius: 10px;
+}

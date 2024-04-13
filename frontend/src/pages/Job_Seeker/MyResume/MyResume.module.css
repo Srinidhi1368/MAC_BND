@@ -1,0 +1,100 @@
+.upperSelection {
+
+    height: 8vh;
+    width: 50vw;
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    margin-left: 2vw;
+    margin-top: 5vh;
+    align-items: center;
+    border-radius: 35px;
+}
+
+.button1 {
+    font-size: 22px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2vw;
+    width: 23vw;
+    border-radius: 35px;
+    height: 7vh;
+    align-items: center;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.button1:hover {
+    background-color: blue;
+    color: white;
+}
+
+.Update_resumeBtn {
+    background-color: transparent;
+    height: 8vh;
+    width: 20vw;
+    border: 2px solid gray;
+    color: blue;
+    border-radius: 25px;
+    margin-top: 5vh;
+    margin-left: 20vw;
+    font-size: 22px;
+    padding: 10px;
+    box-shadow: 0px 4px 4px gray;
+}
+
+.vertical_line {
+    border-left: 3px solid gray;
+    height: 90vh;
+    position: absolute;
+    top: 9.5vh;
+    right: 20vw;
+}
+
+.right_side_container {
+    height: 11vh;
+    width: 17vw;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(66, 0, 128);
+    border: 2px solid gray;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    top: 12vh;
+    right: 1.6vw;
+}
+
+.right_image {
+    position: absolute;
+    top: 20vh;
+    right: 2vw;
+}
+
+.right_side_container2 {
+    height: 20vh;
+    width: 15.5vw;
+    border: 2px solid gray;
+    position: absolute;
+    border-radius: 25px 25px 0px 25px;
+    top: 60vh;
+    right: 2vw;
+    align-items: center;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.resume_btn {
+    width: 16vw;
+    border: 2px solid gray;
+    height: 8vh;
+    color: rgb(255, 196, 0);
+    font-size: 18px;
+    box-shadow: 0px 2px 2px gray;
+    background-color: transparent;
+    position: absolute;
+    top: 85vh;
+    right: 2vw;
+    font-weight: bold;
+}

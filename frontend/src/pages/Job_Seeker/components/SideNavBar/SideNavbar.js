@@ -12,6 +12,10 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
+import { useSelector, useDispatch } from 'react-redux'
+import { handleUserLogOut } from "../../../../Redux/ReduxSlice";
+import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 const menuItems = [
   {
     path: "/dashboard",
@@ -61,69 +65,82 @@ const menuItems = [
 ];
 
 function SideNavbar() {
+  const dispatch = useDispatch();
+  const navigateTO = useNavigate()
+  const { name } = useSelector((state) => state.Assessment.currentUser);
+
+  const handleLogoutClick = () => {
+    dispatch(handleUserLogOut());
+    toast.success(`${name} Logged out !!`)
+    setTimeout(() => {
+      navigateTO("/login")
+    }, 1000);
+  }
   return (
-    <div className={navStyle.SidenavBar__Container}>
-      <div className={navStyle.sidenavBar__AppLOGOBOX}>
-        <h1 className={navStyle.sidenavBar__appLOGO}>
-          <span className={navStyle.sidenavBar_DeskLOGO}>HRConnect Pro</span>{" "}
-          <span className={navStyle.sidenavBar_LOGO}>H C P</span>
-        </h1>
+    <>
+      <div className={navStyle.SidenavBar__Container}>
+        <div className={navStyle.sidenavBar__AppLOGOBOX}>
+          <h1 className={navStyle.sidenavBar__appLOGO}>
+            <span className={navStyle.sidenavBar_DeskLOGO}>HRConnect Pro</span>{" "}
+            <span className={navStyle.sidenavBar_LOGO}>H C P</span>
+          </h1>
+        </div>
+
+        <nav className={navStyle.JobSeeker_nav}>
+          {menuItems.map((data, index) => {
+            return (
+              <NavLink
+                key={index}
+                to={data.path}
+                className={({ isActive }) =>
+                  isActive ? navStyle.active : navStyle.JobSeeker_navITEM_LINK
+                }
+              >
+                <Tooltip title={data.name} arrow placement="right-end" className={navStyle.toolTip}>
+                  <p className={navStyle.JobSeeker__navItem}>
+                    {data.icon}
+                    <span className={navStyle.navTextHIDE}>{data.name}</span>
+                  </p>
+                </Tooltip>
+              </NavLink>
+            );
+          })}
+        </nav>
+
+        <div className={navStyle.sidenavBar__profileBox}>
+          <Tooltip title="Profile" arrow placement="right-end">
+            <img
+              src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"
+              alt="UserProfilePicture"
+              className={navStyle.sidenavBar__userProfilePicture}
+            />
+          </Tooltip>
+
+          <p className={navStyle.sidenavBar__userName}>
+            {name && name}
+            <button className={navStyle.editProfileButton}>Edit Profile</button>
+          </p>
+
+          <DropDownMENU userName={name} userLogOut={handleLogoutClick} />
+        </div>
+
+        <button className={navStyle.logOutButton} onClick={handleLogoutClick} >
+          <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
+          Log Out
+        </button>
       </div>
-
-      <nav className={navStyle.JobSeeker_nav}>
-        {menuItems.map((data, index) => {
-          return (
-            <NavLink
-              key={index}
-              to={data.path}
-              className={({ isActive }) =>
-                isActive ? navStyle.active : navStyle.JobSeeker_navITEM_LINK
-              }
-            >
-              <Tooltip title={data.name} arrow placement="right-end">
-                <p className={navStyle.JobSeeker__navItem}>
-                  {data.icon}{" "}
-                  <span className={navStyle.navTextHIDE}>{data.name}</span>
-                </p>
-              </Tooltip>
-            </NavLink>
-          );
-        })}
-      </nav>
-
-      <div className={navStyle.sidenavBar__profileBox}>
-        <Tooltip title="Profile" arrow placement="right-end">
-          <img
-            src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"
-            alt="UserProfilePicture"
-            className={navStyle.sidenavBar__userProfilePicture}
-          />
-        </Tooltip>
-
-        <p className={navStyle.sidenavBar__userName}>
-          Anshuman Kumar
-          <button className={navStyle.editProfileButton}>Edit Profile</button>
-        </p>
-
-        <DropDownMENU />
-      </div>
-
-      <button className={navStyle.logOutButton}>
-        <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
-        Log Out
-      </button>
-    </div>
+    </>
   );
 }
 
 export default SideNavbar;
 
-function DropDownMENU() {
+function DropDownMENU({ userName, userLogOut }) {
   return (
     <div className={navStyle.ProfileDropDownContainer}>
-      <p className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Name}`}>Anshuman Kumar</p>
+      <p className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Name}`}> {userName && userName}</p>
       <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`}>Edit Profile</button>
-      <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`}>  <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
+      <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`} onClick={userLogOut}>  <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
         Log Out </button>
     </div>
   );

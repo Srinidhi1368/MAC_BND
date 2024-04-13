@@ -6,6 +6,7 @@ import DashBoardStyle from "./DashboardMain.module.css";
 import Data from "./MatchedJob";
 import { Link } from "react-router-dom";
 
+
 export default function JobSeekerSwiper() {
   const colors = [
     "rgba(203, 240, 251, 1)",

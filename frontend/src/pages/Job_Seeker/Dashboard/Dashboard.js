@@ -19,7 +19,7 @@ function Dashboard() {
         <div className={DashBoardStyle.title_sort}>
           <Container>
             <Row className="justify-content-evenly">
-              <Col xxl={12}>
+              <Col xxl={11}>
                 <div className={DashBoardStyle.title_total}>
                   <div className={DashBoardStyle.title_dashboard}>
                     <h1 className={DashBoardStyle.title_name}>Dashboard</h1>

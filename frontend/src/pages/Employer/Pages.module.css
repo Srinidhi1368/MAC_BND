@@ -1,0 +1,295 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* HR-Dashboard Page-------------------- */
+.__dashboard_Header,.__postImpression_Header,.__latest_Post_Header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Dropdown button----------- */
+.__dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.__dropBtn {
+    background-color: rgb(50, 76, 246);
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+.__dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.__dropdown_content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.__dropdown_content li:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+.__dropdown:hover .__dropdown_content {
+    display: block;
+}
+.__dropdown:hover .__dropBtn {
+    background-color: #3e8e41;
+}
+
+/* Posts Impression ------------ */
+.__post_Impression {
+    margin: 1em 0;
+}
+
+.__post_Section {
+    padding: 1em 1em 2em 1em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.__posts {
+    background: rgba(255, 192, 203, 0.479);
+    width: 300px;
+    height: 170px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
+    cursor: pointer;
+}
+
+.__postLogo {
+    width: 2em;
+    object-fit: contain;
+}
+
+.__postTitle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: .5em 0;
+}
+
+.__btn_PostOpen {
+    width: 20px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.__post_body {
+    display: flex;
+    justify-content: space-around;
+    margin: 1em 0 .5em 0;
+}
+
+.__post_body span {
+    color: yellow;
+    background: green;
+    border-radius: 15px;
+    padding: 2px 15px;
+}
+
+.__post_Footer {
+    color: rgb(0, 166, 255);
+}
+
+.__post_Footer span {
+    font-size: 28px;
+    padding-left: .6em;
+}
+
+.__user_Post {
+    border: 1px solid rgba(128, 128, 128, 0.694);
+    border-radius: 30px;
+    padding: 1em 3em;
+}
+
+.__user_Post_Header {
+    /* border: 1px solid red; */
+    width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin: 1em 0;
+    /* padding: -1em; */
+}
+
+.__user_PostImg {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.__latestPosts_Img,
+.__user_Post_info {
+    border: 1px solid grey;
+    width: 95%;
+    height: 400px;
+    object-fit: contain;
+    color: black;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
+    margin-bottom: 1em;
+}
+
+.__user_Post_info {
+    height: auto;
+    padding: 0.5em 3em;
+    font-weight: 500;
+}
+
+.__btn_Repost {
+    background: orange;
+    padding: .3em 1.5em;
+    color: white;
+    border-radius: 5px;
+}
+
+.__user_Post_Footer {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Create Post Page--------------------------- */
+.__create_Post_Header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.__postDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.__imgContainer {
+    border: 4px dashed rgba(128, 128, 128, 0.503);
+    border-radius: 20px;
+    width: 35%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.__postImg {
+    width: 25%;
+    height: 25%;
+    color: rgba(128, 128, 128, 0.868);
+    object-fit: cover;
+    opacity: 40%;
+}
+
+.__createPost_Form {
+    width: 60%;
+}
+
+.__input_Grps {
+    margin: .6em 0;
+}
+
+.__input_Grps label {
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: .2em;
+}
+
+.__inputs {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding-left: 1em;
+    margin: .2em 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.__buttons {
+    margin: 1em auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.__btn_Cancel,
+.__btn_Save {
+    width: 200px;
+    background-color: #FFFFFF;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    color: #222222;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 24px;
+}
+
+.__btn_Save {
+    background: rgb(30, 30, 255);
+    color: white;
+    border: none;
+}
+
+.__btn_Cancel:active,
+.__btn_Save:active {
+    transform: scale(.95);
+}
+
+/* Employee Page---------------------------- */
+.__employee_ToggleNav {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.__employee_Links {
+    text-decoration: none;
+    background: transparent;
+}
+
+.__employee_Links_Toggles {
+    border-radius: 10px;
+    width: 250px;
+    height: 140px;
+    padding: .5em 1em;
+    color: #222222;
+    transition: 300ms linear;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.__employee_Links_Toggles:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 1.5px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.__employee_Links_Toggles h1 {
+    font-size: 40px;
+}
+
+.__employee_PresenceColor {
+    width: 16px;
+    height: 16px;
+    background: greenyellow;
+    border-radius: 50%;
+}
+
+.__leaveReq_Table {
+    margin: 2em 1em;
+}
