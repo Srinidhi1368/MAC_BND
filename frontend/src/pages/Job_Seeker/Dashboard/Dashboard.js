@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import DashBoardStyle from "./Dashboard.module.css";
+import DashBoardStyle from "./DashboardMain.module.css";
 import JobSeekerSwiper from "./Job_Swiper";
 import fav_icon from "./images/favoutite.png";
 import money from "./images/money-stack.png";

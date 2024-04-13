@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import Data from "./MatchedJob";
 import UserDashBoardStyle from "./Detailedview.module.css";
+import { useState } from "react";
 
 import { IoCloseOutline } from "react-icons/io5";
 
@@ -15,10 +16,17 @@ import drop from "./images/Vector.png";
 import fav_icon from "./images/favoutite.png";
 import money from "./images/money-stack.png";
 import location from "./images/ep_location.png";
+import starLogo from "./images/star.png";
 
 export default function JobListDetailedView() {
   const { id } = useParams();
   const jobDetails = Data.find((job) => job.id === id);
+
+  const [selectedRating, setSelectedRating] = useState(0);
+
+  const handleRatingSelect = (value) => {
+    setSelectedRating(value);
+  };
 
   if (!jobDetails) {
     return <div>Job not found</div>;
@@ -317,6 +325,8 @@ export default function JobListDetailedView() {
                   <div className={UserDashBoardStyle.company_about_desc}>
                     {jobDetails.about}
                   </div>
+
+                  {/*  review section starts  */}
                   <div className={UserDashBoardStyle.company_review}>
                     <div className={UserDashBoardStyle.company_review_title}>
                       Review & Reviews
@@ -324,6 +334,135 @@ export default function JobListDetailedView() {
 
                     <div className={UserDashBoardStyle.company_summary_title}>
                       Summary
+                    </div>
+
+                    <div className={UserDashBoardStyle.company_summary_style}>
+                      <div
+                        className={UserDashBoardStyle.company_summary_progress}
+                      >
+                        <ul
+                          className={
+                            UserDashBoardStyle.company_summary_progress_fun
+                          }
+                        >
+                          {[5, 4, 3, 2, 1].map((value, index) => {
+                            let width;
+                            let orangeWidth;
+                            let grayWidth;
+
+                            switch (value) {
+                              case 5:
+                                orangeWidth = "100%";
+                                grayWidth = "0%";
+                                width = "100%";
+                                break;
+                              case 4:
+                                orangeWidth = "75%";
+                                grayWidth = "25%";
+                                width = "100%";
+                                break;
+                              case 3:
+                                orangeWidth = "50%";
+                                grayWidth = "50%";
+                                width = "100%";
+                                break;
+                              case 2:
+                                orangeWidth = "25%";
+                                grayWidth = "75%";
+                                width = "100%";
+                                break;
+                              case 1:
+                                orangeWidth = "10%";
+                                grayWidth = "90%";
+                                width = "100%";
+                                break;
+                              default:
+                                orangeWidth = "0%";
+                                grayWidth = "100%";
+                                width = "100%";
+                            }
+
+                            return (
+                              <li key={index}>
+                                <div
+                                  className={UserDashBoardStyle.ratingNumber}
+                                >
+                                  {value}
+                                </div>
+                                <button
+                                  className={
+                                    UserDashBoardStyle.company_summary_progress_border
+                                  }
+                                  style={{
+                                    width: width,
+                                    position: "relative",
+                                    overflow: "hidden",
+                                  }}
+                                  onClick={() => handleRatingSelect(value)}
+                                >
+                                  <div
+                                    style={{
+                                      width: orangeWidth,
+                                      backgroundColor: "orange",
+                                      position: "absolute",
+                                      top: 0,
+                                      left: 0,
+                                      bottom: 0,
+                                    }}
+                                  ></div>
+                                  <div
+                                    style={{
+                                      width: grayWidth,
+                                      backgroundColor: "rgba(0, 0, 0, 0.06)",
+                                      position: "absolute",
+                                      top: 0,
+                                      right: 0,
+                                      bottom: 0,
+                                    }}
+                                  ></div>
+                                </button>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                      <div className={UserDashBoardStyle.company_rating_star}>
+                        <div
+                          className={UserDashBoardStyle.company_rating_rating}
+                        >
+                          <div
+                            className={
+                              UserDashBoardStyle.company_rating_rating_data
+                            }
+                          >
+                            {jobDetails.rating}
+                          </div>
+
+                          <span className={UserDashBoardStyle.review_star_gap}>
+                            <img
+                              src={starLogo}
+                              alt={"starLogo"}
+                              className={UserDashBoardStyle.review_star}
+                            />
+                          </span>
+                        </div>
+
+                        <div className={UserDashBoardStyle.company_review_full}>
+                          {jobDetails.review} Reviews
+                        </div>
+
+                        <div className={UserDashBoardStyle.company_review_rec}>
+                          {jobDetails.recommended}%
+                        </div>
+
+                        <div
+                          className={
+                            UserDashBoardStyle.company_review_Recommended
+                          }
+                        >
+                          Recommended
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ const Data = [
     logo: companylogo,
     background: background,
     title: "FullStack",
-    location: "USA",
+    location: "India",
     preference: "Remote",
     days: "1",
     salary: "20k",
@@ -39,6 +39,9 @@ const Data = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     apply:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    rating: "4.2",
+    review: "108",
+    recommended: "60",
   },
   {
     id: "2",
@@ -75,6 +78,10 @@ const Data = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     apply:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+
+    rating: "4.5",
+    review: "177",
+    recommended: "70",
   },
 ];
 

@@ -1,7 +1,13 @@
 /* detailed view  */
-.detailed_view_full_full {
-  margin-bottom: 20px;
+
+.detailed_view_full_small {
+  margin-top: 20px;
+
+  &:first-child {
+    margin-top: 70px;
+  }
 }
+
 .detail_list_view_full {
   border: 1px solid rgba(225, 220, 217, 1);
   border-radius: 10px;
@@ -92,6 +98,9 @@
   font-size: 12px;
   font-weight: 600;
   font-family: inter;
+}
+.company_location_details {
+  margin-top: 70px;
 }
 .detail_company_location_details {
   border: 1px solid rgba(225, 220, 217, 1);
@@ -219,6 +228,7 @@
 }
 .detail_job_view_company_full {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .close_button {
   color: #000;
@@ -298,4 +308,81 @@
   font-family: inter;
   font-weight: 500;
   font-size: 16px;
+}
+
+.company_summary_progress_border {
+  width: 80%;
+  height: 12px;
+  background-color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+li {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.company_summary_progress_fun {
+  margin-top: 10px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+.company_summary_style {
+  margin-top: 10px;
+  display: flex;
+}
+.company_summary_progress {
+  width: 50%;
+}
+.company_rating_star {
+  width: 50%;
+  text-align: center;
+  margin-top: 10px;
+}
+.review_star {
+  width: 60%;
+}
+.company_rating_rating {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 16px;
+}
+.review_star_gap {
+  width: 25%;
+}
+.company_rating_rating_data {
+  font-size: 20px;
+  margin-bottom: -5px;
+  font-family: inter;
+  font-weight: 500;
+}
+.company_review_full {
+  margin-top: 5px;
+  font-size: 13px;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.38);
+  text-align: left;
+  margin-left: 15px;
+}
+.company_review_rec {
+  margin-top: 15px;
+  font-size: 20px;
+  font-family: inter;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 15px;
+}
+.company_review_Recommended {
+  font-size: 13px;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.38);
+  text-align: left;
+  margin-left: 15px;
 }
