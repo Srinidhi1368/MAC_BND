@@ -85,18 +85,21 @@
   font-size: 15px;
   font-weight: 400;
   font-family: inter;
+  display: ruby-text;
 }
 .company_location {
   margin-top: 10px;
   color: rgba(0, 0, 0, 0.5);
   font-family: inter;
   font-size: 15px;
+  display: ruby-text;
 }
 
 .company_preference {
   margin-top: 10px;
   font-family: inter;
   font-size: 15px;
+  display: ruby-text;
 }
 
 .company_apply {
@@ -207,6 +210,9 @@
   font-weight: 600;
   font-size: 20px;
   color: rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .rec_company_logo_money_month {
@@ -214,11 +220,6 @@
   font-weight: 600;
   font-size: 12px;
   color: rgba(69, 69, 69, 1);
-}
-.rec_company_offer {
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 .rec_company_location_details {

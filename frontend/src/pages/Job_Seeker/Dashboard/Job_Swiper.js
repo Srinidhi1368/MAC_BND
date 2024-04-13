@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import DashBoardStyle from "./Dashboard.module.css";
-import data from "./MatchedJob";
+import Data from "./MatchedJob";
+import { Link } from "react-router-dom";
 
 export default function JobSeekerSwiper() {
   const colors = [
@@ -13,14 +14,14 @@ export default function JobSeekerSwiper() {
   ];
 
   return (
-    <>
-      <Swiper
-        className={DashBoardStyle.job_swiper}
-        slidesPerView={4}
-        spaceBetween={20}
-      >
-        {data.map((item, index) => (
-          <SwiperSlide key={index}>
+    <Swiper
+      className={DashBoardStyle.job_swiper}
+      slidesPerView={4}
+      spaceBetween={20}
+    >
+      {Data.map((item, index) => (
+        <SwiperSlide key={index}>
+          <Link to={`/job/${item.id}`}>
             <div
               className={DashBoardStyle.matched_job_full}
               style={{ backgroundColor: colors[index % colors.length] }}
@@ -42,9 +43,9 @@ export default function JobSeekerSwiper() {
                 <span className={DashBoardStyle.apply}> Apply </span>
               </h6>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+          </Link>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

@@ -3,19 +3,42 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 //! These All Files are imported for the JobSEEker Routes
-const JobSeekerLayout = lazy(() =>import("../pages/Job_Seeker/JobSeekerLayout"));
-const Dashboard = lazy(() => import("../pages/Job_Seeker/Dashboard/Dashboard.js"));
-const Assessment = lazy(() => import("../pages/Job_Seeker/Assessment/Assessment.js"));
-const InstructionPage = lazy(() => import("../pages/Job_Seeker/Assessment/InstructionPage.js"));
-const SelfAssessmentPage = lazy(() => import("../pages/Job_Seeker/Assessment/SelfAssessmentPage.js"));
-const AssessmentResult = lazy(() => import("../pages/Job_Seeker/Assessment/AssessmentResult.js"));
+const JobSeekerLayout = lazy(() =>
+  import("../pages/Job_Seeker/JobSeekerLayout")
+);
+const Dashboard = lazy(() =>
+  import("../pages/Job_Seeker/Dashboard/Dashboard.js")
+);
+const Assessment = lazy(() =>
+  import("../pages/Job_Seeker/Assessment/Assessment.js")
+);
+const InstructionPage = lazy(() =>
+  import("../pages/Job_Seeker/Assessment/InstructionPage.js")
+);
+const SelfAssessmentPage = lazy(() =>
+  import("../pages/Job_Seeker/Assessment/SelfAssessmentPage.js")
+);
+const AssessmentResult = lazy(() =>
+  import("../pages/Job_Seeker/Assessment/AssessmentResult.js")
+);
 const ChatBot = lazy(() => import("../pages/Job_Seeker/Chatbot/ChatBot.js"));
-const Analytics = lazy(() => import("../pages/Job_Seeker/Analysis/Analysis.js"));
+const Analytics = lazy(() =>
+  import("../pages/Job_Seeker/Analysis/Analysis.js")
+);
 const MYJobs = lazy(() => import("../pages/Job_Seeker/MyJobs/MyJobs.js"));
 const MYResume = lazy(() => import("../pages/Job_Seeker/MyResume/MyResume.js"));
-const Application = lazy(() => import("../pages/Job_Seeker/ApplicationStatus/ApplicationStatus.js"));
-const Interviews = lazy(() => import("../pages/Job_Seeker/InterviewScheduled/Interview.js"));
+const Application = lazy(() =>
+  import("../pages/Job_Seeker/ApplicationStatus/ApplicationStatus.js")
+);
+const Interviews = lazy(() =>
+  import("../pages/Job_Seeker/InterviewScheduled/Interview.js")
+);
 const Settings = lazy(() => import("../pages/Job_Seeker/Settings/Setting.js"));
+
+const JobListDetailedView = lazy(() =>
+  import("../pages/Job_Seeker/Dashboard/DetailedView.js")
+);
+
 //! These All Files are imported for the JobSEEker Routes
 
 function AppRoute() {
@@ -32,7 +55,6 @@ export default AppRoute;
 function JobSeekerRoutes() {
   return (
     <Routes>
-
       <Route
         path="/"
         element={
@@ -116,6 +138,15 @@ function JobSeekerRoutes() {
             </Suspense>
           }
         />
+
+        <Route
+          path="/job/:id"
+          element={
+            <Suspense>
+              <JobListDetailedView />
+            </Suspense>
+          }
+        />
       </Route>
 
       <Route
@@ -135,7 +166,7 @@ function JobSeekerRoutes() {
           </Suspense>
         }
       />
-      
+
       <Route
         path="/assessment-result"
         element={
@@ -147,4 +178,3 @@ function JobSeekerRoutes() {
     </Routes>
   );
 }
-

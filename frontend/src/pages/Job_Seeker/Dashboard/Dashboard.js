@@ -19,7 +19,7 @@ function Dashboard() {
         <div className={DashBoardStyle.title_sort}>
           <Container>
             <Row className="justify-content-evenly">
-              <Col xxl={10}>
+              <Col xxl={12}>
                 <div className={DashBoardStyle.title_total}>
                   <div className={DashBoardStyle.title_dashboard}>
                     <h1 className={DashBoardStyle.title_name}>Dashboard</h1>
@@ -38,7 +38,7 @@ function Dashboard() {
             </Row>
 
             <Row className="justify-content-evenly">
-              <Col xxl={10}>
+              <Col xxl={12}>
                 <div className={DashBoardStyle.jobList_total}>
                   <div className={DashBoardStyle.matches_seeAll}>
                     <div className={DashBoardStyle.match_title}>
@@ -56,7 +56,7 @@ function Dashboard() {
             </Row>
 
             <Row className="justify-content-evenly">
-              <Col xxl={10}>
+              <Col xxl={12}>
                 <div className={DashBoardStyle.rec_seeAll}>
                   <div className={DashBoardStyle.rec_title}>
                     Recommended Jobs
