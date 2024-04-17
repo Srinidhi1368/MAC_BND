@@ -9,33 +9,61 @@ import { IoMicOutline } from "react-icons/io5";
 import { IoMicOffOutline } from "react-icons/io5";
 import { VscSettings } from "react-icons/vsc";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import Filter from "./components/FilterBox/Filter";
+import { handleSetFilterData, handleRemoveFilterData } from "../../Redux/ReduxFilterSlice";
+import { useDispatch } from "react-redux";
 function JobSeekerLayout() {
   const { pathname } = useLocation();
   const navigateTO = useNavigate();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (pathname === "/") {
       navigateTO("/dashboard");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+  const [ToggleFilter, setToggleFilter] = useState(false)
+
+  const handleFilterOnchange = (e) => {
+    if (e.target.checked) {
+      dispatch(handleSetFilterData({
+        name: e.target.name,
+        value: e.target.value
+      }))
+    } else {
+      dispatch(handleRemoveFilterData({
+        name: e.target.name,
+        value: e.target.value
+      }))
+    }
+  };
+
+  const handleToogleFilter = (e) => {
+    setToggleFilter(!ToggleFilter)
+  }
 
   return (
     <section className={JobSeekerStyle.JobSeeker_Layout_Container}>
       <div className={JobSeekerStyle.LayoutContainer__LeftSideContainer}>
         <SideNavbar />
       </div>
+
       <div className={JobSeekerStyle.LayoutContainer__RightSideContainer}>
         <header
           className={JobSeekerStyle.RightSideContainer__topHeaderContainer}
         >
-          <DashboardTopComponent />
+          <DashboardTopComponent CBOnchange={handleFilterOnchange} CbToggle={handleToogleFilter} />
         </header>
 
         <div className={JobSeekerStyle.__OutletContainer}>
           <Outlet />
         </div>
       </div>
+
+      {
+        ToggleFilter && <Filter handleOnChange={handleFilterOnchange} CbToggle={handleToogleFilter} />
+      }
+
     </section>
   );
 }
@@ -44,7 +72,7 @@ export default JobSeekerLayout;
 
 // Topnavbar Components
 
-function DashboardTopComponent() {
+function DashboardTopComponent({ CbToggle }) {
   const [isListening, setIsListening] = useState(false);
   const toggleMicListening = (e) => {
     e.preventDefault();
@@ -102,7 +130,7 @@ function DashboardTopComponent() {
       </div>
 
       <div className={JobSeekerStyle.FilterAndNotificationBox}>
-        <VscSettings className={JobSeekerStyle.filterBox_ICON} />
+        <VscSettings className={JobSeekerStyle.filterBox_ICON} onClick={CbToggle} />
 
         <IoIosNotificationsOutline className={JobSeekerStyle.filterBox_ICON} />
       </div>
