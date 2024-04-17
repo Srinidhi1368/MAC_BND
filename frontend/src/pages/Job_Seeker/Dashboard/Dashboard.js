@@ -96,8 +96,12 @@ function Dashboard() {
   };
 
   const loadFilteredData = () => {
+    // console.log(BestMatch.map((data)=> data.salaryRange))
     let FilteredData = BestMatch.filter((job) =>
-      FilterOptions?.JobType.some((data) => job.employmentType === data)
+      FilterOptions?.JobType.some((data) => job.employmentType === data) ||
+      FilterOptions?.JobCategory.some((data) => job.employmentType === data) ||
+      FilterOptions?.JobLevel.some((data) => job.jobExperience === data) ||
+      FilterOptions?.SalaryRange.some((data) => job.salaryRange === data)
     );
     setAllJobData(FilteredData);
   };
