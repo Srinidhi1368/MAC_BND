@@ -3,12 +3,19 @@ import mailICON from "../../../Assets/mailICON.jpg";
 import clockICON from "../../../Assets/clockICON.jpg";
 import activeICON from "../../../Assets/ActiveICON.jpg";
 import callICON from "../../../Assets/callICON.png";
-import { BarChart, Bar, XAxis,Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 // import { Line } from "react-chartjs-2";
-import hrAnalyticStyle from './HrAnalytics.module.css'
+import hrAnalyticStyle from "./HrAnalytics.module.css";
 
 const dummyData = [
   {
@@ -188,30 +195,37 @@ function HRAnalyticsPageCarousel() {
 //   );
 // }
 
-
 const DummyBarChart = ({ data }) => {
   return (
     <>
-       <div className={hrAnalyticStyle.hr_bar_container}>
-        <div style={{fontSize:'25px', fontWeight:'500'}}>Mail Sent</div>
-        <div><span style={{color:'lightgreen'}}>+1.43%</span> &nbsp; March 25 - March 31</div>
-       <ResponsiveContainer width="100%" height={400}>
-      <BarChart
-        data={data}
-        margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <XAxis dataKey="name" axisLine={false} tick={{ dy: 10 }} />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="value" fill="#8884d8" barSize={40} shape={<RoundedRectangle />}/>
-      </BarChart>
-    </ResponsiveContainer>
-       </div>
+      <div className={hrAnalyticStyle.hr_bar_container}>
+        <div style={{ fontSize: "25px", fontWeight: "500" }}>Mail Sent</div>
+        <div>
+          <span style={{ color: "lightgreen" }}>+1.43%</span> &nbsp; March 25 -
+          March 31
+        </div>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart
+            data={data}
+            margin={{
+              top: 20,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <XAxis dataKey="name" axisLine={false} tick={{ dy: 10 }} />
+            <Tooltip />
+            <Legend />
+            <Bar
+              dataKey="value"
+              fill="#8884d8"
+              barSize={40}
+              shape={<RoundedRectangle />}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </>
   );
 };
@@ -227,17 +241,22 @@ const RoundedRectangle = (props) => {
       d={`M${x},${y + borderRadius} 
           A${borderRadius},${borderRadius} 0 0 1 ${x + borderRadius},${y} 
           L${x + width - borderRadius},${y} 
-          A${borderRadius},${borderRadius} 0 0 1 ${x + width},${y + borderRadius} 
+          A${borderRadius},${borderRadius} 0 0 1 ${x + width},${
+        y + borderRadius
+      } 
           L${x + width},${y + height - borderRadius} 
-          A${borderRadius},${borderRadius} 0 0 1 ${x + width - borderRadius},${y + height} 
+          A${borderRadius},${borderRadius} 0 0 1 ${x + width - borderRadius},${
+        y + height
+      } 
           L${x + borderRadius},${y + height} 
-          A${borderRadius},${borderRadius} 0 0 1 ${x},${y + height - borderRadius} 
+          A${borderRadius},${borderRadius} 0 0 1 ${x},${
+        y + height - borderRadius
+      } 
           Z`}
       fill={props.fill}
     />
   );
 };
-
 
 function PieArcLabel() {
   const data = [
@@ -282,4 +301,3 @@ function PieArcLabel() {
     </div>
   );
 }
-

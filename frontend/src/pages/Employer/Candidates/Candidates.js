@@ -1,51 +1,120 @@
-// import React from 'react'
+import * as React from "react";
+import PropTypes from "prop-types";
+import { alpha } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import DeleteIcon from "@mui/icons-material/Delete";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { visuallyHidden } from "@mui/utils";
 
-// export default function Candidates() {
-//   return (
-//     <div>Candidates</div>
-//   )
-// }
-
-
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import { visuallyHidden } from '@mui/utils';
-
-function createData(id, candidateName, rating, stages, appliedRole, applicationStatus, attachments) {
+function createData(
+  id,
+  candidateName,
+  rating,
+  stages,
+  appliedRole,
+  applicationStatus,
+  attachments
+) {
   return {
-    id, candidateName, rating, stages, appliedRole, applicationStatus, attachments
+    id,
+    candidateName,
+    rating,
+    stages,
+    appliedRole,
+    applicationStatus,
+    attachments,
   };
 }
 
 const rows = [
-  createData(1, 'Charlie Kristin', 4.0, 'Design Challenge', 'Sr. UX Designer', '12/02/23', '3 Files'),
-  createData(2, 'Malaika Brown', 3.5, 'Screening', 'Growth Manager', '18/02/23', '3 Files'),
-  createData(3, 'Simon Minister', 2.8, 'Design Challenge', 'Financial Analyst', '04/01/23', '3 Files'),
-  createData(4, 'Ashley Brookey', 4.5, 'HR Round', 'Financial Analyst', '12/02/23', '3 Files'),
-  createData(5, 'Nishant Talwar', 5.0, 'Round 2 interview', 'Sr. UX Designer', '05/03/23', '3 Files'),
-  createData(6, 'Mark Jacobs', 2.0, 'Rejected', 'Growth Manager', '24/12/23', '3 Files'),
-  createData(7, 'Charlie Kristin', 4.0, 'Design Challenge', 'Sr. UX Designer', '12/02/23', '3 Files'),
-  createData(8, 'Malaika Brown', 3.5, 'Screening', 'Growth Manager', '13/02/23', '3 Files'),
+  createData(
+    1,
+    "Charlie Kristin",
+    4.0,
+    "Design Challenge",
+    "Sr. UX Designer",
+    "12/02/23",
+    "3 Files"
+  ),
+  createData(
+    2,
+    "Malaika Brown",
+    3.5,
+    "Screening",
+    "Growth Manager",
+    "18/02/23",
+    "3 Files"
+  ),
+  createData(
+    3,
+    "Simon Minister",
+    2.8,
+    "Design Challenge",
+    "Financial Analyst",
+    "04/01/23",
+    "3 Files"
+  ),
+  createData(
+    4,
+    "Ashley Brookey",
+    4.5,
+    "HR Round",
+    "Financial Analyst",
+    "12/02/23",
+    "3 Files"
+  ),
+  createData(
+    5,
+    "Nishant Talwar",
+    5.0,
+    "Round 2 interview",
+    "Sr. UX Designer",
+    "05/03/23",
+    "3 Files"
+  ),
+  createData(
+    6,
+    "Mark Jacobs",
+    2.0,
+    "Rejected",
+    "Growth Manager",
+    "24/12/23",
+    "3 Files"
+  ),
+  createData(
+    7,
+    "Charlie Kristin",
+    4.0,
+    "Design Challenge",
+    "Sr. UX Designer",
+    "12/02/23",
+    "3 Files"
+  ),
+  createData(
+    8,
+    "Malaika Brown",
+    3.5,
+    "Screening",
+    "Growth Manager",
+    "13/02/23",
+    "3 Files"
+  ),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -59,7 +128,7 @@ function descendingComparator(a, b, orderBy) {
 }
 
 function getComparator(order, orderBy) {
-  return order === 'desc'
+  return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
@@ -78,46 +147,52 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'CANDIDATE NAME',
+    id: "CANDIDATE NAME",
     numeric: false,
     disablePadding: true,
-    label: 'CANDIDATE NAME',
+    label: "CANDIDATE NAME",
   },
   {
-    id: 'RATING',
+    id: "RATING",
     numeric: true,
     disablePadding: false,
-    label: 'RATING',
+    label: "RATING",
   },
   {
-    id: 'STAGES',
+    id: "STAGES",
     numeric: true,
     disablePadding: false,
-    label: 'STAGES',
+    label: "STAGES",
   },
   {
-    id: 'APPLIED ROLE',
+    id: "APPLIED ROLE",
     numeric: true,
     disablePadding: false,
-    label: 'APPLIED ROLE',
+    label: "APPLIED ROLE",
   },
   {
-    id: 'APPLICATION DATE',
+    id: "APPLICATION DATE",
     numeric: true,
     disablePadding: false,
-    label: 'APPLIACTION DATE',
+    label: "APPLIACTION DATE",
   },
   {
-    id: 'ATTACHMENTS',
+    id: "ATTACHMENTS",
     numeric: true,
     disablePadding: false,
-    label: 'ATTACHMENTS',
+    label: "ATTACHMENTS",
   },
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
-    props;
+  const {
+    onSelectAllClick,
+    order,
+    orderBy,
+    numSelected,
+    rowCount,
+    onRequestSort,
+  } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -132,26 +207,26 @@ function EnhancedTableHead(props) {
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{
-              'aria-label': 'select all desserts',
+              "aria-label": "select all desserts",
             }}
           />
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
+            align={headCell.numeric ? "right" : "left"}
+            padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
+              direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                  {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </Box>
               ) : null}
             </TableSortLabel>
@@ -166,7 +241,7 @@ EnhancedTableHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
@@ -177,18 +252,33 @@ function EnhancedTableToolbar(props) {
   return (
     <Toolbar
       sx={{
-        pl: { sm: 2 }, pr: { xs: 1, sm: 1 }, ...(numSelected > 0 && {
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 },
+        ...(numSelected > 0 && {
           bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+            alpha(
+              theme.palette.primary.main,
+              theme.palette.action.activatedOpacity
+            ),
         }),
-      }}>
-        
+      }}
+    >
       {numSelected > 0 ? (
-        <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
+        <Typography
+          sx={{ flex: "1 1 100%" }}
+          color="inherit"
+          variant="subtitle1"
+          component="div"
+        >
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
+        <Typography
+          sx={{ flex: "1 1 100%" }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
           Candidates
         </Typography>
       )}
@@ -215,16 +305,16 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function Candidates() {
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [order, setOrder] = React.useState("asc");
+  const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
@@ -250,7 +340,7 @@ export default function Candidates() {
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selected.slice(selectedIndex + 1)
       );
     }
     setSelected(newSelected);
@@ -279,20 +369,20 @@ export default function Candidates() {
     () =>
       stableSort(rows, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage,
+        page * rowsPerPage + rowsPerPage
       ),
-    [order, orderBy, page, rowsPerPage],
+    [order, orderBy, page, rowsPerPage]
   );
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+    <Box sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", mb: 2 }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
-            size={dense ? 'small' : 'medium'}
+            size={dense ? "small" : "medium"}
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -316,14 +406,14 @@ export default function Candidates() {
                     tabIndex={-1}
                     key={row.id}
                     selected={isItemSelected}
-                    sx={{ cursor: 'pointer' }}
+                    sx={{ cursor: "pointer" }}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         color="primary"
                         checked={isItemSelected}
                         inputProps={{
-                          'aria-labelledby': labelId,
+                          "aria-labelledby": labelId,
                         }}
                       />
                     </TableCell>

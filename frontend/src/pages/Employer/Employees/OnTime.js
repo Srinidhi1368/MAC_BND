@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function OnTime() {
-  return (
-    <div>OnTime</div>
-  )
+  return <div>OnTime</div>;
 }
