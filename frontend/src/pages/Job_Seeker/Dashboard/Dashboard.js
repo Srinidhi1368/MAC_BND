@@ -25,8 +25,12 @@ function Dashboard() {
   const { email, savedJob, appliedJob } = useSelector(
     (state) => state.Assessment.currentUser
   );
+
+  const [selectedSort, setSelectedSort] = useState("Sort By");
+  const { FilterOptions, SearchOptions } = useSelector((state) => state.Filter);
   const dispatch = useDispatch();
   const [allJobsData, setAllJobData] = useState([]);
+  const [BestMatch, setBestmatch] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const navigateTO = useNavigate();
 
@@ -36,7 +40,10 @@ function Dashboard() {
       .get("http://localhost:8080/api/jobs/All-jobs")
       .then((response) => {
         if (response.data.success) {
-          setAllJobData(response.data.jobs);
+          setAllJobData(
+            response.data.jobs.sort((a, b) => b.createdAt - a.createdAt)
+          );
+          setBestmatch(response.data.jobs);
           setLoading(false);
         } else {
           setAllJobData([]);
@@ -90,6 +97,83 @@ function Dashboard() {
       });
   };
 
+  const loadFilteredData = () => {
+    // console.log(BestMatch.map((data)=> data.salaryRange))
+    let FilteredData = BestMatch.filter(
+      (job) =>
+        FilterOptions?.JobType.some((data) => job.employmentType === data) ||
+        FilterOptions?.JobCategory.some(
+          (data) => job.employmentType === data
+        ) ||
+        FilterOptions?.JobLevel.some((data) => job.jobExperience === data) ||
+        FilterOptions?.SalaryRange.some((data) => job.salaryRange === data)
+    );
+    setAllJobData(FilteredData);
+  };
+
+  useEffect(() => {
+    if (
+      FilterOptions?.JobCategory?.length > 0 ||
+      FilterOptions?.JobLevel?.length > 0 ||
+      FilterOptions?.JobType?.length > 0 ||
+      FilterOptions?.salaryRange?.length > 0
+    ) {
+      loadFilteredData();
+    } else {
+      setAllJobData(BestMatch);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    FilterOptions.JobCategory,
+    FilterOptions.JobLevel,
+    FilterOptions.JobType,
+    FilterOptions.salaryRange,
+  ]);
+
+  useEffect(() => {
+    if (SearchOptions.Location || SearchOptions.searchText) {
+      let FilteredData = BestMatch.filter((job) =>
+        job.location.includes(SearchOptions.Location.trim())
+      ).filter(
+        (job) =>
+          job.jobTitle
+            .toLowerCase()
+            .includes(SearchOptions.searchText.trim().toLowerCase()) ||
+          job.employmentType
+            .toLowerCase()
+            .includes(SearchOptions.searchText.trim().toLowerCase()) ||
+          job.skilRequired.some((skil) =>
+            skil
+              .toLowerCase()
+              .includes(SearchOptions.searchText.trim().toLowerCase())
+          )
+      );
+      setAllJobData(FilteredData);
+    } else {
+      setAllJobData(BestMatch);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [SearchOptions.searchText, SearchOptions.Location]);
+
+  const handleSortBy = (e) => {
+    setSelectedSort(e.target.value);
+    const sorted = [...BestMatch];
+    setAllJobData(sorted);
+    switch (e.target.value) {
+      case "latest":
+        sorted.sort((a, b) => b.createdAt - a.createdAt);
+        break;
+      case "name":
+        sorted.sort((a, b) => a.jobTitle.localeCompare(b.jobTitle));
+        break;
+      case "city":
+        sorted.sort((a, b) => a.location.localeCompare(b.location));
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <section className={DashBoardStyle.userDahboard_MainContainer}>
       {isLoading ? (
@@ -99,19 +183,24 @@ function Dashboard() {
           <div className={DashBoardStyle.title_sort}>
             <Container>
               <Row className="justify-content-evenly">
-                <Col xxl={12} xl={12} lg={12} md={12} sm={12}>
+                <Col xxl={12}>
                   <div className={DashBoardStyle.title_total}>
                     <div className={DashBoardStyle.title_dashboard}>
                       <h1 className={DashBoardStyle.title_name}>Dashboard</h1>
                     </div>
-                    <div className={DashBoardStyle.sort_by}>
-                      <h5 className={DashBoardStyle.sort_order}>
-                        Sort By:
-                        <select id={DashBoardStyle.sort_dropdown}>
-                          <option value={DashBoardStyle.latest}>Latest</option>
-                          <option value={DashBoardStyle.oldest}>Oldest</option>
-                        </select>
-                      </h5>
+                    <div className={DashBoardStyle.__dropdown}>
+                      <select
+                        className={DashBoardStyle.selectOption}
+                        value={selectedSort}
+                        onChange={handleSortBy}
+                      >
+                        <option className={DashBoardStyle.options} value="">
+                          Sort By
+                        </option>
+                        <option value="latest">Latest</option>
+                        <option value="name">Name</option>
+                        <option value="city">City</option>
+                      </select>
                     </div>
                   </div>
                 </Col>
@@ -124,12 +213,14 @@ function Dashboard() {
                       <div className={DashBoardStyle.match_title}>
                         Best Matches for you
                       </div>
-
-                      <div className={DashBoardStyle.seeAll}>See all</div>
                     </div>
 
                     <div className={DashBoardStyle.matched_job}>
-                      <JobSeekerSwiper allJobs={allJobsData} />
+                      <JobSeekerSwiper
+                        allJobs={BestMatch.toSorted(
+                          (a, b) => a.createdAt - b.createdAt
+                        )}
+                      />
                     </div>
                   </div>
                 </Col>
@@ -141,162 +232,190 @@ function Dashboard() {
                     <div className={DashBoardStyle.rec_title}>
                       Recommended Jobs
                     </div>
-
-                    <div className={DashBoardStyle.rec_seeAll}>See all</div>
                   </div>
-                  {allJobsData.map((item) => (
-                    <div
-                      className={DashBoardStyle.rec_list_view_full}
-                      key={item._id}
-                    >
-                      <div className={DashBoardStyle.rec_list_view}>
-                        <div className={DashBoardStyle.rec_company_detail}>
-                          <div
-                            className={DashBoardStyle.rec_company_logoContainer}
-                          >
-                            <img
-                              src={item.jobPoster}
-                              alt={"amazon_image"}
-                              className={DashBoardStyle.rec_company_logo}
-                            />
-                          </div>
-                          <div className={DashBoardStyle.rec_company_job_desc}>
-                            <h6
-                              className={DashBoardStyle.rec_company_job_title}
-                            >
-                              {item.jobTitle}
-                            </h6>
-                            <h6 className={DashBoardStyle.rec_company_job_time}>
-                              <CalculateTimeAgo time={item.createdAt} />
-                            </h6>
-                          </div>
-                        </div>
-                        <div className={DashBoardStyle.rec_company_offer}>
-                          <img
-                            src={money}
-                            alt={"money_icon"}
-                            className={DashBoardStyle.rec_company_logo_money}
-                          />
-                          {item.salaryRange}
-                          <span
-                            className={
-                              DashBoardStyle.rec_company_logo_money_month
-                            }
-                          ></span>
-                        </div>
-                        <div className={DashBoardStyle.rec_company_offer_apply}>
-                          {appliedJob?.every(
-                            (data) => data.jobID !== item?._id
-                          ) && (
-                            <div
-                              className={DashBoardStyle.rec_company_offer_fav}
-                            >
-                              {savedJob?.some(
-                                (data) => data.jobID === item?._id
-                              ) ? (
-                                <img
-                                  src={fav_filled_icon}
-                                  alt="Favorite Icon"
-                                  className={
-                                    DashBoardStyle.rec_company_offer_fav_image
-                                  }
-                                  onClick={(e) =>
-                                    handleRemoveSaveClick(e, item?._id)
-                                  }
-                                />
-                              ) : (
-                                <img
-                                  src={fav_icon}
-                                  alt="Favorite Icon"
-                                  className={
-                                    DashBoardStyle.rec_company_offer_fav_image
-                                  }
-                                  onClick={(e) =>
-                                    handleSaveToLaterClick(e, item)
-                                  }
-                                />
-                              )}
-                            </div>
-                          )}
-
-                          <div
-                            className={
-                              DashBoardStyle.rec_company_offer_apply_button
-                            }
-                          >
-                            {appliedJob?.some(
-                              (data) => data.jobID === item?._id
-                            ) ? (
-                              <button
-                                className={
-                                  DashBoardStyle.DashboardalreadyAppliedButton
-                                }
-                                onClick={() =>
-                                  navigateTO(`/dashboard/${item._id}`)
-                                }
-                              >
-                                Applied
-                              </button>
-                            ) : (
-                              <button
-                                className={
-                                  DashBoardStyle.rec_company_offer_apply_button_style
-                                }
-                                onClick={() =>
-                                  navigateTO(`/dashboard/${item._id}`)
-                                }
-                              >
-                                Apply
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div
-                        className={DashBoardStyle.rec_company_location_details}
-                      >
+                  {allJobsData.length === 0 ? (
+                    <h2 className={DashBoardStyle.EmptyJoBMSG}>No Job</h2>
+                  ) : (
+                    <>
+                      {allJobsData.map((item) => (
                         <div
-                          className={
-                            DashBoardStyle.rec_company_location_details_job
-                          }
+                          className={DashBoardStyle.rec_list_view_full}
+                          key={item._id}
                         >
-                          <img
-                            src={location}
-                            alt={"location"}
-                            className={DashBoardStyle.rec_company_location_logo}
-                          />
-                          <h6
-                            className={DashBoardStyle.rec_company_location_name}
+                          <div className={DashBoardStyle.rec_list_view}>
+                            <div className={DashBoardStyle.rec_company_detail}>
+                              <div
+                                className={
+                                  DashBoardStyle.rec_company_logoContainer
+                                }
+                              >
+                                <img
+                                  src={item.jobPoster}
+                                  alt={"amazon_image"}
+                                  className={DashBoardStyle.rec_company_logo}
+                                />
+                              </div>
+                              <div
+                                className={DashBoardStyle.rec_company_job_desc}
+                              >
+                                <h6
+                                  className={
+                                    DashBoardStyle.rec_company_job_title
+                                  }
+                                >
+                                  {item.jobTitle}
+                                </h6>
+                                <h6
+                                  className={
+                                    DashBoardStyle.rec_company_job_time
+                                  }
+                                >
+                                  <CalculateTimeAgo time={item.createdAt} />
+                                </h6>
+                              </div>
+                            </div>
+                            <div className={DashBoardStyle.rec_company_offer}>
+                              <img
+                                src={money}
+                                alt={"money_icon"}
+                                className={
+                                  DashBoardStyle.rec_company_logo_money
+                                }
+                              />
+                              {item.salaryRange}
+                              <span
+                                className={
+                                  DashBoardStyle.rec_company_logo_money_month
+                                }
+                              ></span>
+                            </div>
+                            <div
+                              className={DashBoardStyle.rec_company_offer_apply}
+                            >
+                              {appliedJob?.every(
+                                (data) => data.jobID !== item?._id
+                              ) && (
+                                <div
+                                  className={
+                                    DashBoardStyle.rec_company_offer_fav
+                                  }
+                                >
+                                  {savedJob?.some(
+                                    (data) => data.jobID === item?._id
+                                  ) ? (
+                                    <img
+                                      src={fav_filled_icon}
+                                      alt="Favorite Icon"
+                                      className={
+                                        DashBoardStyle.rec_company_offer_fav_image
+                                      }
+                                      onClick={(e) =>
+                                        handleRemoveSaveClick(e, item?._id)
+                                      }
+                                    />
+                                  ) : (
+                                    <img
+                                      src={fav_icon}
+                                      alt="Favorite Icon"
+                                      className={
+                                        DashBoardStyle.rec_company_offer_fav_image
+                                      }
+                                      onClick={(e) =>
+                                        handleSaveToLaterClick(e, item)
+                                      }
+                                    />
+                                  )}
+                                </div>
+                              )}
+
+                              <div
+                                className={
+                                  DashBoardStyle.rec_company_offer_apply_button
+                                }
+                              >
+                                {appliedJob?.some(
+                                  (data) => data.jobID === item?._id
+                                ) ? (
+                                  <button
+                                    className={
+                                      DashBoardStyle.DashboardalreadyAppliedButton
+                                    }
+                                    onClick={() =>
+                                      navigateTO(`/dashboard/${item._id}`)
+                                    }
+                                  >
+                                    Applied
+                                  </button>
+                                ) : (
+                                  <button
+                                    className={
+                                      DashBoardStyle.rec_company_offer_apply_button_style
+                                    }
+                                    onClick={() =>
+                                      navigateTO(`/dashboard/${item._id}`)
+                                    }
+                                  >
+                                    Apply
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            className={
+                              DashBoardStyle.rec_company_location_details
+                            }
                           >
-                            {item.location}
-                          </h6>
-                        </div>
+                            <div
+                              className={
+                                DashBoardStyle.rec_company_location_details_job
+                              }
+                            >
+                              <img
+                                src={location}
+                                alt={"location"}
+                                className={
+                                  DashBoardStyle.rec_company_location_logo
+                                }
+                              />
+                              <h6
+                                className={
+                                  DashBoardStyle.rec_company_location_name
+                                }
+                              >
+                                {item.location}
+                              </h6>
+                            </div>
 
-                        <div className={DashBoardStyle.rec_company_exp}>
-                          <img
-                            src={fresherImage}
-                            alt={"fresherImage"}
-                            className={DashBoardStyle.rec_exp_logo}
-                          />
-                          <h6 className={DashBoardStyle.rec_exp_name}>
-                            {item.jobExperience}
-                          </h6>
-                        </div>
+                            <div className={DashBoardStyle.rec_company_exp}>
+                              <img
+                                src={fresherImage}
+                                alt={"fresherImage"}
+                                className={DashBoardStyle.rec_exp_logo}
+                              />
+                              <h6 className={DashBoardStyle.rec_exp_name}>
+                                {item.jobExperience}
+                              </h6>
+                            </div>
 
-                        <div className={DashBoardStyle.rec_company_exp_time}>
-                          <img
-                            src={drop}
-                            alt={"drop"}
-                            className={DashBoardStyle.rec_exp_logo_time}
-                          />
-                          <h6 className={DashBoardStyle.rec_exp_name_time}>
-                            {item.employmentType}
-                          </h6>
+                            <div
+                              className={DashBoardStyle.rec_company_exp_time}
+                            >
+                              <img
+                                src={drop}
+                                alt={"drop"}
+                                className={DashBoardStyle.rec_exp_logo_time}
+                              />
+                              <h6 className={DashBoardStyle.rec_exp_name_time}>
+                                {item.employmentType}
+                              </h6>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                      ))}
+                    </>
+                  )}
                 </Col>
               </Row>
             </Container>

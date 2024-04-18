@@ -170,7 +170,11 @@ const removeSavedJob = async (req, res) => {
             jobID: jobId,
             userEmail: email,
         });
-
+        const mongooseUser = await User.findOne({ email: email });
+        
+        await User.updateOne({ email }, {
+            userSavedJob: mongooseUser.userSavedJob.filter((data) => data.jobID !== jobId)
+        });
         if (mongooseResponse) {
             res.status(200).json({
                 success: true,

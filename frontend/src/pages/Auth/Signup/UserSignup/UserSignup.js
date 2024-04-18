@@ -229,7 +229,7 @@ const Signup = () => {
   };
 
   const handleLogin = () => {
-    nav("/user-login");
+    nav("/login");
   };
 
   const [stillWorking, setStillWorking] = useState(false);
