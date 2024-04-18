@@ -1,386 +1,390 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* HR-Dashboard Page------------------------------------------------------------ */
 .__dashboard_Page {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 .__dashboard_Header,
 .__postImpression_Header,
 .__latest_Post_Header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
 /* Select ----------------- */
 .selectOption {
-    padding: .3em 1em;
-    border-radius: 20px;
-    outline: none;
+  padding: 0.3em 1em;
+  border-radius: 20px;
+  outline: none;
 }
 
 .options {
-    background: transparent;
-    outline: none;
+  background: transparent;
+  outline: none;
 }
 
 /* Dropdown button----------- */
 .__dropdown {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    color: chocolate;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: chocolate;
 }
 
 .__dropBtn {
-    background-color: rgb(50, 76, 246);
-    color: white;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
+  background-color: rgb(50, 76, 246);
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
 }
 
 .__dropdown_content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .__dropdown_content li {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 .__dropdown_content li:hover {
-    background-color: #ddd;
-    cursor: pointer;
+  background-color: #ddd;
+  cursor: pointer;
 }
 
 .__dropdown:hover .__dropdown_content {
-    display: block;
+  display: block;
 }
 
 .__dropdown:hover .__dropBtn {
-    background-color: #3e8e41;
+  background-color: #3e8e41;
 }
 
 /* Posts Impression ------------ */
 .__post_Impression {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 .__post_Section {
-    height: 200px;
-    padding: 1em;
-    border: 1px solid rgba(128, 128, 128, 0.622);
-    border-radius: 5px;
+  height: 200px;
+  padding: 1em;
+  border: 1px solid rgba(128, 128, 128, 0.622);
+  border-radius: 5px;
 }
 
 .__posts {
-    background: whitesmoke;
-    width: 90%;
-    min-height: 170px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 5px 5.4px 4.2px;
-    cursor: pointer;
+  background: whitesmoke;
+  width: 90%;
+  min-height: 170px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 5px 5.4px 4.2px;
+  cursor: pointer;
 }
 
 .__postLogo {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
 .__postTitle {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: .5em 0;
-    gap: 20px;
-    font-weight: 500;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5em 0;
+  gap: 20px;
+  font-weight: 500;
 }
 
 .__btn_PostOpen {
-    width: 20px;
-    height: 30px;
-    cursor: pointer;
+  width: 20px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .__post_body {
-    display: flex;
-    justify-content: space-around;
-    margin: 1em 0 .5em 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0 0.5em 0;
 }
 
 .__post_body span {
-    color: yellow;
-    background: green;
-    border-radius: 15px;
-    padding: 2px 15px;
+  color: yellow;
+  background: green;
+  border-radius: 15px;
+  padding: 2px 15px;
 }
 
 .__post_Footer {
-    color: rgb(0, 166, 255);
-    font-size: 18px;
+  color: rgb(0, 166, 255);
+  font-size: 18px;
 }
 
 .__post_Footer span {
-    font-size: 28px;
-    padding-left: 1em;
+  font-size: 28px;
+  padding-left: 1em;
 }
 
 /* User Post ------------ */
 .__user_Post {
-    border: 1px solid rgba(128, 128, 128, 0.694);
-    border-radius: 15px;
-    padding: 1em 3em;
-    margin-bottom: 1em;
-    position: relative;
+  border: 1px solid rgba(128, 128, 128, 0.694);
+  border-radius: 15px;
+  padding: 1em 3em;
+  margin-bottom: 1em;
+  position: relative;
 }
 
 .createPost_BtnDelete {
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 2em;
-    top: 2em;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 2em;
+  top: 2em;
 }
 
 .__user_Post_Header {
-    width: 250px;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    margin: 1em 0;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 1em 0;
 }
 
 .__user_PostImg {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    border: 1px solid black;
-    border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 .__latestPosts_Img,
 .__user_Post_info {
-    border: 1px solid grey;
-    width: 100%;
-    height: 400px;
-    object-fit: contain;
-    color: black;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
-    margin-bottom: 1em;
+  border: 1px solid grey;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  color: black;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
+  margin-bottom: 1em;
 }
 
 .__user_Post_info {
-    height: auto;
-    padding: 1em 3em;
-    font-weight: 500;
+  height: auto;
+  padding: 1em 3em;
+  font-weight: 500;
 }
 
 .__btn_Repost {
-    background: orange;
-    padding: .3em 1.5em;
-    color: white;
-    border-radius: 5px;
+  background: orange;
+  padding: 0.3em 1.5em;
+  color: white;
+  border-radius: 5px;
 }
 
 .__user_Post_Footer {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Create Post Page------------------------------------------------------------ */
 .__create_Post_Page {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 .__create_Post_Header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .__postDetails {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .__imgContainer {
-    border: 4px dashed rgba(128, 128, 128, 0.503);
-    border-radius: 20px;
-    width: 35%;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  border: 4px dashed rgba(128, 128, 128, 0.503);
+  border-radius: 20px;
+  width: 35%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .__previewImg {
-    width: 100%;
-    height: 95%;
-    object-fit: contain;
-    cursor: pointer;
+  width: 100%;
+  height: 95%;
+  object-fit: contain;
+  cursor: pointer;
 }
 
 .__postImg {
-    width: 25%;
-    height: 25%;
-    color: rgba(128, 128, 128, 0.868);
-    object-fit: cover;
-    opacity: 40%;
+  width: 25%;
+  height: 25%;
+  color: rgba(128, 128, 128, 0.868);
+  object-fit: cover;
+  opacity: 40%;
 }
 
 .__createPost_Form {
-    width: 60%;
-    margin-bottom: 2em;
+  width: 60%;
+  margin-bottom: 2em;
 }
 
 .__input_Grps {
-    margin: .6em 0;
+  margin: 0.6em 0;
 }
 
 .__input_Grps label {
-    font-weight: 600;
-    font-size: 20px;
-    padding-left: .2em;
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 0.2em;
 }
 
 .__inputs {
-    width: 100%;
-    height: 45px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    padding-left: 1em;
-    margin: .2em 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
+  height: 45px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 1em;
+  margin: 0.2em 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .__createPost_Select {
-    border-radius: 5px;
-    padding: .3em 4em;
-    width: 100%;
-    height: 40px;
-    outline: none;
-    cursor: pointer;
+  border-radius: 5px;
+  padding: 0.3em 4em;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  cursor: pointer;
 }
 
 .__buttons {
-    margin: 1em auto;
-    display: flex;
-    justify-content: space-evenly;
+  margin: 1em auto;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.__btn_Cancel,.__btn_Save,
-.__btn_Yes,.__btn_Cancel {
-    width: 200px;
-    background-color: #FFFFFF;
-    border: 1px solid #222222;
-    border-radius: 8px;
-    color: #222222;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 8px 24px;
+.__btn_Cancel,
+.__btn_Save,
+.__btn_Yes,
+.__btn_Cancel {
+  width: 200px;
+  background-color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  color: #222222;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8px 24px;
 }
 
 .__btn_Save {
-    background: rgb(30, 30, 255);
-    color: white;
-    border: none;
+  background: rgb(30, 30, 255);
+  color: white;
+  border: none;
 }
 
 .__btn_Cancel:active,
 .__btn_Save:active {
-    transform: scale(.95);
+  transform: scale(0.95);
 }
 
 /* Employee Page------------------------------------------------------------ */
 .__employee_ToggleNav {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 1em;
-    margin-bottom: 1em;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-bottom: 1em;
 }
 
 .__employee_Links {
-    text-decoration: none;
-    background: transparent;
+  text-decoration: none;
+  background: transparent;
 }
 
 .__employee_Links_Toggles {
-    border-radius: 10px;
-    width: 250px;
-    height: 140px;
-    padding: .5em 1em;
-    color: #222222;
-    transition: 300ms linear;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  border-radius: 10px;
+  width: 250px;
+  height: 140px;
+  padding: 0.5em 1em;
+  color: #222222;
+  transition: 300ms linear;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .__employee_Links_Toggles:hover {
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 1.5px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 1.5px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .__employee_Links_Toggles h1 {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .__employee_PresenceColor {
-    width: 16px;
-    height: 16px;
-    background: greenyellow;
-    border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: greenyellow;
+  border-radius: 50%;
 }
 
 .__leaveReq_Table {
-    margin: 2em 1em;
+  margin: 2em 1em;
 }
 
 @media screen and (max-width: 900px) {
-    .__postDetails {
-        flex-direction: column;
-        margin: 1em 0;
-    }
+  .__postDetails {
+    flex-direction: column;
+    margin: 1em 0;
+  }
 
-    .__imgContainer {
-        width: 90%;
-        height: 350px;
-    }
+  .__imgContainer {
+    width: 90%;
+    height: 350px;
+  }
 
-    .__btn_Cancel,
-    .__btn_Save {
-        font-size: 18px;
-    }
+  .__btn_Cancel,
+  .__btn_Save {
+    font-size: 18px;
+  }
 
-    .__createPost_Form {
-        width: 90%;
-    }
+  .__createPost_Form {
+    width: 90%;
+  }
 }
