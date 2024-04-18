@@ -5,6 +5,18 @@
   user-select: none;
 }
 
+/* Select----------- */
+.selectOption {
+  padding: .3em 1em;
+  border-radius: 20px;
+  outline: none;
+}
+
+.options {
+  background: transparent;
+  outline: none;
+}
+
 .userDahboard_MainContainer {
   min-height: 100%;
   position: relative;

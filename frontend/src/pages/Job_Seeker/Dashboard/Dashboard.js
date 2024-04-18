@@ -25,12 +25,15 @@ function Dashboard() {
   const { email, savedJob, appliedJob } = useSelector(
     (state) => state.Assessment.currentUser
   );
+
+  const [selectedSort, setSelectedSort] = useState("Sort By");
   const { FilterOptions, SearchOptions } = useSelector((state) => state.Filter);
   const dispatch = useDispatch();
   const [allJobsData, setAllJobData] = useState([]);
   const [BestMatch, setBestmatch] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const navigateTO = useNavigate();
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -152,6 +155,25 @@ function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [SearchOptions.searchText, SearchOptions.Location]);
 
+  const handleSortBy = (e) => {
+    setSelectedSort(e.target.value);
+    const sorted = [...BestMatch];
+    setAllJobData(sorted);
+    switch (e.target.value) {
+      case "latest":
+        sorted.sort((a, b) => b.createdAt - a.createdAt);
+        break;
+      case "name":
+        sorted.sort((a, b) => a.jobTitle.localeCompare(b.jobTitle));
+        break;
+      case "city":
+        sorted.sort((a, b) => a.location.localeCompare(b.location));
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <section className={DashBoardStyle.userDahboard_MainContainer}>
       {isLoading ? (
@@ -166,14 +188,19 @@ function Dashboard() {
                     <div className={DashBoardStyle.title_dashboard}>
                       <h1 className={DashBoardStyle.title_name}>Dashboard</h1>
                     </div>
-                    <div className={DashBoardStyle.sort_by}>
-                      <h5 className={DashBoardStyle.sort_order}>
-                        Sort By:
-                        <select id={DashBoardStyle.sort_dropdown}>
-                          <option value={DashBoardStyle.latest}>Latest</option>
-                          <option value={DashBoardStyle.oldest}>Oldest</option>
-                        </select>
-                      </h5>
+                    <div className={DashBoardStyle.__dropdown}>
+                      <select
+                        className={DashBoardStyle.selectOption}
+                        value={selectedSort}
+                        onChange={handleSortBy}
+                      >
+                        <option className={DashBoardStyle.options} value="">
+                          Sort By
+                        </option>
+                        <option value="latest">Latest</option>
+                        <option value="name">Name</option>
+                        <option value="city">City</option>
+                      </select>
                     </div>
                   </div>
                 </Col>
