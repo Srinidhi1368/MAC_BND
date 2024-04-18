@@ -25,13 +25,12 @@ function Dashboard() {
   const { email, savedJob, appliedJob } = useSelector(
     (state) => state.Assessment.currentUser
   );
-  const { FilterOptions } = useSelector((state) => state.Filter);
+  const { FilterOptions, SearchOptions } = useSelector((state) => state.Filter);
   const dispatch = useDispatch();
   const [allJobsData, setAllJobData] = useState([]);
   const [BestMatch, setBestmatch] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const navigateTO = useNavigate();
-
   useEffect(() => {
     setLoading(true);
     axios
@@ -97,11 +96,14 @@ function Dashboard() {
 
   const loadFilteredData = () => {
     // console.log(BestMatch.map((data)=> data.salaryRange))
-    let FilteredData = BestMatch.filter((job) =>
-      FilterOptions?.JobType.some((data) => job.employmentType === data) ||
-      FilterOptions?.JobCategory.some((data) => job.employmentType === data) ||
-      FilterOptions?.JobLevel.some((data) => job.jobExperience === data) ||
-      FilterOptions?.SalaryRange.some((data) => job.salaryRange === data)
+    let FilteredData = BestMatch.filter(
+      (job) =>
+        FilterOptions?.JobType.some((data) => job.employmentType === data) ||
+        FilterOptions?.JobCategory.some(
+          (data) => job.employmentType === data
+        ) ||
+        FilterOptions?.JobLevel.some((data) => job.jobExperience === data) ||
+        FilterOptions?.SalaryRange.some((data) => job.salaryRange === data)
     );
     setAllJobData(FilteredData);
   };
@@ -124,6 +126,31 @@ function Dashboard() {
     FilterOptions.JobType,
     FilterOptions.salaryRange,
   ]);
+
+  useEffect(() => {
+    if (SearchOptions.Location || SearchOptions.searchText) {
+      let FilteredData = BestMatch.filter((job) =>
+        job.location.includes(SearchOptions.Location.trim())
+      ).filter(
+        (job) =>
+          job.jobTitle
+            .toLowerCase()
+            .includes(SearchOptions.searchText.trim().toLowerCase()) ||
+          job.employmentType
+            .toLowerCase()
+            .includes(SearchOptions.searchText.trim().toLowerCase()) ||
+          job.skilRequired.some((skil) =>
+            skil
+              .toLowerCase()
+              .includes(SearchOptions.searchText.trim().toLowerCase())
+          )
+      );
+      setAllJobData(FilteredData);
+    } else {
+      setAllJobData(BestMatch);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [SearchOptions.searchText, SearchOptions.Location]);
 
   return (
     <section className={DashBoardStyle.userDahboard_MainContainer}>
