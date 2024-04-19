@@ -208,3 +208,10 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+.secondaryDiv{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    backdrop-filter: blur(15px);
+}

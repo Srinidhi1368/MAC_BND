@@ -1,0 +1,237 @@
+/* .progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+} */
+* {
+    border-spacing: inherit;
+}
+
+text {
+    /* dominant-baseline: central; */
+    text-anchor: middle;
+}
+
+.candidate-sub-main-1 {
+    display: flex;
+    width: 22%;
+    align-items: center;
+    box-shadow: 0px 1px 5px;
+    border-radius: 10px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.candidate-main {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.candidate-main-2 {
+    width: 96%;
+    margin-left: 1%;
+}
+
+.candidate-main-2 select {
+    padding: 10px;
+}
+
+.candidate-table {
+    width: 100%;
+}
+
+.candidate-table th {
+    color: white;
+    font-weight: lighter;
+    padding: 1%;
+    text-align: left;
+}
+
+.candidate-table img {
+    border-radius: 5000px;
+}
+
+.candidate-table td {
+    padding: 1%;
+    margin-top: 10px;
+}
+
+.profile-map-div {
+    width: 30%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    margin: 1%;
+}
+
+.profile-map-div img {
+    border-radius: 50000px;
+}
+
+.profile-map-text {
+    width: 63%;
+    text-wrap: wrap;
+    margin-left: 3%;
+    margin-top: 5%;
+}
+
+.profile-map-text p {
+    text-wrap: wrap;
+    width: 100%;
+    min-height: 115px;
+}
+
+.profile-map-div-loc {
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.profile-map-div-loc p {
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+.profile-map-skills {
+    padding: 2%;
+}
+
+.profile-map-skills h4 {
+    margin-bottom: 2%;
+}
+
+.profile-map-skills p {
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.profile-map-text p {
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 5%;
+}
+
+.bookmark-profile-left-div {
+    overflow-y: scroll;
+    height: 79vh;
+    scrollbar-width: none;
+    width: 30%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.bookmark-profile-div {
+    display: flex;
+}
+
+.bookmark-profile-map-div {
+    width: 98%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    margin: 1%;
+    padding: 1%;
+    margin-bottom: 5%;
+}
+
+.bookmark-profile-right-div {
+    width: 65%;
+    padding: 3%;
+    border-radius: 24px;
+    border: 1px solid #ccc;
+}
+
+.bookmark-profile-info-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bookmark-profile-details {
+    display: flex;
+    gap: 2%;
+    margin-top: 2%;
+}
+
+.bookmark-profile-details p {
+    font-weight: 700;
+    margin-top: 2%;
+}
+
+.bookmark-profile-details span {
+    font-weight: lighter;
+    margin-bottom: 2%;
+    color: #ccc;
+}
+
+.boomark-profile-map-skills {
+    margin-top: 2%;
+}
+
+.boomark-profile-map-skills p {
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.bookmark-profile-apllication {
+    margin-top: 2%;
+}
+
+.bookmark-profile-apllication h4 {
+    margin-bottom: 2%;
+}
+
+.bookmark-profile-button {
+    display: flex;
+    margin-top: 2%;
+    gap: 20%;
+}
+
+.candidate-sub-main-2 {
+    background-color: #ffb800;
+    display: flex;
+    width: 22%;
+    align-items: center;
+    box-shadow: 0px 1px 5px;
+    border-radius: 10px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.table-button-div {
+    display: flex;
+    gap: 2%;
+    justify-content: flex-end;
+}
+
+.candidate-main-2 select {
+    width: auto !important;
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    border-radius: 50px;
+}
+
+.table-button-div button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}

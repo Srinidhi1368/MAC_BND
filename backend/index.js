@@ -56,7 +56,7 @@ const myJobRoutes = require("./Routes/MyJob.Route");
 app.use("/api/user/My-jobs", myJobRoutes);
 //!  MyJobs (JobSeeker) Related  Routes and import
 
-const Port = process.env.Port;
+// const Port = process.env.Port;
 
 app.listen(Port, async () => {
   try {
