@@ -23,7 +23,7 @@ p {
     position: relative;
 }
 
-/* Select----------- */
+/* Select ----------------- */
 .selectOption {
     padding: .3em 1em;
     border-radius: 20px;
@@ -89,7 +89,8 @@ p {
 .__post_Section {
     height: 200px;
     padding: 1em;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border: 1px solid rgba(128, 128, 128, 0.622);
+    border-radius: 5px;
 }
 
 .__posts {
@@ -97,7 +98,7 @@ p {
     width: 90%;
     min-height: 170px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 5px 5.4px 4.2px;
     cursor: pointer;
 }
 
@@ -108,7 +109,6 @@ p {
 }
 
 .__postTitle {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -146,11 +146,21 @@ p {
     padding-left: 1em;
 }
 
+/* User Post ------------ */
 .__user_Post {
     border: 1px solid rgba(128, 128, 128, 0.694);
     border-radius: 15px;
     padding: 1em 3em;
     margin-bottom: 1em;
+    position: relative;
+}
+
+.createPost_BtnDelete {
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 2em;
+    top: 2em;
 }
 
 .__user_Post_Header {
@@ -247,6 +257,7 @@ p {
 
 .__createPost_Form {
     width: 60%;
+    margin-bottom: 2em;
 }
 
 .__input_Grps {
@@ -271,14 +282,23 @@ p {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.__createPost_Select {
+    border-radius: 5px;
+    padding: .3em 4em;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+}
+
 .__buttons {
     margin: 1em auto;
     display: flex;
     justify-content: space-evenly;
 }
 
-.__btn_Cancel,
-.__btn_Save {
+.__btn_Cancel,.__btn_Save,
+.__btn_Yes,.__btn_Cancel {
     width: 200px;
     background-color: #FFFFFF;
     border: 1px solid #222222;

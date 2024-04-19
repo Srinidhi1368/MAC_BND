@@ -15,6 +15,7 @@ const CurrentResume = () => {
           `http://localhost:8080/resume/getall/${email}`
         );
         const resumesData = response.data.resumes;
+        // console.log(resumesData);
 
         if (resumesData.length > 0) {
           const sortedResumes = resumesData.sort(

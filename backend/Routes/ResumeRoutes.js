@@ -11,7 +11,12 @@ const  multer =require('multer')
         return cb(null,`${file.originalname}_${Date.now()}`)
     }
  })
- const upload =multer({storage})
+ 
+ const upload =multer({
+    storage: storage,
+    limits: { fileSize: 2000000 }, // Limit file size to 2MB
+    
+  })
 
 
 ResumeRoutes.post('/upload',upload.single('resumefile'),uploadResume)

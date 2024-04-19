@@ -72,15 +72,14 @@
 }
 
 .aptitude_round_container {
-  margin-top: 70px;
+  margin-top: 20px;
 }
 
-.aptitude_heading_container{
+.aptitude_heading_container {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 20px;
 }
-
 
 .aptitude_round_flex_container {
   display: flex;
@@ -139,6 +138,13 @@
   scroll-behavior: smooth;
 }
 
+.aptitude_round_edit_del_btn_container {
+  margin-top: 10px;
+}
+
+.aptitude_round_del_btn {
+  margin-left: 10px;
+}
 
 .form_action_btn_container {
   display: flex;

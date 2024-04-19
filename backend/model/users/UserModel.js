@@ -32,11 +32,6 @@ const userSchema = new mongoose.Schema({
       }
     }
   ],
-
-  resume: {
-    type: String
-  },
-
   userType: {
     type: String,
   },

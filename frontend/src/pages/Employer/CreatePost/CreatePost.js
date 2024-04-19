@@ -144,7 +144,13 @@ export default function CreatePost() {
               </div>
               <div className={pages.__input_Grps}>
                 <label htmlFor="">Employment Type</label> <br />
-                <input type="text" name='employmentType' value={post.employmentType} className={pages.__inputs} onChange={handleOnChange} />
+                <select className={pages.__createPost_Select} name='employmentType' id='employmentType' onChange={handleOnChange}>
+                  <option value="">Select your Empoyment Type</option>
+                  <option value="part time">Part Time</option>
+                  <option value="full time">Full Time</option>
+                  <option value="contractual">Contractual</option>
+                </select>
+                {/* <input type="text" name='employmentType' value={post.employmentType} className={pages.__inputs} onChange={handleOnChange} /> */}
               </div>
               <div className={pages.__input_Grps}>
                 <label htmlFor="">Location</label> <br />
@@ -152,7 +158,16 @@ export default function CreatePost() {
               </div>
               <div className={pages.__input_Grps}>
                 <label htmlFor="">Salary Range (INR)</label> <br />
-                <input type="text" name='salaryRange' value={post.salaryRange} className={pages.__inputs} onChange={handleOnChange} />
+                <select className={pages.__createPost_Select} name="salaryRange" id="salaryRange" onChange={handleOnChange}>
+                  <option value="">Select your job experience</option>
+                  <option value="2-3">2 - 3 LPA</option>
+                  <option value="3-5">3 - 5 LPA</option>
+                  <option value="5-7">5 - 7 LPA</option>
+                  <option value="7-9">7 - 9 LPA</option>
+                  <option value="10-12">10 - 12 LPA</option>
+                  <option value="15+">15+ LPA</option>
+                </select>
+                {/* <input type="text" name='salaryRange' value={post.salaryRange} className={pages.__inputs} onChange={handleOnChange} /> */}
               </div>
               <div className={pages.__input_Grps}>
                 <label htmlFor="">Skill Required</label> <br />
@@ -160,7 +175,17 @@ export default function CreatePost() {
               </div>
               <div className={pages.__input_Grps}>
                 <label htmlFor="">Job Experince</label> <br />
-                <input type="text" name='jobExperience' value={post.jobExperience} className={pages.__inputs} onChange={handleOnChange} />
+                <select className={pages.__createPost_Select} name="jobExperience" id="jobExperience" onChange={handleOnChange}>
+                  <option value="">Select your job experience</option>
+                  <option value="fresher">Fresher</option>
+                  <option value="0-6">0 - 6 months</option>
+                  <option value="1-2">1 - 2 years</option>
+                  <option value="2-3">2 - 3 years</option>
+                  <option value="3-4">3 - 4 years</option>
+                  <option value="4-5">4 - 5 years</option>
+                  <option value="5+">5+ years</option>
+                </select>
+                {/* <input type="text" name='jobExperience' value={post.jobExperience} className={pages.__inputs} onChange={handleOnChange} /> */}
               </div>
             </form>
           </div>

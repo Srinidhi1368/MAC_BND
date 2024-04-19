@@ -5,6 +5,7 @@ const uploadResume = async (req, res) => {
   try {
     const { email } = req.body;
     const { filename, path } = req.file;
+    // console.log(email,filename,path);
 
     // Find the user by email
     let user = await User.findOne({ email });
@@ -35,6 +36,7 @@ const uploadResume = async (req, res) => {
 
 const getResumes=async(req,res)=>{
     const { email } = req.params;
+    // console.log(email);
 
     try {
       // Find the user by email
@@ -46,6 +48,7 @@ const getResumes=async(req,res)=>{
   
       // Get the resumes array from the user object
       const resumes = user.resume;
+      // console.log(resumes);
   
       res.status(200).json({ resumes });
     } catch (error) {
