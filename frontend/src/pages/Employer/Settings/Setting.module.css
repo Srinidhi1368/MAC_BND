@@ -1,0 +1,94 @@
+.my_setting_container{
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    margin: 0 1rem;
+}
+  .setting_profile_section{
+    border-bottom: 1px solid black;
+    /* height: 35%; */
+  }
+  .hello_logout{
+    display: flex;
+    justify-content: space-between;
+  }
+  .my_profile_box{
+    display: flex;
+    width: 35%;
+  }
+  .my_profile_box img[alt='profile_img']{
+    width: 30%;
+    border-radius: 50%;
+  }
+  .my_name_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+  }
+  .my_name_section button{
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    border-radius: 5px;
+    height: 1.2rem;
+    width: 50%;
+    border: 1px solid white;
+    
+  }
+  .logout_main{
+    display: flex;
+  }
+  .Setting_opt_container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .setting_opt_left{
+    width: 25%;
+  }
+  .setting_opt{
+    border: 1px solid rgb(119, 172, 188);
+margin: 0.5rem 0;
+border-radius: 5px;
+height: 2rem;
+box-shadow: 0px 1px 1px 1px rgb(203, 203, 203);
+font-size: 0.8rem;
+padding: 5px 0px 0px 0px;
+
+  }
+  .setting_opt_active{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    height: 2rem;
+    border: 1px solid rgb(119, 172, 188);
+    font-size: 0.8rem;
+    padding: 5px 0px 0px 0px;
+}
+.setting_opt_active i{
+    padding:3px 10px;
+    width: 2rem;
+    height: 100%;
+}
+  .setting_opt:hover{
+    /* background-color: black;
+    color: white; */
+    cursor: pointer;
+  }
+  .setting_opt i{
+    color: black;
+    padding:3px 10px;
+    width: 2rem;
+    height: 100%;
+  }
+  .setting_opt_right{
+    width: 70%;
+    height: 60vh;
+    text-align: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }

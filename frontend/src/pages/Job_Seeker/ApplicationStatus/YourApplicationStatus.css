@@ -1,0 +1,196 @@
+.main {
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 24px;
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-bottom: 1%;
+    background-color: white;
+    position: relative;
+    z-index: -2;
+}
+
+.main h1 {
+    margin-bottom: 0% !important;
+}
+
+.img1 {
+    height: 180px;
+    width: 180px;
+    border-radius: 5000px;
+    margin: 1% 40% 1%;
+}
+
+.h3h3h3 {
+    margin-left: 30%;
+    width: 40%;
+    font-size: 20px !important;
+    margin-bottom: 0% !important;
+}
+
+.h3h3h3p {
+    margin-left: 15%;
+    width: 70%;
+    text-align: center;
+    margin-bottom: 0% !important;
+}
+
+.progressbar {
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    counter-reset: step;
+}
+
+.progressbar li {
+    list-style-type: none;
+    height: 50px;
+    position: relative;
+    width: 80%;
+}
+
+.progressbar li::before {
+    content: counter(step);
+    counter-increment: step;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50000px;
+    margin-right: 5%;
+    z-index: 2;
+    background-color: white;
+}
+
+.progressbar li::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+}
+
+.progressbar li:last-child::after {
+    content: none;
+}
+
+.progressbar li.activeerere::before {
+    background-color: #4caf50;
+    color: white;
+}
+
+.progressbar li.activeerere::after {
+    background-color: green;
+}
+
+.multi-button-status button {
+    display: block;
+    width: 50%;
+    margin: 1% auto 1% auto;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.multi-button-status p {
+    margin-left: 15%;
+    width: 70%;
+    text-align: center;
+    color: Orange;
+    margin-bottom: 1%;
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        width: 96%;
+        border: 1px solid black;
+        border-radius: 24px;
+        margin-top: 1%;
+        margin-left: 2%;
+        margin-bottom: 1%;
+        background-color: white;
+        position: relative;
+        z-index: -2;
+    }
+
+    .img1 {
+        height: 120px;
+        width: 120px;
+        border-radius: 5000px;
+        margin: 1% 35% 1%;
+    }
+
+    .h3h3h3 {
+        margin-left: 19%;
+        width: 70%;
+        font-size: 20px !important;
+        margin-bottom: 0% !important;
+    }
+
+    .h3h3h3p {
+        margin-left: 0%;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0% !important;
+    }
+
+    .multi-button-status p {
+        margin-left: 0%;
+        width: 100%;
+        text-align: center;
+        color: Orange;
+        margin-bottom: 1%;
+    }
+}
+
+
+@media screen and (min-width: 480px) and (max-width:1024px) {
+    .main {
+        width: 96%;
+        border: 1px solid black;
+        border-radius: 24px;
+        margin-top: 1%;
+        margin-left: 2%;
+        margin-bottom: 1%;
+        background-color: white;
+        position: relative;
+        z-index: -2;
+    }
+
+    .img1 {
+        height: 150px;
+        width: 150px;
+        border-radius: 5000px;
+        margin: 1% 40% 1%;
+    }
+
+    .h3h3h3 {
+        margin-left: 30%;
+        width: 70%;
+        font-size: 20px !important;
+        margin-bottom: 0% !important;
+    }
+
+    .h3h3h3p {
+        margin-left: 10%;
+        width: 90%;
+        text-align: center;
+        margin-bottom: 0% !important;
+    }
+
+    .multi-button-status p {
+        margin-left: 0%;
+        width: 100%;
+        text-align: center;
+        color: Orange;
+        margin-bottom: 1%;
+    }
+}

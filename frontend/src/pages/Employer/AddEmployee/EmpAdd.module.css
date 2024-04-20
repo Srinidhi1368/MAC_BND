@@ -1,0 +1,11 @@
+.empMain {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.sub_conatiner {
+    height: 50vh;
+    border: 2px solid black;
+    width: 25vw;
+}
