@@ -18,7 +18,7 @@ const MYResume = lazy(() => import("../pages/Job_Seeker/MyResume/MyResume.js"));
 const Application = lazy(() => import("../pages/Job_Seeker/ApplicationStatus/ApplicationStatus.js"));
 const Interviews = lazy(() => import("../pages/Job_Seeker/InterviewScheduled/Interview.js"));
 const Settings = lazy(() => import("../pages/Job_Seeker/Settings/Setting.js"));
-const JobListDetailedView = lazy(() =>import("../pages/Job_Seeker/Dashboard/DetailedView.js"));
+
 //! These All Files are imported for the Employer Routes
 const MainContainer = lazy(() => import("../pages/Employer/components/MainContainer.js"));
 const HRDashboard = lazy(() => import("../pages/Employer/Dashboard/HRDashboard.js"));
@@ -34,6 +34,8 @@ const HRAnalytics = lazy(() => import("../pages/Employer/Analytic/HrAnalytics.js
 const Candidates = lazy(() => import("../pages/Employer/Candidates/Candidates.js"));
 const InterviewScheduled = lazy(() => import("../pages/Employer/InterviewScheduled/InterviewScheduled.js"));
 const CreateInterview = lazy(() => import("../pages/Employer/InterviewScheduled/CreateInterview.js"));
+const EmployeeAdd = lazy(() => import("../pages/Employer/AddEmployee/EmloyeeAdd.js"));
+
 const Chatbot = lazy(() => import("../pages/Employer/ChatBot/Chatbot.js"));
 const Setting = lazy(() => import("../pages/Employer/Settings/Setting.js"));
 
@@ -63,7 +65,7 @@ function AppRoute() {
   return (
     <>
       {userType === "user" && <JobSeekerRoutes />}
-    
+
       {userType === "employee" && <EmployerRoutes />}
 
       {!userType && <AuthRouter />}
@@ -91,7 +93,7 @@ function JobSeekerRoutes() {
         <Route path="/application" element={<Suspense><Application /></Suspense>} />
         <Route path="/interviews" element={<Suspense><Interviews /></Suspense>} />
         <Route path="/settings" element={<Suspense><Settings /></Suspense>} />
-        <Route path="/dashboard/:id" element={ <Suspense> <JobListDetailedView /> </Suspense> }/>
+
       </Route>
       <Route path="/assessment-Instructions" element={<Suspense><InstructionPage /></Suspense>} />
       <Route path="/assessment-test" element={<Suspense><SelfAssessmentPage /></Suspense>} />
@@ -112,12 +114,14 @@ function EmployerRoutes() {
           <Route path='/employees/absent' element={<Suspense><Absent /></Suspense>} />
           <Route path='/employees/late_arrivals' element={<Suspense><LateArrivals /></Suspense>} />
           <Route path='/employees/leave_requests' element={<Suspense><LeaveRequests /></Suspense>} />
+
         </Route>
         <Route path='/payroll' element={<Suspense><Payroll /></Suspense>} />
         <Route path='/analytics' element={<Suspense><HRAnalytics /></Suspense>} />
         <Route path='/candidates' element={<Suspense><Candidates /></Suspense>} />
-        <Route path='/interview_scheduled' element={<Suspense><InterviewScheduled /></Suspense>} />
         <Route path='/schedule-interview' element={<Suspense><CreateInterview /></Suspense>} />
+        <Route path='/interview_scheduled' element={<Suspense><InterviewScheduled /></Suspense>} />
+        <Route path="/AddEmployee" element={<Suspense><EmployeeAdd></EmployeeAdd></Suspense>}></Route>
         <Route path='/chatbot' element={<Suspense><Chatbot /></Suspense>} />
         <Route path='/Setting' element={<Suspense><Setting /></Suspense>} />
       </Route>

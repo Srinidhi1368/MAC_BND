@@ -2,7 +2,9 @@
     overflow-y: auto !important;
     scrollbar-width: none !important;
     scroll-behavior: smooth !important;
-    height: 100vh !important;
+    height: 200vh !important;
+    border: 2px solid red;
+
 }
 
 .uppercontainer {
@@ -132,6 +134,7 @@
 .des {
     height: 15vh;
     width: 25vw;
+    padding: 5px;
 }
 
 .fileupload {

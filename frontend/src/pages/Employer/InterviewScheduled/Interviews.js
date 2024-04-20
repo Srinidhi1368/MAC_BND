@@ -1,12 +1,11 @@
 import React from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Table, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import tableImage from "../../../Assets/tableImage.PNG";
 import InterviewStyle from "./InterviewScheduled.module.css"
 
 const Interviews = () => {
-  // Define the data for each row
 
   const nav = useNavigate()
 
@@ -21,7 +20,7 @@ const Interviews = () => {
     },
   ];
 
-  const handleInterview = ()=>{
+  const handleInterview = () => {
     nav('/schedule-interview')
   }
 
@@ -47,12 +46,12 @@ const Interviews = () => {
       <td>
         <button
           style={{
-            border:"none",
+            border: "none",
             borderRadius: "5px",
             backgroundColor: "rgba(0, 183, 7, 1)",
-            color:'white',
+            color: 'white',
             fontSize: "12px",
-            padding:"5px"
+            padding: "5px"
           }}
           onClick={handleInterview}
         >
@@ -62,12 +61,12 @@ const Interviews = () => {
       <td>
         <button
           style={{
-            border:"1px solid rgba(225, 220, 217, 1)",
+            border: "1px solid rgba(225, 220, 217, 1)",
             borderRadius: "5px",
             backgroundColor: "transparent",
             color: "rgba(21, 84, 246, 1)",
             fontSize: "12px",
-            padding:"5px",
+            padding: "5px",
           }}
         >
           Write Feedback
