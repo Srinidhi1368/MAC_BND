@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import axios from "axios";
-import PreAssesmentStyle from "./InterviewScheduled.module.css";
+import PreAssesmentStyle from "./Preassessment.module.css";
 import toast from "react-hot-toast";
 import {useNavigate} from 'react-router-dom'
 
