@@ -1,8 +1,13 @@
 .main_container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 5vh;
+}
+
+.cir_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Clogo {
@@ -10,4 +15,58 @@
     width: 8vw;
     border-radius: 50%;
     box-shadow: 0px 3px 3px gray;
+
+}
+
+.bio {
+    border-radius: 10px;
+    width: 52vw;
+    height: 20vh;
+    padding: 10px;
+}
+
+.container1 {
+    display: flex;
+    gap: 4vw;
+    justify-content: flex-start;
+    width: 55vw;
+    margin-left: 5vw;
+}
+
+.c1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.input {
+    width: 24vw;
+    height: 7vh;
+    border-radius: 7px;
+    border: 1px solid gray;
+}
+
+.cc {
+    margin-left: 5vw;
+}
+
+.input_mail {
+    width: 34vw;
+    height: 7vh;
+    border-radius: 7px;
+    border: 1px solid gray;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.save_change {
+    width: 12vw;
+    padding: 6px;
+    color: white;
+    background-color: blue;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 35%;
+    border: none;
+    border-radius: 5px;
 }

@@ -19,6 +19,8 @@ const Application = lazy(() => import("../pages/Job_Seeker/ApplicationStatus/App
 const Interviews = lazy(() => import("../pages/Job_Seeker/InterviewScheduled/Interview.js"));
 const Settings = lazy(() => import("../pages/Job_Seeker/Settings/Setting.js"));
 
+
+
 //! These All Files are imported for the Employer Routes
 const MainContainer = lazy(() => import("../pages/Employer/components/MainContainer.js"));
 const HRDashboard = lazy(() => import("../pages/Employer/Dashboard/HRDashboard.js"));
@@ -38,6 +40,8 @@ const EmployeeAdd = lazy(() => import("../pages/Employer/AddEmployee/EmloyeeAdd.
 
 const Chatbot = lazy(() => import("../pages/Employer/ChatBot/Chatbot.js"));
 const Setting = lazy(() => import("../pages/Employer/Settings/Setting.js"));
+const EditProfile = lazy(() => import("../pages/Employer/Settings/EditProfile.js"));
+
 
 //! These All Files are imported for the Auth Routes
 const LoginPage = lazy(() =>
@@ -124,6 +128,7 @@ function EmployerRoutes() {
         <Route path="/AddEmployee" element={<Suspense><EmployeeAdd></EmployeeAdd></Suspense>}></Route>
         <Route path='/chatbot' element={<Suspense><Chatbot /></Suspense>} />
         <Route path='/Setting' element={<Suspense><Setting /></Suspense>} />
+        <Route path="/profile" element={<Suspense><EditProfile></EditProfile></Suspense>}></Route>
       </Route>
       <Route path='/*' element={<Suspense><MainContainer /></Suspense>} />
     </Routes>

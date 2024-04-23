@@ -24,7 +24,8 @@ export default function MainContainer() {
         pathname !== "/interview_scheduled" &&
         pathname !== "/schedule-interview" &&
         pathname !== "/chatbot" &&
-        pathname !== "/Setting"))
+        pathname !== "/Setting" &&
+        pathname !== "/profile"))
       navigateTo('/hr_dashboard')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
