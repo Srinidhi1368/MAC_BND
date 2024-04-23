@@ -28,7 +28,7 @@ const getUser = async (req, res) => {
     //   userDetails:user
     // });
 
-    res.json({ userDetails: user });
+    // res.json({ userDetails: user });
 
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
@@ -215,4 +215,34 @@ const resetPassword = async (req, res) => {
   }
 };
 
-module.exports = { signUp, login, forgotPassword, resetPassword, getUser };
+
+const updateUserField = async (req, res) => {
+  try {
+    const { email } = req.body; // Extract the email from the request body
+    const updatedUserData = req.body; // All updated user data is in the request body
+
+    // Find the user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update user fields with the new data
+    Object.assign(user, updatedUserData);
+
+    // Save the updated user document
+    await user.save();
+
+    return res.status(200).json({
+      message: "User updated successfully",
+      user: user.toObject(), // Convert to plain JavaScript object for response
+    });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+
+
+module.exports = { signUp, login, forgotPassword, resetPassword, getUser,updateUserField };

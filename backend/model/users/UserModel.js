@@ -65,6 +65,16 @@ const userSchema = new mongoose.Schema({
   company_end_date: {
     type: Date,
   },
+  gender:{
+    type:String
+  },
+  website:{
+    type:String
+  },
+  marital_status:{
+    type:String
+  },
+ 
   profileImage: {
     filename: String,
     path: String,

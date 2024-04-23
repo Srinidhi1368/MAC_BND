@@ -20,7 +20,7 @@ function YourApplicationStatus(props) {
         console.log(newObj[stage] + " niufccefewcggnfgnngecgcuegegguiguigui")
         setCount(newObj[stage])
         console.log(count)
-    }, [])
+    },[stage,count,newObj])
 
     useEffect(() => {
         const myDiv = document.querySelectorAll('li');
@@ -34,7 +34,7 @@ function YourApplicationStatus(props) {
         <div className="main">
             <div>
                 <h1 style={{ textAlign: "center" }}>Your Application status</h1>
-                <img className='img1' src={"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684003206i/127305845.jpg"} />
+                <img className='img1' src={"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684003206i/127305845.jpg"} alt='statusimg' />
                 <h3 className='h3h3h3'>We're reviewing your application</h3>
                 <p className='h3h3h3p'>Thanks for applying. We'll review and consider your application. You can check back later to see how things are going.</p>
             </div>

@@ -138,22 +138,22 @@ const dispatch =useDispatch()
               <div className={Profile_style.name_section}>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="firstname">First Name</label>
-                  <input type="text" id="firstname" value={firstname} readOnly />
+                  <input type="text" id="firstname" defaultValue={firstname} readOnly />
                 </div>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="lastname">Last Name</label>
-                  <input type="text" id="lastname" value={lastname} readOnly />
+                  <input type="text" id="lastname" defaultValue={lastname} readOnly />
                 </div>
               </div>
               <div className={Profile_style.email_box}>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" value={userData.email} readOnly />
+                <input type="email" id="email" defaultValue={userData.email} readOnly />
                 <div className={Profile_style.input_container}>
                     <label htmlFor="resume">Upload Resume *</label>
                     <input
                       type="text"
                       id="resume"
-                      value={firstResumeFilename}
+                      defaultValue={firstResumeFilename}
                       readOnly
                     />
                   </div>
@@ -162,7 +162,7 @@ const dispatch =useDispatch()
                     <input
                       type="text"
                       id="website"
-                      value={""}
+                      defaultValue={userData.website}
                       readOnly
                     />
                   </div>
@@ -174,18 +174,18 @@ const dispatch =useDispatch()
                     <input
                       type="number"
                       id="phonenumber"
-                      value={userData.phone_number}
+                      defaultValue={userData.phone_number}
                       readOnly
                     />
                   </div>
           
                   <div className={Profile_style.input_container}>
                     <label htmlFor="country">Country</label>
-                    <input type="text" id="country" value={userData.country} readOnly />
+                    <input type="text" id="country" defaultValue={userData.country} readOnly />
                   </div>
                   <div className={Profile_style.input_container}>
                     <label htmlFor="gender">Gender</label>
-                    <input type="text" id="gender" value={userData.gender} readOnly />
+                    <input type="text" id="gender" defaultValue={userData.gender} readOnly />
                   </div>
                 </div>
                 <div className={Profile_style.right_basic_details}>
@@ -200,11 +200,11 @@ const dispatch =useDispatch()
                   </div>
                   <div className={Profile_style.input_container}>
                     <label htmlFor="state">State</label>
-                    <input type="text" id="state" value={userData.state} readOnly/>
+                    <input type="text" id="state" defaultValue={userData.state} readOnly/>
                   </div>
                   <div className={Profile_style.input_container}>
                     <label htmlFor="marital">Marital Status</label>
-                    <input type="text" id="marital" value={userData.marital_status} readOnly />
+                    <input type="text" id="marital" defaultValue={userData.marital_status} readOnly />
                   </div>
                 
                 </div>
@@ -213,14 +213,14 @@ const dispatch =useDispatch()
               <div className={Profile_style.name_section}>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="course">Course</label>
-                  <input type="text" id="course" value={userData.course} readOnly/>
+                  <input type="text" id="course" defaultValue={userData.course} readOnly/>
                 </div>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="specialization">Specialization</label>
                   <input
                     type="text"
                     id="specialization"
-                    value={userData.course}
+                    defaultValue={userData.course}
                     readOnly
                   />
                 </div>
@@ -228,7 +228,7 @@ const dispatch =useDispatch()
               <div className={Profile_style.name_section}>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="university">University</label>
-                  <input type="text" id="university" value={userData.college} readOnly />
+                  <input type="text" id="university" defaultValue={userData.college} readOnly />
                 </div>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="percentage">Percentage</label>
@@ -244,7 +244,7 @@ const dispatch =useDispatch()
               <div className={Profile_style.name_section}>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="company">Title</label>
-                  <input type="text" id="company" value={userData.title } readOnly />
+                  <input type="text" id="company" defaultValue={userData.job_title } readOnly />
                   <label htmlFor="start">Start Date</label>
                   <input
                     type="text"
@@ -258,7 +258,7 @@ const dispatch =useDispatch()
                   <input
                     type="text"
                     id="experience"
-                    value={userData.company}
+                    defaultValue={userData.company}
                     readOnly
                   />
                   <label htmlFor="end">End Date</label>
@@ -276,7 +276,7 @@ const dispatch =useDispatch()
                   <input
                     type="text"
                     id="biography"
-                    value={userData.biography}
+                    defaultValue={userData.biography}
                     readOnly
                   />
           </div>
