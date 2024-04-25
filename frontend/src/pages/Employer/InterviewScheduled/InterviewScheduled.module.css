@@ -1,5 +1,58 @@
 /* Interviews CSS */
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.cardcontainer{
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-evenly;
+  height: 20vh;
+  /* background-color: #95ecba; */
+}
+.cardcontainer1{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: 15vh;
+  width: 25vw;
+  gap: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+.cardcontainer1:hover{
+  transition: 300ms linear;
+  box-shadow: grey 1px 1px 9px;
+  cursor: pointer;
+}
+.childbox1,.childbox2, .childbox3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #95daf3;
+}
+.childbox2{
+  background-color: rgb(246, 163, 163);
+}
+.childbox3{
+  background-color: rgb(78, 230, 78);
+}
+.childboximg{
+ height: 30px;
+}
+.childbox1text{
+  color: #34bdef;
+}
+.childbox2text{
+  color: #f25959;
+}
+.childbox3text{
+  color: #2eeb3b;
+}
 .table_container {
   border-radius: 10px;
   overflow: hidden;

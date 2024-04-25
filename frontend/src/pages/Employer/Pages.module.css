@@ -98,8 +98,7 @@ p {
     width: 90%;
     min-height: 170px;
     border-radius: 10px;
-    border: 1px solid rgba(128, 128, 128, 0.604);
-    box-shadow: rgba(0, 0, 0, 0.4) 6px 5.4px 4.2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 9px;
     cursor: pointer;
 }
 

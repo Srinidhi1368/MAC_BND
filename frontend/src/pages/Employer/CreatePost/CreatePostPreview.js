@@ -35,7 +35,7 @@ function CreatePostPreview() {
     formData.append("responsibility", state.responsibility);
     formData.append("howToApply", state.howToApply);
     
-    state.mcq.forEach((mcq, index) => {
+    state?.mcq?.forEach((mcq, index) => {
       formData.append(`mcq[${index}][question]`, mcq.question);
       mcq.options.forEach((option, optionIndex) => {
         formData.append(`mcq[${index}][options][${optionIndex}]`, option);
