@@ -47,7 +47,8 @@ const ProfileDetails = lazy(() =>
 const CandidateProfileDetails = lazy(() =>
   import("../pages/Job_Seeker/EditMyProfile/EditProfile.js")
 );
-const ChatBot = lazy(() => import("../pages/Job_Seeker/Chatbot/Chatarea.js"));
+const ChatBot = lazy(() => import("../pages/Job_Seeker/Chatbot/ChatBot.js"));
+const Chatarea = lazy(() => import("../pages/Job_Seeker/Chatbot/Chatarea.js"));
 
 //! These All Files are imported for the Employer Routes
 const Addemployee = lazy(() =>
@@ -178,7 +179,7 @@ function JobSeekerRoutes() {
           path="/chatarea"
           element={
             <Suspense>
-              <ChatBot />
+              <Chatarea />
             </Suspense>
           }
         />

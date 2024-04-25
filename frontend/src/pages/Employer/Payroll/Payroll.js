@@ -186,10 +186,10 @@ export default function Payroll() {
                         <div className={PayrollStyle.area_chart_pay_per_time}>
                           <div className={PayrollStyle.area_chart_pay_time_box}>
                             <ul className={PayrollStyle.area_time_box}>
-                              <li>1M</li>
-                              <li>3M</li>
-                              <li>6M</li>
-                              <li>1Y</li>
+                              <li className={PayrollStyle.date_month}>1M</li>
+                              <li className={PayrollStyle.date_month}>3M</li>
+                              <li className={PayrollStyle.date_month}>6M</li>
+                              <li className={PayrollStyle.date_month}>1Y</li>
                             </ul>
                           </div>
                         </div>
@@ -268,10 +268,10 @@ export default function Payroll() {
                       <div className={PayrollStyle.area_chart_pay_per_time}>
                         <div className={PayrollStyle.area_chart_pay_time_box}>
                           <ul className={PayrollStyle.area_time_box}>
-                            <li>1M</li>
-                            <li>3M</li>
-                            <li>6M</li>
-                            <li>1Y</li>
+                            <li className={PayrollStyle.date_month}>1M</li>
+                            <li className={PayrollStyle.date_month}>3M</li>
+                            <li className={PayrollStyle.date_month}>6M</li>
+                            <li className={PayrollStyle.date_month}>1Y</li>
                           </ul>
                         </div>
                         <div className={PayrollStyle.outstanding_pay_roll}>

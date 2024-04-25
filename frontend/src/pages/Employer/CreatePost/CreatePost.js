@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import noImg from "../../../Assets/noImage.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 
+
 export default function CreatePost() {
   const imgRef = useRef(null);
   const [selectedImg, setSelectedImg] = useState(null);
@@ -22,7 +23,16 @@ export default function CreatePost() {
     responsibility: "",
     howToApply: "",
     employeeEmail: localStorage.getItem("email"),
+    mcq:null
   });
+
+  const location = useLocation();
+  
+  useEffect(() => { 
+    console.log('State:', location.state);
+  }, [location.state]);
+
+  // console.log("createPost:",post);
 
   const handleOnChange = (e) => {
     if (e.target.name === "jobPoster") {
@@ -113,12 +123,14 @@ export default function CreatePost() {
         responsibility: state?.responsibility,
         howToApply: state?.howToApply,
         employeeEmail: state?.employeeEmail,
+        mcq:state?.mcq
       });
       setSelectedImg(state?.selectedImg)
     }
   }, [state]);
 
   return (
+ <>
     <div className={pages.__create_Post_Page}>
       <header className={pages.__create_Post_Header}>
         <h1 style={{ fontSize: "30px" }}>Create Post</h1>
@@ -295,5 +307,7 @@ export default function CreatePost() {
         </button>
       </div>
     </div>
+
+ </>
   );
 }

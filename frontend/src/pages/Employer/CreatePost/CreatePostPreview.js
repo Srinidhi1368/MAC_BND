@@ -11,6 +11,8 @@ function CreatePostPreview() {
   const { title } = useParams();
   const { state } = useLocation();
 
+  console.log("PreviewState", {state});
+
   const handleCancleButtonClick = (e) => {
     e.preventDefault();
     navigateTO("/create_post", { state: { ...state } })
@@ -32,6 +34,14 @@ function CreatePostPreview() {
     formData.append("education", state.education);
     formData.append("responsibility", state.responsibility);
     formData.append("howToApply", state.howToApply);
+    
+    state.mcq.forEach((mcq, index) => {
+      formData.append(`mcq[${index}][question]`, mcq.question);
+      mcq.options.forEach((option, optionIndex) => {
+        formData.append(`mcq[${index}][options][${optionIndex}]`, option);
+      });
+      formData.append(`mcq[${index}][correctAnswer]`, mcq.correctAnswer);
+    });
     setLoading(true);
     axios.post("http://localhost:8080/api/jobs/create-job", formData, {
       headers: { "Content-Type": "multipart/form-data" },
@@ -42,6 +52,7 @@ function CreatePostPreview() {
           sessionStorage.clear()
           setLoading(false);
           navigateTO("/create_post")
+          localStorage.removeItem("mcqs")
         } else {
           toast.error("Try again");
           setLoading(false)
@@ -106,7 +117,7 @@ function CreatePostPreview() {
           </div>
 
           <div className={pages.__PostPreviewPage_ButtonContainer}>
-            <button type="button" className={pages.__PostPreviewPage_Buttons} onClick={handleCancleButtonClick}>Cancle</button>
+            <button type="button" className={pages.__PostPreviewPage_Buttons} onClick={handleCancleButtonClick}>Cancel</button>
             <button type="button" className={pages.__PostPreviewPage_Buttons} onClick={handleCreatePost}>Post</button>
           </div>
 

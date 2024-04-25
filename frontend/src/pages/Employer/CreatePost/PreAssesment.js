@@ -1,93 +1,81 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import axios from "axios";
-import PreAssesmentStyle from "./Preassessment.module.css";
 import toast from "react-hot-toast";
-import {useNavigate} from 'react-router-dom'
-
-const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+import { useNavigate, useLocation } from "react-router-dom";
+import PreAssesmentStyle from "./Preassessment.module.css";
 
 const PreAssesment = () => {
-  const [mcqs, setMCQs] = useState([]);
+  const [mcqs, setMCQs] = useState(() => {
+    const savedMCQs = localStorage.getItem("mcqs");
+    return savedMCQs ? JSON.parse(savedMCQs) : [];
+  });
   const [showModal, setShowModal] = useState(false);
   const [newQuestion, setNewQuestion] = useState("");
   const [options, setOptions] = useState(["", "", "", ""]);
-  const [editingMCQId, setEditingMCQId] = useState(null);
+  const [editingIndex, setEditingIndex] = useState(null);
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   useEffect(() => {
-    fetchMCQs();
-  }, []);
+    // Save MCQs to local storage when component unmounts
+    return () => {
+      localStorage.setItem("mcqs", JSON.stringify(mcqs));
+    };
+  }, [mcqs]);
 
-  const fetchMCQs = async () => {
-    try {
-      const response = await axios.get(`${baseUrl}/aptitude/`);
-      const data = response.data;
-      setMCQs(data);
-    } catch (error) {
-      console.error("Error fetching MCQs:", error);
+
+  const handleEdit = (index) => {
+    const mcqToEdit = mcqs[index];
+    setNewQuestion(mcqToEdit.question);
+    setOptions([...mcqToEdit.options]);
+    setEditingIndex(index);
+    setShowModal(true);
+    toast.success("Question updated successfully.");
+  };
+
+  const handleAddMCQ = () => {
+    let updatedMCQs;
+    if (editingIndex !== null) {
+      updatedMCQs = [...mcqs];
+      updatedMCQs[editingIndex] = {
+        question: newQuestion,
+        options: [...options],
+      };
+    } else {
+      const newMCQ = { question: newQuestion, options: [...options] };
+      updatedMCQs = [...mcqs, newMCQ];
+      toast.success("Question added successfully.");
+    }
+
+    setMCQs(updatedMCQs);
+    setShowModal(false);
+    setNewQuestion("");
+    setOptions(["", "", "", ""]);
+  };
+
+  const handleDelete = (index) => {
+    const updatedMCQs = [...mcqs];
+    updatedMCQs.splice(index, 1);
+    setMCQs(updatedMCQs);
+    toast.success("Question deleted");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (mcqs.length !== 10) {
+      toast.error("Please provide exactly 10 questions");
+    } else {
+    navigate("/create_post", { state: { ...state, mcq: mcqs } });
     }
   };
 
-  const handleEdit = async (mcqId) => {
-    try {
-      const response = await axios.patch(`${baseUrl}/aptitude/${mcqId}`);
-      const mcqToEdit = response.data;
-      setNewQuestion(mcqToEdit.question);
-      setOptions(mcqToEdit.options);
-      setEditingMCQId(mcqId); // Set the ID of the MCQ being edited
-      setShowModal(true);
-    } catch (error) {
-      console.error("Error fetching MCQ for editing:", error);
-    }
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      if (editingMCQId) {
-        // Update existing MCQ
-        await axios.patch(`${baseUrl}/aptitude/${editingMCQId}`, {
-          question: newQuestion,
-          options: options,
-          correctAnswer: options[0], // Assuming correct answer is always the first option
-        });
-        toast.success("Question Updated Successfully");
-
-        const editedMCQIndex = mcqs.findIndex((mcq) => mcq._id === editingMCQId);
-        const newMCQs = [...mcqs];
-        newMCQs[editedMCQIndex] = { ...mcqs[editedMCQIndex], question: newQuestion, options };
-        setMCQs(newMCQs);
-      }
-      else {
-        // If editingMCQId is not set, add a new MCQ
-        const response = await axios.post(`${baseUrl}/aptitude/`, {
-          question: newQuestion,
-          options: options,
-          correctAnswer: options[0],
-        });
-        const newMCQ = response.data;
-        setMCQs([...mcqs, newMCQ]); // Update the state with the new MCQ
-      }
-      // Clear inputs and close modal
-      setNewQuestion("");
-      setOptions(["", "", "", ""]);
-      setEditingMCQId(null); // Reset editingMCQId after submission
-      setShowModal(false);
-    } catch (error) {
-      console.error("Error adding/editing MCQ:", error);
-    }
-  };
-
-  const handleDelete = async (mcqId) => {
-    // Logic to delete the MCQ from the backend
-    try {
-      await axios.delete(`${baseUrl}/aptitude/${mcqId}`);
-      // Update the state to remove the deleted MCQ
-      setMCQs(mcqs.filter((mcq) => mcq._id !== mcqId));
-    } catch (error) {
-      console.error("Error deleting MCQ:", error);
-    }
+  const handleCancel = (e) => {
+    e.preventDefault();
+    setShowModal(false);
+    setNewQuestion("");
+    setOptions(["", "", "", ""]);
+    setMCQs([]); // Clear MCQs
+    navigate(-1);
   };
 
   return (
@@ -109,6 +97,7 @@ const PreAssesment = () => {
         </div>
 
         <div>
+          {/* MCQ rendering */}
           {mcqs.map((mcq, index) => (
             <div key={index}>
               <div className={PreAssesmentStyle.aptitude_round_flex_container}>
@@ -138,8 +127,8 @@ const PreAssesment = () => {
                     }
                   >
                     <ol type="A">
-                      {mcq.options.map((option, index) => (
-                        <li key={index}>{option}</li>
+                      {mcq.options.map((option, idx) => (
+                        <li key={idx}>{option}</li>
                       ))}
                     </ol>
                   </div>
@@ -150,12 +139,12 @@ const PreAssesment = () => {
                   PreAssesmentStyle.aptitude_round_edit_del_btn_container
                 }
               >
-                <Button variant="warning" onClick={() => handleEdit(mcq._id)}>
+                <Button variant="warning" onClick={() => handleEdit(index)}>
                   Edit
                 </Button>
                 <Button
                   variant="danger"
-                  onClick={() => handleDelete(mcq._id)}
+                  onClick={() => handleDelete(index)}
                   className={PreAssesmentStyle.aptitude_round_del_btn}
                 >
                   Delete
@@ -164,6 +153,7 @@ const PreAssesment = () => {
             </div>
           ))}
 
+          {/* Add MCQ button */}
           <div className={PreAssesmentStyle.add_btn_container}>
             <Button
               className={PreAssesmentStyle.add_btn}
@@ -173,12 +163,14 @@ const PreAssesment = () => {
             </Button>
           </div>
         </div>
+
+        {/* MCQ modal */}
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Add MCQ</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={handleSubmit}>
+            <Form>
               <Form.Group controlId="question">
                 <Form.Label>Question</Form.Label>
                 <Form.Control
@@ -203,26 +195,35 @@ const PreAssesment = () => {
                   />
                 </Form.Group>
               ))}
-              <div>
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-                <Button variant="primary" onClick={() => setShowModal(false)}>
-                  Cancel
-                </Button>
-              </div>
             </Form>
           </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={handleAddMCQ}>
+              Add
+            </Button>
+          </Modal.Footer>
         </Modal>
       </div>
 
       <div className={PreAssesmentStyle.form_action_btn_container}>
         <div className={PreAssesmentStyle.cancel_btn_container}>
-          <Button className={PreAssesmentStyle.cancel_btn} onClick={(e)=>navigate(-1) }>CANCEL</Button>
+          <Button
+            className={PreAssesmentStyle.cancel_btn}
+            onClick={handleCancel}
+          >
+            CANCEL
+          </Button>
         </div>
-
         <div className={PreAssesmentStyle.submit_btn_container}>
-          <Button className={PreAssesmentStyle.submit_btn}>SUBMIT</Button>
+          <Button
+            className={PreAssesmentStyle.submit_btn}
+            onClick={handleSubmit}
+          >
+            SUBMIT
+          </Button>
         </div>
       </div>
     </>

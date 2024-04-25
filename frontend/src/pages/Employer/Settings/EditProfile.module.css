@@ -1,3 +1,9 @@
+p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .main_container {
     display: flex;
     flex-direction: column;
@@ -6,24 +12,23 @@
 
 .cir_container {
     display: flex;
-
     align-items: center;
     flex-direction: column;
 }
 
 .Clogo {
-    height: 17vh;
-    width: 8vw;
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
     border-radius: 50%;
     box-shadow: 0px 3px 3px gray;
-
 }
 
 .bio {
     border-radius: 10px;
     width: 52vw;
     height: 20vh;
-    padding: 10px;
+    padding: 1em;
 }
 
 .container1 {
@@ -44,6 +49,7 @@
     width: 24vw;
     height: 7vh;
     border-radius: 7px;
+    padding-left: 1em;
     border: 1px solid gray;
 }
 
@@ -56,12 +62,12 @@
     height: 7vh;
     border-radius: 7px;
     border: 1px solid gray;
-    padding: 8px;
+    padding-left: 1em;
     font-size: 18px;
 }
 
 .save_change {
-    width: 12vw;
+    width: 10em;
     padding: 6px;
     color: white;
     background-color: blue;

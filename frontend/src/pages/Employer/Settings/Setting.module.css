@@ -1,94 +1,250 @@
-.my_setting_container{
-    display: flex;
-    flex-direction: column;
-    height: 85vh;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    margin: 0 1rem;
+.my_setting_container {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin: 0 1rem;
 }
-  .setting_profile_section{
-    border-bottom: 1px solid black;
-    /* height: 35%; */
-  }
-  .hello_logout{
-    display: flex;
-    justify-content: space-between;
-  }
-  .my_profile_box{
-    display: flex;
-    width: 35%;
-  }
-  .my_profile_box img[alt='profile_img']{
-    width: 30%;
-    border-radius: 50%;
-  }
-  .my_name_section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-  }
-  .my_name_section button{
-    background-color: black;
-    color: white;
-    font-size: 10px;
-    border-radius: 5px;
-    height: 1.2rem;
-    width: 50%;
-    border: 1px solid white;
-    
-  }
-  .logout_main{
-    display: flex;
-  }
-  .Setting_opt_container{
-    display: flex;
-    justify-content: space-between;
-  }
-  .setting_opt_left{
-    width: 25%;
-  }
-  .setting_opt{
-    border: 1px solid rgb(119, 172, 188);
-margin: 0.5rem 0;
-border-radius: 5px;
-height: 2rem;
-box-shadow: 0px 1px 1px 1px rgb(203, 203, 203);
-font-size: 0.8rem;
-padding: 5px 0px 0px 0px;
 
-  }
-  .setting_opt_active{
-    background-color: black;
-    color: white;
-    border: 1px solid black;
-    margin: 0.5rem 0;
-    border-radius: 5px;
-    height: 2rem;
-    border: 1px solid rgb(119, 172, 188);
-    font-size: 0.8rem;
-    padding: 5px 0px 0px 0px;
+.setting_profile_section {
+  border-bottom: 1px solid black;
+  /* height: 35%; */
 }
-.setting_opt_active i{
-    padding:3px 10px;
-    width: 2rem;
-    height: 100%;
+
+.hello_logout {
+  display: flex;
+  justify-content: space-between;
 }
-  .setting_opt:hover{
-    /* background-color: black;
+
+.my_profile_box {
+  display: flex;
+  width: 35%;
+}
+
+.my_profile_box img[alt='profile_img'] {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.my_name_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
+.my_name_section button {
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  border-radius: 5px;
+  height: 1.2rem;
+  width: 50%;
+  border: 1px solid white;
+
+}
+
+.logout_main {
+  display: flex;
+}
+
+.Setting_opt_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.setting_opt_left {
+  width: 25%;
+}
+
+.setting_opt {
+  border: 1px solid rgb(119, 172, 188);
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  height: 2rem;
+  box-shadow: 0px 1px 1px 1px rgb(203, 203, 203);
+  font-size: 0.8rem;
+  padding: 5px 0px 0px 0px;
+
+}
+
+.setting_opt_active {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  height: 2rem;
+  border: 1px solid rgb(119, 172, 188);
+  font-size: 0.8rem;
+  padding: 5px 0px 0px 0px;
+}
+
+.setting_opt_active i {
+  padding: 3px 10px;
+  width: 2rem;
+  height: 100%;
+}
+
+.setting_opt:hover {
+  /* background-color: black;
     color: white; */
-    cursor: pointer;
-  }
-  .setting_opt i{
-    color: black;
-    padding:3px 10px;
-    width: 2rem;
-    height: 100%;
-  }
-  .setting_opt_right{
-    width: 70%;
-    height: 60vh;
-    text-align: center;
-    overflow-y: scroll;
-    scrollbar-width: none;
-  }
+  cursor: pointer;
+}
+
+.setting_opt i {
+  color: black;
+  padding: 3px 10px;
+  width: 2rem;
+  height: 100%;
+}
+
+.setting_opt_right {
+  padding: 5px 20px;
+  width: 70%;
+  height: 60vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  /* border: 2px solid red; */
+}
+
+
+/*--------------------------different box design----------------*/
+
+
+
+/*------------------------profile design container1----------*/
+/* .profile_designs {
+  border: 1px solid red;
+} */
+
+.add_btn {
+  position: relative;
+  left: 80%;
+  top: -7vh;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+}
+
+.Profile_cont1 {
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 95%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 3px 3px gray;
+}
+
+.me_profile_box {
+  display: flex;
+  width: 75%;
+  margin-top: 2vh;
+}
+
+.me_profile_box img[alt='profile_img'] {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.my_name_sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.my_name_sec button {
+  background-color: skyblue;
+  font-size: 15px;
+  border-radius: 5px;
+  height: 1.8rem;
+  width: 80%;
+  border: 1px solid rgb(0, 132, 255);
+  box-shadow: 0px 3px 3px gray;
+}
+
+.manage_account p {
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vw;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logout_btn {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vw;
+  color: rgb(255, 187, 0);
+  font-weight: 700;
+  font-size: 20px;
+  width: 40%;
+  position: relative;
+  left: 10vw;
+  top: 5vh;
+}
+
+/*-------------------profile design container2-------------*/
+.Profile_cont2 {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 95%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 3px 3px gray;
+
+}
+
+.Profile_cont2_One {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1vw;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid gray;
+  padding: 6px 10px;
+}
+
+.Profile_cont2_One p {
+  font-size: 20px;
+}
+
+/*---------------------appearance container-----------------*/
+.Appearance {
+  padding: 7px;
+  line-height: 2.2;
+}
+
+/*-------------------------notification------------------*/
+.notification {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
+
+.checkboxex {
+  display: flex;
+  justify-content: space-around;
+  gap: 15vw;
+  font-size: 20px;
+}
+
+.checkbox1 {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1vw;
+  border: 1px solid rgb(226, 224, 224);
+  padding: 10px;
+}
+
+.click {
+  color: blue;
+}

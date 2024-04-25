@@ -169,7 +169,7 @@
   list-style: none;
   gap: 10px;
 }
-li {
+.date_month {
   font-family: inter;
   color: rgba(10, 17, 47, 1);
   border: 0.5px solid rgba(228, 228, 231, 1);
@@ -674,7 +674,7 @@ li {
   .area_chart_title {
     padding: 0px;
   }
-  li {
+  .date_month {
     font-size: 9px;
   }
   .area_chart_pay_per_time {
@@ -802,7 +802,7 @@ li {
   .area_chart_pay_per_time {
     width: 50%;
   }
-  li {
+  .date_month {
     font-size: 9px;
   }
   .area_chart_pay_per {

@@ -4,14 +4,14 @@ const User = require("../model/users/UserModel");
 
 const createAppliedJob = async (req, res) => {
     try {
-        const { _id, email, jobTitle, employeeEmail, jobPoster, jobDescription, employmentType, location, salaryRange, skilRequired, jobExperience, createdAt } = req.body;
+        const { _id, email, jobTitle, employeeEmail, jobPoster, jobDescription, employmentType, location, salaryRange, skilRequired, jobExperience, createdAt,applicationStatus } = req.body;
 
         // Current USER
         const mongooseUser = await User.findOne({ email: email });
 
         // add the applied job appliedjobCollection
         const mongooseResponse = await appliedJobCollection.create({
-            jobID: _id, jobTitle: jobTitle, jobPoster: jobPoster, jobDescription: jobDescription, employmentType: employmentType, location: location, salaryRange: salaryRange, skilRequired: skilRequired, employeeEmail: employeeEmail, jobExperience: jobExperience, createdAt: createdAt, userEmail: email
+            jobID: _id, jobTitle: jobTitle, jobPoster: jobPoster, jobDescription: jobDescription, employmentType: employmentType, location: location, salaryRange: salaryRange, skilRequired: skilRequired, employeeEmail: employeeEmail, jobExperience: jobExperience, createdAt: createdAt, userEmail: email, applicationStatus : applicationStatus
         });
 
         // update the jobo collection applicationCount by 1 and also update the applidBy data in collection with user emailID everytime any user applied for jobs
@@ -41,12 +41,12 @@ const createAppliedJob = async (req, res) => {
             })
         }
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             success: false,
             msg: `server failed! Try again ${error.message}`
         })
     }
-
 }
 
 const getAppliedJob = async (req, res) => {
@@ -99,9 +99,6 @@ const getApplicantsForJob = async (req, res) => {
         });
     }
 }
-
-
-
 
 const removeAppliedJob = async (req, res) => {
     try {

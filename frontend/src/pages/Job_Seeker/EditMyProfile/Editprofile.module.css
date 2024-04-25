@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 5vh;
+    position: relative;
+    min-height: 90vh;
 }
 .Details_container{
     display: flex;
@@ -78,4 +80,45 @@
     margin-left: 35%;
     border: none;
     border-radius: 5px;
+}
+
+.userSkils__SkilsList {
+    margin: 0;
+    padding: 0;
+    height: 75px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+
+.userSkils_item {
+    border: none;
+    padding: 0.2em 1em;
+    gap: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #0050d1 0%, #00296b 100%);
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    word-break: keep-all;
+    min-width: fit-content;
+}
+
+
+.userSkils_item_DeleteButton {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.userSkils_itemDeleteButton:hover {
+    cursor: pointer;
+    color: red;
 }

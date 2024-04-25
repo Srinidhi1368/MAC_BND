@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import pages from '../Pages.module.css';
 import user from '../../../Assets/user.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import axios from "axios";
@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import Loader from '../../Common-Components/Loaders/Loader';
 import { CalculateTimeAgo } from '../../Common-Components/TimeAgo';
 import HrJobDetail from './HrJobDetail';
+import toast from "react-hot-toast";
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 4 },
@@ -23,7 +24,7 @@ export default function HRDashboard() {
   const [sortedJob, setSortedJob] = useState([]);
   const [selectedSort, setSelectedSort] = useState('Sort By');
   const [loading, setLoading] = useState(false);
-  const [selectedJobId, setSelectedJobId] = useState(null); 
+  const [selectedJobId, setSelectedJobId] = useState(null);
 
   const formattedDate = (timestamp) => {
     if (!timestamp) {
@@ -32,15 +33,23 @@ export default function HRDashboard() {
     return format(new Date(timestamp), 'do MMMM, yyyy');
   };
 
-  useEffect(() => {
+  const loadJobPost = () => {
     setLoading(true);
-    axios.get(`http://localhost:8080/api/jobs/get-job/${localStorage.getItem("email")}`)
-      .then(response => {
+    axios
+      .get(
+        `http://localhost:8080/api/jobs/get-job/${localStorage.getItem(
+          "email"
+        )}`
+      )
+      .then((response) => {
         setJobPost(response.data.jobs);
-        setSortedJob(response.data.jobs.toSorted((a, b) => a.createdAt - b.createdAt));
+        setSortedJob(
+          response.data.jobs.toSorted((a, b) => a.createdAt - b.createdAt)
+        );
         setLoading(false);
       });
-  }, []);
+  };
+  useEffect(loadJobPost, []);
 
   const handleSortBy = (e) => {
     setSelectedSort(e.target.value);
@@ -65,7 +74,20 @@ export default function HRDashboard() {
     setSelectedJobId(jobId);
   };
 
-  // console.log(jobPost);
+  const handleDelete = async (postID) => {
+    try {
+      await axios
+        .delete(`http://localhost:8080/api/jobs/delete-job/${postID}`)
+        .then((response) => {
+          if (response.data.success) {
+            toast.success(`Job deleted successfully`);
+            loadJobPost();
+          }
+        });
+    } catch (err) {
+      console.error("Error deleting post:", err);
+    }
+  };
 
   return (
     <div className={pages.__dashboard_Page}>
@@ -117,7 +139,7 @@ export default function HRDashboard() {
                   </div>
                   <div className={pages.__post_body}>
                     <span>{data.location}</span>
-                    <span>{data.jobExperience}</span>
+                    <span>{data.jobExperience} years</span>
                   </div>
                   <div className={pages.__post_Footer}> <span>{data.totalApplication ? data.totalApplication : 0}</span> application(s)  </div>
                 </div>
@@ -148,6 +170,7 @@ export default function HRDashboard() {
                         <h3 style={{ fontSize: '20px' }}>{localStorage.name}</h3>
                         <span className={pages.__user_Position}>HR Executive</span>
                       </div>
+                      <FontAwesomeIcon icon={faTrash} title="delete post" className={pages.createPost_BtnDelete} onClick={() => handleDelete(jobs._id)} />
                     </header>
                     <div className={pages.__user_Post_body}>
                       <img className={pages.__latestPosts_Img} src={jobs.jobPoster} alt="" />

@@ -65,7 +65,26 @@ const jobSchema = new mongoose.Schema(
                     type: String,
                 }
             }
-        ]
+        ],
+        mcq: [
+            {
+                question: {
+                    type: String,
+                },
+                options: {
+                    type: [String],
+                    validate: {
+                        validator: function (value) {
+                            return value.length === 4;
+                        },
+                        message: 'Options array must contain exactly four elements'
+                    },
+                },
+                correctAnswer: {
+                    type: String,
+                }
+            }
+    ]
     }
 
 );

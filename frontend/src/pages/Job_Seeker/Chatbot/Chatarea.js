@@ -30,6 +30,10 @@ export default function Chatarea() {
       .JobSeeker_RightSideContainer__topHeaderContainer__2MnVw {
         display: none !important;
       }
+      .JobSeeker___OutletContainer__BTBGZ{
+        height: 100vh;
+      }
+      
     `;
     document.head.appendChild(style);
 
@@ -46,129 +50,151 @@ export default function Chatarea() {
           }
         `}</style>
       </Helmet>
-      <div className={ChatBotStyle.ai_search_bar}>
-        <div className={ChatBotStyle.ai_search_icons}>
-          <img
-            src={icon3}
-            alt={"icon3"}
-            className={ChatBotStyle.chatbot_image_gender}
-          />
-          <div className={ChatBotStyle.ai_online}>
-            <GoDotFill className={ChatBotStyle.ai_online_green} />
-            <span>Online</span>
-          </div>
-        </div>
-        <img
-          src={icon4}
-          alt={"icon4"}
-          className={ChatBotStyle.chatbot_image_sound}
-        />
-      </div>
+      <Container>
+        <Row>
+          <Col md={12} className={ChatBotStyle.header_style_ai}>
+            <div className={ChatBotStyle.ai_search_bar}>
+              <div className={ChatBotStyle.ai_search_icons}>
+                <img
+                  src={icon3}
+                  alt={"icon3"}
+                  className={ChatBotStyle.chatbot_image_gender}
+                />
+                <div className={ChatBotStyle.ai_online}>
+                  <GoDotFill className={ChatBotStyle.ai_online_green} />
+                  <span>Online</span>
+                </div>
+              </div>
+              <img
+                src={icon4}
+                alt={"icon4"}
+                className={ChatBotStyle.chatbot_image_sound}
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
       <div className={ChatBotStyle.ai_inter}>
         <Container>
           <Row>
-            <Col xxl={9} className={ChatBotStyle.search_field_color}>
-              {iconClicked && (
-                <div className={ChatBotStyle.search_answer_total}>
-                  <div className={ChatBotStyle.search_answer}>
-                    <img
-                      src={icon11}
-                      alt={"icon11"}
-                      className={ChatBotStyle.chatbot_gallery1_inside}
-                    />
-                    <div className={ChatBotStyle.search_exp}>Explain</div>
+            <Col
+              xxl={9}
+              xl={9}
+              lg={9}
+              md={8}
+              className={ChatBotStyle.search_field_color}
+            >
+              <div className={ChatBotStyle.ai_search_bar_full}>
+                {iconClicked && (
+                  <div className={ChatBotStyle.search_answer_total}>
+                    <div className={ChatBotStyle.search_answer}>
+                      <img
+                        src={icon11}
+                        alt={"icon11"}
+                        className={ChatBotStyle.chatbot_gallery1_inside}
+                      />
+                      <div className={ChatBotStyle.search_exp}>Explain</div>
 
-                    <button className={ChatBotStyle.search_one}>
-                      Explain Quantum physics
-                    </button>
+                      <button className={ChatBotStyle.search_one}>
+                        Explain Quantum physics
+                      </button>
 
-                    <button className={ChatBotStyle.search_one}>
-                      What are wormholes explain like i am 5
-                    </button>
+                      <button className={ChatBotStyle.search_one}>
+                        What are wormholes explain like i am 5
+                      </button>
+                    </div>
+                    {/* first search over */}
+                    {/* first search */}
+                    <div className={ChatBotStyle.search_answer_two}>
+                      <img
+                        src={icon12}
+                        alt={"icon12"}
+                        className={ChatBotStyle.chatbot_gallery1_inside}
+                      />
+                      <div className={ChatBotStyle.search_exp_green}>
+                        Write & edit
+                      </div>
+
+                      <button className={ChatBotStyle.search_one}>
+                        Write a tweet about global warming
+                      </button>
+
+                      <button className={ChatBotStyle.search_one}>
+                        Write a poem about flower and love
+                      </button>
+
+                      <button className={ChatBotStyle.search_one}>
+                        Write a rap song lyrics about
+                      </button>
+                    </div>
+                    {/* first search over */}
+                    {/* first search */}
+                    <div className={ChatBotStyle.search_answer_three}>
+                      <img
+                        src={icon15}
+                        alt={"icon15"}
+                        className={ChatBotStyle.chatbot_gallery1_inside}
+                      />
+                      <div className={ChatBotStyle.search_exp_red}>
+                        Translate
+                      </div>
+
+                      <button className={ChatBotStyle.search_one}>
+                        How do you say “how are you” in korean?
+                      </button>
+
+                      <button className={ChatBotStyle.search_one}>
+                        Give me answers in Hindi
+                      </button>
+                    </div>
+                    {/* first search over */}
                   </div>
-                  {/* first search over */}
-                  {/* first search */}
-                  <div className={ChatBotStyle.search_answer_two}>
-                    <img
-                      src={icon12}
-                      alt={"icon12"}
-                      className={ChatBotStyle.chatbot_gallery1_inside}
-                    />
-                    <div className={ChatBotStyle.search_exp_green}>
-                      Write & edit
+                )}
+
+                <div className={ChatBotStyle.search_field}>
+                  <button className={ChatBotStyle.search_area}>
+                    <div className={ChatBotStyle.search_field_area}>
+                      Hello chatGPT,how are you today?
                     </div>
 
-                    <button className={ChatBotStyle.search_one}>
-                      Write a tweet about global warming
-                    </button>
+                    <div className={ChatBotStyle.search_icons}>
+                      <img
+                        src={icon7}
+                        alt={"icon7"}
+                        className={ChatBotStyle.chatbot_gallery1}
+                      />
 
-                    <button className={ChatBotStyle.search_one}>
-                      Write a poem about flower and love
-                    </button>
+                      <img
+                        src={icon8}
+                        alt={"icon8"}
+                        className={ChatBotStyle.chatbot_gallery2}
+                      />
 
-                    <button className={ChatBotStyle.search_one}>
-                      Write a rap song lyrics about
-                    </button>
-                  </div>
-                  {/* first search over */}
-                  {/* first search */}
-                  <div className={ChatBotStyle.search_answer_three}>
-                    <img
-                      src={icon15}
-                      alt={"icon15"}
-                      className={ChatBotStyle.chatbot_gallery1_inside}
-                    />
-                    <div className={ChatBotStyle.search_exp_red}>Translate</div>
+                      <img
+                        src={icon9}
+                        alt={"icon9"}
+                        className={ChatBotStyle.chatbot_gallery3}
+                      />
 
-                    <button className={ChatBotStyle.search_one}>
-                      How do you say “how are you” in korean?
-                    </button>
-
-                    <button className={ChatBotStyle.search_one}>
-                      Give me answers in Hindi
-                    </button>
-                  </div>
-                  {/* first search over */}
+                      <img
+                        src={icon10}
+                        alt={"icon10"}
+                        className={ChatBotStyle.chatbot_gallery4}
+                        onClick={() => setIconClicked(true)}
+                      />
+                    </div>
+                  </button>
                 </div>
-              )}
-
-              <div className={ChatBotStyle.search_field}>
-                <button className={ChatBotStyle.search_area}>
-                  <div className={ChatBotStyle.search_field_area}>
-                    Hello chatGPT,how are you today?
-                  </div>
-
-                  <div className={ChatBotStyle.search_icons}>
-                    <img
-                      src={icon7}
-                      alt={"icon7"}
-                      className={ChatBotStyle.chatbot_gallery1}
-                    />
-
-                    <img
-                      src={icon8}
-                      alt={"icon8"}
-                      className={ChatBotStyle.chatbot_gallery2}
-                    />
-
-                    <img
-                      src={icon9}
-                      alt={"icon9"}
-                      className={ChatBotStyle.chatbot_gallery3}
-                    />
-
-                    <img
-                      src={icon10}
-                      alt={"icon10"}
-                      className={ChatBotStyle.chatbot_gallery4}
-                      onClick={() => setIconClicked(true)}
-                    />
-                  </div>
-                </button>
               </div>
             </Col>
-            <Col xxl={3} className={ChatBotStyle.noPaddingRow}>
+            <Col
+              xxl={3}
+              xl={3}
+              lg={3}
+              md={4}
+              className={ChatBotStyle.noPaddingRow}
+            >
               <div className={ChatBotStyle.ai_inter_side}>
                 <div className={ChatBotStyle.with_ai}>
                   Ace your <br /> interview with <br />{" "}

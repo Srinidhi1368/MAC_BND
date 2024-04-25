@@ -16,20 +16,7 @@ const getUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // res.json({ userDetails:user});
-
-
-
-    // res.json({
-    //   name: user.name,
-    //   email: user.email,
-    //   userAppliedJob: user.userAppliedJob,
-    //   savedJob: user.userSavedJob,
-    //   userDetails:user
-    // });
-
     res.json({ userDetails: user });
-
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -221,6 +208,10 @@ const updateUserField = async (req, res) => {
     // const  {email} = req.body; // Extract the email from the request body
     const updatedUserData = req.body; // All updated user data is in the request body
 
+    // change the skils structure according to the model skils structure
+    let updatedSkils = updatedUserData.skills.map((data, index) => ({ name: data.trim(), index }))
+    updatedUserData.skills = updatedSkils
+
     // Find the user by email
     const user = await User.findOne({ email:email });
     if (!user) {
@@ -243,6 +234,11 @@ const updateUserField = async (req, res) => {
   }
 };
 
-
-
-module.exports = { signUp, login, forgotPassword, resetPassword, getUser,updateUserField };
+module.exports = {
+  signUp,
+  login,
+  forgotPassword,
+  resetPassword,
+  getUser,
+  updateUserField,
+};

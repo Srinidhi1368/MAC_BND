@@ -98,7 +98,8 @@ p {
     width: 90%;
     min-height: 170px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 5px 5.4px 4.2px;
+    border: 1px solid rgba(128, 128, 128, 0.604);
+    box-shadow: rgba(0, 0, 0, 0.4) 6px 5.4px 4.2px;
     cursor: pointer;
 }
 
@@ -209,7 +210,7 @@ p {
 }
 
 .__user_Post_Footer {
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -573,6 +574,47 @@ p {
     text-align: center;
     margin-right: 10px;
     margin-top: 15px;
+}
+
+.job_seeker_card{
+    border: 1px solid #ddd; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    width: 30vw;
+    height: fit-content;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.job_seeker_card_image{
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.job_seeker_card_grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.job_seeker_card_bookmark{
+    height: 4vh;
+    width: 4vw;
+}
+
+.job_seeker_card_skills_list_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.job_seeker_card_skills{
+    border: 1px solid black;
+    border-radius: 20px;
+    list-style-type: none;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 @media screen and (max-width: 900px) {
