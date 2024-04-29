@@ -68,7 +68,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  /* height: 70px; */
   background: linear-gradient(90deg, #0050d1 0%, #00296b 100%);
   width: 100%;
 }

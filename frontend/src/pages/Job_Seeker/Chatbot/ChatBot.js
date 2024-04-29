@@ -29,17 +29,6 @@ function ChatBot() {
 
   return (
     <div>
-      <Helmet>
-        <style>{`
-          .JobSeeker_RightSideContainer__topHeaderContainer__2MnVw {
-            display: none !important;
-          }
-
-          .JobSeeker_LayoutContainer__RightSideContainer__SxVp2 {
-            height: auto;
-          }
-        `}</style>
-      </Helmet>
       <div className={ChatBotStyle.chatbot_full}>
         {showImage && (
           <div className={ChatBotStyle.chatbot_full_image}>

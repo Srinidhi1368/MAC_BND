@@ -1,334 +1,333 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* HR-Dashboard Page------------------------------------------------------------ */
 .__dashboard_Page {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 .__dashboard_Header,
 .__postImpression_Header,
 .__latest_Post_Header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
 /* Select ----------------- */
 .selectOption {
-    padding: .3em 1em;
-    border-radius: 20px;
-    outline: none;
+  padding: 0.3em 1em;
+  border-radius: 20px;
+  outline: none;
 }
 
 .options {
-    background: transparent;
-    outline: none;
+  background: transparent;
+  outline: none;
 }
 
 /* Dropdown button----------- */
 .__dropdown {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    color: chocolate;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: chocolate;
 }
 
 .__dropBtn {
-    background-color: rgb(50, 76, 246);
-    color: white;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
+  background-color: rgb(50, 76, 246);
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
 }
 
 .__dropdown_content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .__dropdown_content li {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 .__dropdown_content li:hover {
-    background-color: #ddd;
-    cursor: pointer;
+  background-color: #ddd;
+  cursor: pointer;
 }
 
 .__dropdown:hover .__dropdown_content {
-    display: block;
+  display: block;
 }
 
 .__dropdown:hover .__dropBtn {
-    background-color: #3e8e41;
+  background-color: #3e8e41;
 }
 
 /* Posts Impression ------------ */
 .__post_Impression {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 .__post_Section {
-    height: 200px;
-    padding: 1em;
-    border: 1px solid rgba(128, 128, 128, 0.622);
-    border-radius: 5px;
+  height: 200px;
+  padding: 1em;
+  border: 1px solid rgba(128, 128, 128, 0.622);
+  border-radius: 5px;
 }
 
 .__posts {
-    background: white;
-    width: 90%;
-    min-height: 170px;
-    border-radius: 10px;
-    border: 1px solid rgba(128, 128, 128, 0.604);
-    box-shadow: rgba(0, 0, 0, 0.4) 6px 5.4px 4.2px;
-    cursor: pointer;
+  background: white;
+  width: 90%;
+  min-height: 170px;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.604);
+  box-shadow: rgba(0, 0, 0, 0.4) 6px 5.4px 4.2px;
+  cursor: pointer;
 }
 
 .activeCard {
-    background: rgba(255, 184, 0, 1);
+  background: rgba(255, 184, 0, 1);
 }
 
 .__postLogo {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 
 .__postTitle {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: .5em 0;
-    gap: 20px;
-    font-weight: 500;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5em 0;
+  gap: 20px;
+  font-weight: 500;
 }
 
 .__btn_PostOpen {
-    width: 20px;
-    height: 30px;
-    cursor: pointer;
+  width: 20px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .__post_body {
-    display: flex;
-    justify-content: space-around;
-    margin: 1em 0 .5em 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0 0.5em 0;
 }
 
 .__post_body span {
-    color: yellow;
-    background: green;
-    border-radius: 15px;
-    padding: 2px 15px;
+  color: yellow;
+  background: green;
+  border-radius: 15px;
+  padding: 2px 15px;
 }
 
 .__post_Footer {
-    color: rgb(0, 166, 255);
-    font-size: 18px;
+  color: rgb(0, 166, 255);
+  font-size: 18px;
 }
 
 .__post_Footer span {
-    font-size: 28px;
-    padding-left: 1em;
+  font-size: 28px;
+  padding-left: 1em;
 }
 
 /* User Post ------------ */
 .__user_Post {
-    border: 1px solid rgba(128, 128, 128, 0.694);
-    border-radius: 15px;
-    padding: 1em 3em;
-    margin-bottom: 1em;
-    position: relative;
+  border: 1px solid rgba(128, 128, 128, 0.694);
+  border-radius: 15px;
+  padding: 1em 3em;
+  margin-bottom: 1em;
+  position: relative;
 }
 
 .createPost_BtnDelete {
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 2em;
-    top: 2em;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 2em;
+  top: 2em;
 }
 
 .__user_Post_Header {
-    width: 250px;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    margin: 1em 0;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 1em 0;
 }
 
 .__user_PostImg {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    border: 1px solid black;
-    border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 .__latestPosts_Img,
 .__user_Post_info {
-    border: 1px solid grey;
-    width: 100%;
-    height: 400px;
-    object-fit: contain;
-    color: black;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
-    margin-bottom: 1em;
+  border: 1px solid grey;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  color: black;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5.4px 3.2px;
+  margin-bottom: 1em;
 }
 
 .__user_Post_info {
-    height: auto;
-    padding: 1em 3em;
-    font-weight: 500;
+  height: auto;
+  padding: 1em 3em;
+  font-weight: 500;
 }
 
 .__btn_Repost {
-    background: orange;
-    padding: .3em 1.5em;
-    color: white;
-    border-radius: 5px;
+  background: orange;
+  padding: 0.3em 1.5em;
+  color: white;
+  border-radius: 5px;
 }
 
 .__user_Post_Footer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Create Post Page------------------------------------------------------------ */
 .__create_Post_Page {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 .__create_Post_Header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .__postDetails {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .__imgContainer {
-    border: 4px dashed rgba(128, 128, 128, 0.503);
-    border-radius: 20px;
-    width: 35%;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-self: flex-start;
-    margin-top: 3em;
-    overflow: hidden;
-    position: relative;
+  border: 4px dashed rgba(128, 128, 128, 0.503);
+  border-radius: 20px;
+  width: 35%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: 3em;
+  overflow: hidden;
+  position: relative;
 }
 
 .__previewImg {
-    border-radius: 10px;
-    width: 95%;
-    height: 95%;
-    object-fit: cover;
-    cursor: pointer;
+  border-radius: 10px;
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  cursor: pointer;
 }
-.__previewImgText{
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    text-align: center;
+.__previewImgText {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  text-align: center;
 }
 
 .__postImg {
-    width: 25%;
-    height: 25%;
-    color: rgba(128, 128, 128, 0.868);
-    object-fit: cover;
-    opacity: 40%;
+  width: 25%;
+  height: 25%;
+  color: rgba(128, 128, 128, 0.868);
+  object-fit: cover;
+  opacity: 40%;
 }
 
 .__createPost_Form {
-    width: 60%;
-    margin-bottom: 2em;
+  width: 60%;
+  margin-bottom: 2em;
 }
 
 .__input_Grps {
-    margin: .6em 0;
+  margin: 0.6em 0;
 }
 
 .__input_Grps label {
-    font-weight: 600;
-    font-size: 20px;
-    padding-left: .2em;
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 0.2em;
 }
 
-.preAssessment_buttonContainer{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+.preAssessment_buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-.preAssessment_button{
-    border: none;
-    outline: none;
-    background-color: #FFB800;
-    padding: 0.5em 2em;
-    color: white;
-    border-radius: 10px;
-
+.preAssessment_button {
+  border: none;
+  outline: none;
+  background-color: #ffb800;
+  padding: 0.5em 2em;
+  color: white;
+  border-radius: 10px;
 }
 .__inputs {
-    width: 100%;
-    height: 45px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    padding-left: 1em;
-    margin: .2em 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
+  height: 45px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 1em;
+  margin: 0.2em 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .__createPost_Select {
-    border-radius: 5px;
-    border: none;
-    padding: .3em 1em;
-    width: 100%;
-    height: 40px;
-    outline: none;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  border: none;
+  padding: 0.3em 1em;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .__buttons {
-    margin: 1em auto;
-    display: flex;
-    justify-content: space-evenly;
+  margin: 1em auto;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .__btn_Cancel,
@@ -336,155 +335,155 @@ p {
 .__btn_Yes,
 .__btn_Cancel,
 .__PostPreviewPage_Buttons {
-    width: 200px;
-    background-color: #FFFFFF;
-    border: 1px solid #222222;
-    border-radius: 8px;
-    color: #222222;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 8px 24px;
+  width: 200px;
+  background-color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  color: #222222;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8px 24px;
 }
 
 .__btn_Save {
-    background: rgb(30, 30, 255);
-    color: white;
-    border: none;
+  background: rgb(30, 30, 255);
+  color: white;
+  border: none;
 }
-
 
 .__btn_Cancel:active,
 .__btn_Save:active {
-    transform: scale(.95);
+  transform: scale(0.95);
 }
 
 /* Create Post Details View page------------------------------------------------------------ */
 .__PostPreviewPage_Container {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .__PostPreviewPage_heading {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .__PostPreviewPage_PosterContainer {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    width: 65%;
-    height: 350px;
-    margin: 10px 0px;
-    overflow: hidden;
-    border-radius: 25px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  width: 65%;
+  height: 350px;
+  margin: 10px 0px;
+  overflow: hidden;
+  border-radius: 25px;
 }
 
 .__PostPreviewPage_Poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .__PostPreviewPage_PosterName_Box {
-    margin: 15px 0px;
-    border-radius: 5px;
-    height: 48px;
-    width: 50%;
-    border: 1px solid #E1DCD9;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0em 1em;
+  margin: 15px 0px;
+  border-radius: 5px;
+  height: 48px;
+  width: 50%;
+  border: 1px solid #e1dcd9;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0em 1em;
 }
 
 .__PostPreviewPage__imgUploaded {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .__PostPreviewPage__imgICON {
-    color: #3081D0;
-    font-size: 22px;
+  color: #3081d0;
+  font-size: 22px;
 }
 
 .__PostPreviewPage__imgUploadedText {
-    font-weight: 400;
-    font-size: 18px;
-    color: #4C4646;
+  font-weight: 400;
+  font-size: 18px;
+  color: #4c4646;
 }
 
 .__PostPreviewPage_PosterName {
-    color: #3081D0;
-    font-size: 22px;
+  color: #3081d0;
+  font-size: 22px;
 }
 
 .__PostPreviewPage_PostDescription_Box {
-    width: 85%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 10px;
+  width: 85%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .__PostPreviewPage_Description {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    color: #000000;
-    margin: 10px 0px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000000;
+  margin: 10px 0px;
 }
 
 .__PostPreviewPage_Description strong {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .__PostPreviewPage_Skils {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    font-weight: 700;
-    font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .__PostPreviewPage_Skils strong {
-    font-size: 19px;
-    font-weight: 500;
-    width: 120px;
+  font-size: 19px;
+  font-weight: 500;
+  width: 120px;
 }
 
 .__PostPreviewPage_Skils span {
-    font-size: 18px;
-    word-spacing: 10px;
-    width: calc(100% - 120px);
-    color: #000000;
-    font-weight: 400;
+  font-size: 18px;
+  word-spacing: 10px;
+  width: calc(100% - 120px);
+  color: #000000;
+  font-weight: 400;
 }
 
 .__PostPreviewPage_ButtonContainer {
-    margin: 20px 0px 10px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
+  margin: 20px 0px 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .__PostPreviewPage_Buttons:nth-child(2) {
-    background: rgb(30, 30, 255);
-    color: white;
-    border: none;
+  background: rgb(30, 30, 255);
+  color: white;
+  border: none;
 }
 
 /* Employee Page------------------------------------------------------------ */
@@ -496,155 +495,513 @@ p {
     margin-bottom: 1em;
 } */
 .__employee_ToggleNav {
-    width: 78vw;
-    height: 28vh;
-    align-items: center;
-    padding: 0px 5px;
-    display: flex;
-    overflow-y: auto;
-    scrollbar-width: none;
-    gap: 1em;
-    margin-bottom: 1em;
+  width: 78vw;
+  height: 28vh;
+  align-items: center;
+  padding: 0px 5px;
+  display: flex;
+  overflow-y: auto;
+  scrollbar-width: none;
+  gap: 1em;
+  margin-bottom: 1em;
 }
 
 .__employee_Links {
-    text-decoration: none;
-    background: transparent;
+  text-decoration: none;
+  background: transparent;
 }
 
 .__employee_Links_Toggles {
-    border-radius: 10px;
-    width: 250px;
-    height: 140px;
-    padding: .5em 1em;
-    color: #222222;
-    transition: 300ms linear;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  border-radius: 10px;
+  width: 250px;
+  height: 140px;
+  padding: 0.5em 1em;
+  color: #222222;
+  transition: 300ms linear;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .__employee_Links_Toggles:hover {
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 1.5px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 1.5px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
 }
 
 .__employee_Links_Toggles h1 {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .__employee_PresenceColor {
-    width: 16px;
-    height: 16px;
-    background: greenyellow;
-    border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: greenyellow;
+  border-radius: 50%;
 }
 
 .__leaveReq_Table {
-    margin: 2em 1em;
+  margin: 2em 1em;
 }
-
 
 /* HR JOB DETAIL CSS */
 
-.hr_job_detail_skill_container_main{
-    display: flex;
-    justify-content: space-between;
-    width: fit-content;
+.hr_job_detail_skill_container_main {
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
 }
 
-.hr_job_detail_skill_container{
-    display: flex;
-    justify-content: center;
+.hr_job_detail_skill_container {
+  display: flex;
+  justify-content: center;
 }
 
-.hr_job_detail_location{
-    display: flex;
+.hr_job_detail_location {
+  display: flex;
 }
 
-.hr_job_detail_location_childrens{
-    padding-right: 60px;
+.hr_job_detail_location_childrens {
+  padding-right: 60px;
 }
 
-.hr_job_detail_skill{
-    list-style-type: none;
-    border: 1px solid rgba(255, 184, 0, 1);
-    background-color: rgba(255, 184, 0, 1);
-    padding:5px;
-    height: fit-content;
-    width: 15vw;
-    border-radius: 30px;
-    text-align: center;
-    margin-right: 10px;
-    margin-top: 15px;
+.hr_job_detail_skill {
+  list-style-type: none;
+  border: 1px solid rgba(255, 184, 0, 1);
+  background-color: rgba(255, 184, 0, 1);
+  padding: 5px;
+  height: fit-content;
+  width: 15vw;
+  border-radius: 30px;
+  text-align: center;
+  margin-right: 10px;
+  margin-top: 15px;
 }
 
-.job_seeker_card{
-    border: 1px solid #ddd; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    width: 30vw;
-    height: fit-content;
-    padding-top: 10px;
-    cursor: pointer;
+.job_seeker_card {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30vw;
+  height: fit-content;
+  padding-top: 10px;
+  cursor: pointer;
 }
 
-.job_seeker_card_image{
-    height: 10vh;
-    width: 10vh;
-    border-radius: 50%;
-    margin-left: 10px;
+.job_seeker_card_image {
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  margin-left: 10px;
 }
 
-.job_seeker_card_grid{
-    display: grid;
-    grid-template-columns: auto auto auto;
+.job_seeker_card_grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
-.job_seeker_card_bookmark{
-    height: 4vh;
-    width: 4vw;
+.job_seeker_card_bookmark {
+  height: 4vh;
+  width: 4vw;
 }
 
-.job_seeker_card_skills_list_container{
-    display: flex;
-    justify-content: space-around;
+.job_seeker_card_skills_list_container {
+  display: flex;
+  justify-content: space-around;
 }
 
-.job_seeker_card_skills{
-    border: 1px solid black;
-    border-radius: 20px;
-    list-style-type: none;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
+.job_seeker_card_skills {
+  border: 1px solid black;
+  border-radius: 20px;
+  list-style-type: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 @media screen and (max-width: 900px) {
-    .__postDetails {
-        flex-direction: column;
-        margin: 1em 0;
-    }
+  .__postDetails {
+    flex-direction: column;
+    margin: 1em 0;
+  }
 
-    .__imgContainer {
-        width: 90%;
-        height: 350px;
-    }
+  .__imgContainer {
+    width: 90%;
+    height: 350px;
+  }
 
-    .__btn_Cancel,
-    .__btn_Save {
-        font-size: 18px;
-    }
+  .__btn_Cancel,
+  .__btn_Save {
+    font-size: 18px;
+  }
 
-    .__createPost_Form {
-        width: 90%;
-    }
+  .__createPost_Form {
+    width: 90%;
+  }
 }
 
-@media screen and (max-width:855px) {
-    .__PostPreviewPage_PosterContainer,
-    .__PostPreviewPage_PostDescription_Box {
-        width: 100%;
-    }
+@media screen and (max-width: 855px) {
+  .__PostPreviewPage_PosterContainer,
+  .__PostPreviewPage_PostDescription_Box {
+    width: 100%;
+  }
 
-    .__PostPreviewPage_PosterName_Box {
-        width: 95%;
-    }
+  .__PostPreviewPage_PosterName_Box {
+    width: 95%;
+  }
+}
+
+/* applied user hr dash board --------------------------------------- */
+.applied_user_image {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+.applied_user_fav {
+  width: 35px;
+  height: auto;
+  object-fit: contain;
+}
+.applied_user_img {
+  display: flex;
+  gap: 30px;
+}
+.applied_user_name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.applied_user_location_type {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 30px;
+  border-bottom: 0.5px solid rgba(232, 232, 232, 1);
+}
+.applied_user_skills {
+  margin-top: 20px;
+}
+.applied_user_skills_title {
+  margin-bottom: 10px;
+}
+.applied_user_skill_type {
+  border: 0.5px solid rgba(232, 232, 232, 1);
+  width: 30%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+}
+.skill_set {
+  display: flex;
+  gap: 20px;
+}
+.applied_user_image_cnt {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 20px;
+}
+.applied_user_info {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.job_applied_user {
+  padding: 5px;
+}
+.applied_user_location,
+.applied_user_type {
+  margin-bottom: 20px;
+}
+.applied_user_name {
+  color: rgba(11, 66, 81, 1);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.applied_user_exp {
+  color: rgba(74, 74, 74, 1);
+  font-size: 15px;
+  font-weight: 400;
+}
+.applied_user_blue {
+  font-size: 16px;
+  color: rgba(11, 66, 81, 1);
+  font-weight: 700;
+}
+.applied_user_location {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+}
+.applied_user_skill_type {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+}
+.applied_user_info_full {
+  width: 100%;
+  height: auto;
+}
+.applied_user_detailed_bookmarked {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(11, 66, 81, 1);
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.applied_user_details_brief {
+  padding: 20px;
+  border: 1px solid rgba(232, 232, 232, 1);
+  border-radius: 10px;
+}
+.applied_user_image_duplicate {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+.applied_user_fav_duplicate {
+  width: 28px;
+}
+.applied_user_img_duplicate {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.applied_user_img_flex_duplicate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.applied_user_name_duplicate {
+  color: rgba(11, 66, 81, 1);
+  font-size: 20px;
+  font-weight: 700;
+}
+.applied_user_exp_duplicate {
+  margin-top: 50px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+}
+.applied_user_location_duplicate {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 30px;
+}
+.applied_user_city_duplicate {
+  color: rgba(26, 79, 110, 1);
+  font-size: 12px;
+  font-weight: 400;
+}
+.applied_user_city_name_duplicate {
+  color: rgba(26, 79, 110, 1);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 3px;
+}
+.applied_user_skill_duplicate {
+  margin-top: 30px;
+}
+.applied_user_skill_title_duplicate {
+  color: rgba(74, 74, 74, 1);
+  font-size: 12px;
+  font-weight: 700;
+}
+.applied_user_skill_type_duplicate {
+  margin-top: 10px;
+}
+.applied_user_skill_type_skill_duplicate {
+  border: 0.5px solid rgba(232, 232, 232, 1);
+  width: 12%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(74, 74, 74, 1);
+}
+.applied_user_skill_type_duplicate {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.applied_user_notes_duplicate {
+  margin-top: 30px;
+}
+.applied_user_notes_title_duplicate {
+  color: rgba(74, 74, 74, 1);
+  font-size: 12px;
+  font-weight: 700;
+}
+.applied_user_notes_detail_duplicate {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+}
+.applied_user_button_duplicate {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 60px;
+}
+.applied_user_btn_one_duplicate {
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 184, 0, 1);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.applied_user_btn_two_duplicate {
+  width: 40%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(21, 84, 246, 1);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.applied_user_option {
+  width: 4px;
+}
+
+.two_icons {
+  display: flex;
+  width: 10%;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (min-width: 1200px) and (max-width: 1299px) {
+  .applied_user_image {
+    width: 50px;
+  }
+  .applied_user_exp {
+    font-size: 14px;
+  }
+  .applied_user_name {
+    font-size: 16px;
+  }
+  .applied_user_fav {
+    width: 25px;
+  }
+  .applied_user_location {
+    font-size: 12px;
+  }
+  .applied_user_blue {
+    font-size: 14px;
+  }
+  .applied_user_type {
+    font-size: 12px;
+  }
+  .applied_user_skills_title {
+    font-size: 14px;
+  }
+  .applied_user_skill_type {
+    font-size: 12px;
+  }
+  .applied_user_image_cnt {
+    padding: 15px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .applied_user_image {
+    width: 50px;
+  }
+  .applied_user_exp {
+    font-size: 14px;
+  }
+  .applied_user_name {
+    font-size: 16px;
+  }
+  .applied_user_fav {
+    width: 25px;
+  }
+  .applied_user_location {
+    font-size: 12px;
+  }
+  .applied_user_blue {
+    font-size: 14px;
+  }
+  .applied_user_type {
+    font-size: 12px;
+  }
+  .applied_user_skills_title {
+    font-size: 14px;
+  }
+  .applied_user_skill_type {
+    font-size: 12px;
+  }
+  .applied_user_image_cnt {
+    padding: 5px;
+  }
+  .applied_user_skill_type_skill_duplicate {
+    width: 20%;
+  }
+  .applied_user_btn_two_duplicate {
+    font-size: 12px;
+  }
+  .applied_user_btn_one_duplicate {
+    font-size: 12px;
+  }
+  .applied_user_details_brief {
+    padding: 15px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .applied_user_image {
+    width: 50px;
+  }
+  .applied_user_exp {
+    font-size: 14px;
+  }
+  .applied_user_name {
+    font-size: 16px;
+  }
+  .applied_user_fav {
+    width: 25px;
+  }
+  .applied_user_location {
+    font-size: 12px;
+  }
+  .applied_user_blue {
+    font-size: 14px;
+  }
+  .applied_user_type {
+    font-size: 12px;
+  }
+  .applied_user_skills_title {
+    font-size: 14px;
+  }
+  .applied_user_skill_type {
+    font-size: 12px;
+  }
+  .applied_user_image_cnt {
+    padding: 15px;
+  }
+  .applied_user_skill_type_skill_duplicate {
+    width: 25%;
+  }
+
+  .applied_user_details_brief {
+    padding: 15px;
+  }
+  .applied_user_image_duplicate {
+    width: 50px;
+  }
+  .applied_user_name_duplicate {
+    font-size: 17px;
+  }
+  .applied_user_img_duplicate {
+    gap: 20px;
+  }
+  .applied_user_btn_two_duplicate,
+  .applied_user_btn_one_duplicate {
+    width: 45%;
+    font-size: 10px;
+  }
 }

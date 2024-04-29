@@ -101,6 +101,7 @@ const signUp = async (req, res) => {
       appliedJob: [],
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -208,8 +209,11 @@ const updateUserField = async (req, res) => {
     const updatedUserData = req.body; // All updated user data is in the request body
 
     // change the skils structure according to the model skils structure
-    let updatedSkils = updatedUserData.skills.map((data, index) => ({ name: data.trim(), index }))
-    updatedUserData.skills = updatedSkils
+    let updatedSkils = updatedUserData.skills.map((data, index) => ({
+      name: data.trim(),
+      index,
+    }));
+    updatedUserData.skills = updatedSkils;
 
     // Find the user by email
     const user = await User.findOne({ email });

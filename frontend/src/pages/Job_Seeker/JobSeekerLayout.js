@@ -60,23 +60,31 @@ function JobSeekerLayout() {
       </div>
 
       <div className={JobSeekerStyle.LayoutContainer__RightSideContainer}>
-        <header className={JobSeekerStyle.RightSideContainer__topHeaderContainer}>
-          {/* <DashboardTopComponent CBOnchange={handleFilterOnchange} CbToggle={handleToogleFilter} /> */}
-          {
-            pathname !== '/interviews' && <DashboardTopComponent CBOnchange={handleFilterOnchange} CbToggle={handleToogleFilter} />
-          }
-          {
-            pathname === '/interviews' && <InterviewTopNavbar />
-          }
-        </header>
+        {pathname === "/Chatarea" || pathname === "/chatbot" ? (
+          <ChatbotNavbar />
+        ) : (
+          <header
+            className={JobSeekerStyle.RightSideContainer__topHeaderContainer}
+          >
+            {pathname !== "/interviews" && (
+              <DashboardTopComponent
+                CBOnchange={handleFilterOnchange}
+                CbToggle={handleToogleFilter}
+              />
+            )}
+            {pathname === "/interviews" && <InterviewTopNavbar />}
+          </header>
+        )}
 
         <div className={JobSeekerStyle.__OutletContainer}>
           <Outlet />
         </div>
       </div>
-
       {ToggleFilter && (
-        <Filter handleOnChange={handleFilterOnchange} CbToggle={handleToogleFilter} />
+        <Filter
+          handleOnChange={handleFilterOnchange}
+          CbToggle={handleToogleFilter}
+        />
       )}
     </section>
   );
@@ -100,7 +108,7 @@ function DashboardTopComponent({ CbToggle }) {
 
   recognition.onresult = (event) => {
     const transcript = event.results[event.results.length - 1][0].transcript;
-    setSearchOption({ ...searhOption, "searchText": transcript });
+    setSearchOption({ ...searhOption, searchText: transcript });
     setIsListening(false);
   };
 
@@ -299,7 +307,6 @@ function DashboardTopComponent({ CbToggle }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searhOption]);
 
-
   return (
     <div className={JobSeekerStyle.Dashboard_TopHeader_Container}>
       <div className={JobSeekerStyle.searchFormContainer}>
@@ -363,7 +370,10 @@ function DashboardTopComponent({ CbToggle }) {
       </div>
 
       <div className={JobSeekerStyle.FilterAndNotificationBox}>
-        <VscSettings className={JobSeekerStyle.filterBox_ICON} onClick={CbToggle} />
+        <VscSettings
+          className={JobSeekerStyle.filterBox_ICON}
+          onClick={CbToggle}
+        />
 
         <IoIosNotificationsOutline className={JobSeekerStyle.filterBox_ICON} />
       </div>
@@ -376,9 +386,22 @@ function InterviewTopNavbar() {
     <div className={JobSeekerStyle.__interview_Top_Navbar}>
       <span>
         <FontAwesomeIcon className={JobSeekerStyle.robo} icon={faRobot} />
-        <span style={{color:"rgb(0, 255, 51)", paddingLeft:"1.5em", fontSize:"24px", fontWeight:"600"}}>Online</span>
+        <span
+          style={{
+            color: "rgb(0, 255, 51)",
+            paddingLeft: "1.5em",
+            fontSize: "24px",
+            fontWeight: "600",
+          }}
+        >
+          Online
+        </span>
       </span>
       <FontAwesomeIcon className={JobSeekerStyle.sound} icon={faVolumeHigh} />
     </div>
-  )
+  );
+}
+
+function ChatbotNavbar() {
+  return <></>;
 }

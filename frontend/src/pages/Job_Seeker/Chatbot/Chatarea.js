@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Container from "react-bootstrap/Container";
@@ -43,13 +43,6 @@ export default function Chatarea() {
   }, []);
   return (
     <div className={ChatBotStyle.ai_full}>
-      <Helmet>
-        <style>{`
-          .JobSeeker_RightSideContainer__topHeaderContainer__2MnVw {
-            display: none !important;
-          }
-        `}</style>
-      </Helmet>
       <Container>
         <Row>
           <Col md={12} className={ChatBotStyle.header_style_ai}>
