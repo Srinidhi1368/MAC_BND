@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import toast from "react-hot-toast";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -12,6 +12,9 @@ const PreAssesment = () => {
   const [showModal, setShowModal] = useState(false);
   const [newQuestion, setNewQuestion] = useState("");
   const [options, setOptions] = useState(["", "", "", ""]);
+  const [correctAnswers, setCorrectAnswers] = useState(
+    Array(mcqs.length).fill(null)
+  );
   const [editingIndex, setEditingIndex] = useState(null);
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -23,7 +26,6 @@ const PreAssesment = () => {
     };
   }, [mcqs]);
 
-
   const handleEdit = (index) => {
     const mcqToEdit = mcqs[index];
     setNewQuestion(mcqToEdit.question);
@@ -34,15 +36,40 @@ const PreAssesment = () => {
   };
 
   const handleAddMCQ = () => {
+    // Check if question and options are not empty
+    if (
+      newQuestion.trim() === "" ||
+      options.some((option) => option.trim() === "")
+    ) {
+      toast.error("Please fill out all fields");
+      return;
+    }
+
+    // Check if at least one correct answer is selected
+    if (!correctAnswers.includes(true)) {
+      toast.error("Please select the correct answer for the question");
+      return;
+    }
+
     let updatedMCQs;
     if (editingIndex !== null) {
       updatedMCQs = [...mcqs];
       updatedMCQs[editingIndex] = {
         question: newQuestion,
         options: [...options],
+        correctAnswer: options.findIndex(
+          (option, index) => correctAnswers[index]
+        ),
       };
     } else {
-      const newMCQ = { question: newQuestion, options: [...options] };
+      const correctIndex = options.findIndex(
+        (option, index) => correctAnswers[index]
+      );
+      const newMCQ = {
+        question: newQuestion,
+        options: [...options],
+        correctAnswer: correctIndex,
+      };
       updatedMCQs = [...mcqs, newMCQ];
       toast.success("Question added successfully.");
     }
@@ -51,6 +78,7 @@ const PreAssesment = () => {
     setShowModal(false);
     setNewQuestion("");
     setOptions(["", "", "", ""]);
+    setCorrectAnswers(Array(updatedMCQs.length).fill(false)); // Reset correct answers
   };
 
   const handleDelete = (index) => {
@@ -65,7 +93,7 @@ const PreAssesment = () => {
     if (mcqs.length !== 10) {
       toast.error("Please provide exactly 10 questions");
     } else {
-    navigate("/create_post", { state: { ...state, mcq: mcqs } });
+      navigate("/create_post", { state: { ...state, mcq: mcqs } });
     }
   };
 
@@ -181,7 +209,11 @@ const PreAssesment = () => {
                 />
               </Form.Group>
               {options.map((option, index) => (
-                <Form.Group controlId={`option${index}`} key={index}>
+                <Form.Group
+                  controlId={`option${index}`}
+                  key={index}
+                  style={{ marginTop: "10px" }}
+                >
                   <Form.Label>Option {index + 1}</Form.Label>
                   <Form.Control
                     type="text"
@@ -191,6 +223,21 @@ const PreAssesment = () => {
                       const newOptions = [...options];
                       newOptions[index] = e.target.value;
                       setOptions(newOptions);
+                    }}
+                  />
+
+                  <Form.Check
+                    style={{ marginTop: "5px" }}
+                    type="radio"
+                    id={`correct-answer-${index}`}
+                    label={`Correct Answer`}
+                    checked={correctAnswers[index]}
+                    onChange={() => {
+                      const newCorrectAnswers = Array(
+                        correctAnswers.length
+                      ).fill(false); // Reset all to false
+                      newCorrectAnswers[index] = true; // Set the current one to true
+                      setCorrectAnswers(newCorrectAnswers);
                     }}
                   />
                 </Form.Group>

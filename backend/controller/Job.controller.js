@@ -25,9 +25,9 @@ const create = async (req, res) => {
     } = req.body;
 
     // Parse the skilRequired string into an array of objects
-    const skillArray = skilRequired
-      .split(",")
-      .map((skill, index) => ({ name: skill.trim(), index }));
+    const skillArray = skilRequired.split(",").map((skill, index) => ({ name: skill.trim(), index }));
+
+      const mcqData = mcq ? mcq : [];
 
     const newPost = {
       jobPoster: result.secure_url,
@@ -43,7 +43,7 @@ const create = async (req, res) => {
       responsibility,
       howToApply,
       createdAt: Date.now(),
-      mcq
+      mcq: mcqData
     };
 
     const mongooseResponse = await jobCollection.create(newPost);

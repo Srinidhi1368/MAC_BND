@@ -151,10 +151,13 @@ function Dashboard() {
             .toLowerCase()
             .includes(SearchOptions.searchText.trim().toLowerCase()) ||
           job?.skilRequired?.some((skil) =>
-            skil
+            skil.name
               .toLowerCase()
               .includes(SearchOptions.searchText.trim().toLowerCase())
-          )
+          ) ||
+          job?.location
+            .toLowerCase()
+            .includes(SearchOptions.searchText.trim().toLowerCase())
       );
       setAllJobData(FilteredData);
     } else {

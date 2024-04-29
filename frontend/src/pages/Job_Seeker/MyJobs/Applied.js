@@ -13,7 +13,6 @@ const Applied = () => {
   useEffect(() => {
     setIsLoading(true)
     axios.get(`http://localhost:8080/api/user/My-jobs/get/apply-job/${email}`).then((response) => {
-      console.log(response.data.appliedJob)
       if (response.data.success) {
         setAppliedJobs(response.data.appliedJob);
         setIsLoading(false)

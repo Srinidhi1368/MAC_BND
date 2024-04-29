@@ -1,31 +1,40 @@
+.main_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    /* width: 100%; */
+}
+
 .selection {
-    height: 9vh;
-    width: 70%;
+    height: 10vh;
+    width: 75%;
     border: 2px solid black;
-    margin-left: 2%;
     margin-top: 5vh;
     border-radius: 35px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
 }
 
 .Select {
-    position: relative;
-    top: 1.5vh;
-    display: flex;
-    width: 18vw;
-    height: 6vh;
+    width: 18.5vw;
+    height: 7vh;
     border-radius: 35px;
-    padding: 10px;
+    /* margin-top: 1vh; */
+    /* padding: 15px; */
     display: flex;
-    justify-content: flex-start;
-    gap: 1.2vw;
+    justify-content: center;
+    align-items: center;
+    gap: 1.1vw;
     font-size: 20px;
     font-weight: bold;
 }
 
 .Select:hover {
-    background-color: blue;
+    background: linear-gradient(90deg, #0050d1 0%, #00296b 100%);
     color: white;
 }
 
@@ -39,31 +48,33 @@
 
 /*--------company applied-------------------*/
 .company_applied {
-    /* height: 28vh; */
-    width: 70%;
+    height: 22vh;
+    width: 75%;
     border: 2px solid black;
-    margin-left: 2%;
-    margin-top: 2%;
+    /* margin-left: 2%;
+    margin-top: 2%; */
     border-radius: 25px;
-    box-shadow: 0px 4px 4px grey;
-    font-size: 18px;
+    box-shadow: grey 0px 3px 9px;
 }
 
 .Company_Details {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    /* height: 10vh; */
+    /* margin-top: 2vh; */
 }
 
 .Company_logo {
-    height: 12vh;
-    width: 6vw;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     border: 1px solid black;
     display: flex;
     justify-content: center;
-    padding: 10px;
-    margin-top: 2%;
+    align-items: center;
+    /* padding: 10px; */
+    /* margin-top: 4%; */
 }
 
 .Clogo {
@@ -74,25 +85,23 @@
 .Product_Discription {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    /* gap: 10px; */
 }
 
 .Product_Discription1 {
-    font-size: 32px;
+    font-size: 20px;
     font-weight: bold;
-    margin-bottom: 0px !important;
 }
 
 .Product_Discription2 {
-    font-size: 20px;
-    color: grey;
-    margin-bottom: 0px !important;
+    font-size: 15px;
+    color: grey;    
 }
-
-
 .money {
     display: flex;
     justify-content: flex-start;
+    gap: 0.5vw;
 }
 
 .note {
@@ -101,121 +110,52 @@
 }
 
 .money p {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .money span {
     color: rgb(107, 107, 107);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
 }
 
 .view_status_button {
     width: 13vw;
     background-color: rgb(153, 152, 152);
-    height: 5vh;
+    height: 6vh;
     color: white;
-    font-size: 22px;
-    padding: 5px;
-    font-weight: bold;
-    border-radius: 15px;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 22px;
     margin-top: 7vh;
 }
 
 .Company_Address {
+    border-top: 1px solid rgb(217, 210, 210);
     display: flex;
     justify-content: space-evenly;
-    font-size: 20px;
-    margin-top: 7vh;
+    align-items: center;
+    /* font-size: 20px;
+    margin-top: 7vh; */
     font-weight: bold;
 }
 
 .Company_Address_details {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    /* justify-content: flex-start; */
     gap: 1vw;
 }
 
 
-/*-------------RIght-Side-Profile---------------------*/
-.Profile_Main {
-    position: absolute;
-    right: 0px;
-    height: 100%;
-    width: 18vw;
-    top: 0vh;
-    display: flex;
-    flex-direction: column;
-    gap: 2vh;
-    margin-top: 2%;
-    margin-right: 2%;
-}
+/*-------------Popbox---------------------*/
 
-.container_right1 {
-    width: 100%;
-    border: 2px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2vh;
-}
-
-.profile {
-    height: 32vh;
-}
-
-.profile_image {
-    height: 12vh;
-    width: 6vw;
-    background-color: skyblue;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgb(7, 72, 83);
-    box-shadow: 0px 4px 4px grey;
-}
-
-.profile_image1 {
-    font-size: 38px;
-    color: white;
-}
-
-.jobTitle {
-    font-size: 22px;
-    color: gray;
-    font-weight: bold;
-}
-
-.Edit_Profile_btn {
-    width: 10vw;
-    height: 5vh;
-    font-size: 18px;
-    font-weight: 550;
-    border-radius: 5px;
-    border-color: rgb(177, 175, 175);
-    margin-bottom: 2%;
-}
-
-.experience {
-    height: 50vh;
-}
-
-.ViewProfile_button {
-    background-color: black;
-    color: white;
-    font-size: 18px;
-    width: 12vw;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.secondaryDiv{
+.secondaryDiv {
     position: absolute;
     top: 0%;
     width: 100%;
     backdrop-filter: blur(15px);
+    left: 0%;
 }

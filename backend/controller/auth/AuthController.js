@@ -2,8 +2,7 @@ const User = require("../../model/users/UserModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const multer = require("multer");
-
+const { uploadonCloudinary } = require("../../utility/cloudinary")
 const dotenv = require("dotenv");
 dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -65,13 +64,7 @@ const signUp = async (req, res) => {
       course,
       course_start_date,
       course_end_date,
-      percentage,
-
-      job_title,
-      company,
-      company_start_date,
-      company_end_date,
-
+      percentage, 
       job_title: req.body.job_title || null,
       company: req.body.company || null,
       company_start_date: req.body.company_start_date || null,
@@ -132,6 +125,7 @@ const login = async (req, res) => {
       name,
       email,
       userType: "user",
+      profileImage : user.profileImage,
       savedJob: user.userSavedJob,
       appliedJob: user.userAppliedJob,
     });
@@ -205,8 +199,11 @@ const resetPassword = async (req, res) => {
 
 const updateUserField = async (req, res) => {
   try {
-    const { email } = req.body; // Extract the email from the request body
-    const updatedUserData = req.body; // All updated user data is in the request body
+    const { email } = req.params;
+    const result = await uploadonCloudinary(req.file.path);
+    const { phone_number, dob, country, course, website, gender, marital_status, biography, experience, skills
+    } = req.body;
+
 
     // change the skils structure according to the model skils structure
     let updatedSkils = updatedUserData.skills.map((data, index) => ({
@@ -215,14 +212,29 @@ const updateUserField = async (req, res) => {
     }));
     updatedUserData.skills = updatedSkils;
 
+    const skillArray = skills.split(",").map((skill, index) => ({ name: skill.trim(), index }));
+
+
     // Find the user by email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
     // Update user fields with the new data
-    Object.assign(user, updatedUserData);
+    Object.assign(user, {
+      profileImage: result.secure_url,
+      phone_number: phone_number,
+      dob: dob,
+      country: country,
+      course: course,
+      website: website,
+      gender: gender,
+      marital_status: marital_status,
+      biography: biography,
+      experience: experience,
+      skills: skillArray
+    });
 
     // Save the updated user document
     await user.save();

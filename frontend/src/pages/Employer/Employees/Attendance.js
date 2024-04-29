@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { VscSettings } from "react-icons/vsc";
 
 function createData(id, employee, role, dept, date, status, checkIn, checkOut, workHours) {
   return { id, employee, role, dept, date, status, checkIn, checkOut, workHours };
@@ -25,9 +26,15 @@ export default function Attendance() {
   return (
     <div className={pages.__leaveReq_Table}>
       <TableContainer component={Paper}>
+        <div className={pages.__leaveReq_Table_header}>
+          <h3 className={pages.__leaveReq_Table_PrimaryText}>Attendance Overview</h3>
+          <>
+            <button type="button" className={pages.__leaveReq_Table_Button}><VscSettings className={pages.__leaveReq_Table_ButtonICON} /> View Attendance</button>
+          </>
+        </div>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
-            <TableRow style={{fontWeight:'500'}}>
+            <TableRow style={{ fontWeight: '500' }}>
               <TableCell>ID</TableCell>
               <TableCell align="center">Employee</TableCell>
               <TableCell align="center">Role</TableCell>
@@ -47,9 +54,17 @@ export default function Attendance() {
                 <TableCell align="center">{row.role}</TableCell>
                 <TableCell align="center">{row.dept}</TableCell>
                 <TableCell align="center">{row.date}</TableCell>
-                <TableCell align="center">{row.status}</TableCell>
-                <TableCell align="center">{row.checkIn}</TableCell>
-                <TableCell align="center">{row.checkOut}</TableCell>
+                <TableCell align="center">
+                  <span className={row.status.split(" ").join("_")}>{row.status}</span>
+                </TableCell>
+                <TableCell align="center">
+                  <span className={`${row.status.split(" ").join("_")}Text`}>{row.checkIn}</span>
+                </TableCell>
+                <TableCell align="center">
+                  <span className={`${row.status.split(" ").join("_")}Text`}>
+                    {row.checkOut}
+                  </span>
+                </TableCell>
                 <TableCell align="center">{row.workHours}</TableCell>
               </TableRow>
             ))}

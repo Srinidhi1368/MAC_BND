@@ -94,11 +94,11 @@ function UserLogin({ toggleLoginType, isHRLogin }) {
         headers: { "Content-Type": "application/json" },
       });
 
-      const { name, email, token, userType, savedJob, appliedJob } =
+      const { name, email, token, userType, savedJob, appliedJob, profileImage } =
         response.data;
 
       dispatchTO(
-        handleUserLogin({ name, email, token, userType, savedJob, appliedJob })
+        handleUserLogin({ name, email, token, userType, savedJob, appliedJob, profileImage })
       );
       toast.success(`Welcome back, ${name}!`);
       nav("/");

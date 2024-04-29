@@ -42,6 +42,7 @@ export default function JobListDetailedView() {
       .then((response) => {
         if (response.data.success) {
           setJobDetails(response.data.jobs);
+          console.log(response.data.jobs)
           setJobDetailsLoad(false);
         } else {
           setJobDetails([]);

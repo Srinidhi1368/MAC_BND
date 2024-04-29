@@ -1,0 +1,174 @@
+/* .parent{
+    height: 100VH;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.main {
+    width: 30vw;
+    border: 1px solid black;
+    border-radius: 24px;
+    /* margin-top: 0.5%; */
+    /* margin-left: 30%; */
+    background-color: #fff;
+    position: relative;
+    z-index: -2;
+}
+
+.main_child1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.applicationtext {
+    font-size: 20px;
+}
+
+.img1 {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.reviewingtext {
+    font-size: 15px;
+    text-align: center;
+}
+
+.reviewingtext1 {
+    font-size: 10px;
+    width: 50%;
+    text-align: center;
+}
+
+.progressbar {
+    margin-left: 5%;
+    margin-bottom: 1%;
+    counter-reset: step;
+}
+
+.progressbar li {
+    list-style-type: none;
+    height: 30px;
+    position: relative;
+    width: 80%;
+}
+
+.progressbar li::before {
+    content: counter(step);
+    counter-increment: step;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 5%;
+    z-index: 2;
+    background-color: white;
+}
+
+.progressbar li::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+}
+
+.progressbar li:last-child::after {
+    content: none;
+}
+
+.progressbar li.activeerere::before {
+    background-color: #4caf50;
+    color: white;
+}
+
+.progressbar li.activeerere::after {
+    background-color: green;
+}
+
+.multi_btn_status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.multi_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 6vh;
+    background: linear-gradient(90deg, #0050d1 0%, #00296b 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.multi_btn_status p {
+    color: Orange;
+}
+
+@media screen and (max-width: 780px) {
+    .main {
+        width: 85vw;
+    }
+
+    .multi_btn {
+        width: 39vw;
+    }
+
+}
+
+
+@media screen and (min-width: 781px) and (max-width:930px) {
+    .main {
+        width: 85vw;
+    }
+
+    .applicationtext {
+        font-size: 35px;
+    }
+
+    .reviewingtext {
+        font-size: 29px;
+    }
+
+    .reviewingtext1 {
+        font-size: 21px;
+        width: 61%;
+    }
+
+    .progressbar li {
+        height: 50px;
+    }
+
+    .progressbar li::before {
+        width: 30px;
+        height: 30px;
+        line-height: 27px;
+        border-radius: 50%;
+    }
+
+    .progressbar li::after {
+        left: 15px;
+    }
+
+    .multi_btn {
+        width: 39vw;
+        height: 5vh;
+    }
+
+}

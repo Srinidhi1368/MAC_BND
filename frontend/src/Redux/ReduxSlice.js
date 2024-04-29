@@ -7,6 +7,7 @@ const ReduxSlice = createSlice({
     percentageResult: 0,
     currentUser: {
       token: localStorage.getItem("token") ? localStorage.getItem("token") : "",
+      profileImage: localStorage.getItem("profileImage") ? localStorage.getItem("profileImage") : "",
       email: localStorage.getItem("email") ? localStorage.getItem("email") : "",
       name: localStorage.getItem("name") ? localStorage.getItem("name") : "",
       userType: localStorage.getItem("userType")
@@ -44,6 +45,7 @@ const ReduxSlice = createSlice({
       state.currentUser.email = action.payload.email;
       state.currentUser.name = action.payload.name;
       state.currentUser.userType = action.payload.userType;
+      state.currentUser.profileImage = action.payload.profileImage;
       if (action.payload.userType !== "employee") {
         state.currentUser.savedJob = action.payload.savedJob;
         state.currentUser.appliedJob = action.payload.appliedJob;
@@ -53,6 +55,7 @@ const ReduxSlice = createSlice({
       localStorage.setItem("email", state.currentUser.email);
       localStorage.setItem("name", state.currentUser.name);
       localStorage.setItem("userType", state.currentUser.userType);
+      localStorage.setItem("profileImage", state.currentUser.profileImage);
 
       if (action.payload.userType !== "employee") {
         localStorage.setItem(

@@ -94,6 +94,7 @@ p {
 }
 
 .__posts {
+
   background: white;
   width: 90%;
   min-height: 170px;
@@ -101,6 +102,14 @@ p {
   border: 1px solid rgba(128, 128, 128, 0.604);
   box-shadow: rgba(0, 0, 0, 0.4) 6px 5.4px 4.2px;
   cursor: pointer;
+
+    background: white;
+    width: 90%;
+    min-height: 170px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 9px;
+    cursor: pointer;
+
 }
 
 .activeCard {
@@ -256,6 +265,7 @@ p {
   object-fit: cover;
   cursor: pointer;
 }
+
 .__previewImgText {
   position: absolute;
   bottom: 5%;
@@ -263,6 +273,16 @@ p {
   transform: translate(-50%, -50%);
   font-size: 20px;
   text-align: center;
+
+
+.__previewImgText {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    text-align: center;
+
 }
 
 .__postImg {
@@ -287,8 +307,15 @@ p {
   font-size: 20px;
   padding-left: 0.2em;
 }
+.__input_Grps_labelInfo{
+    font-weight: 500;
+    font-size: 14px;
+    color: #DF0202;
+    margin-left: 10px;
+}
 
 .preAssessment_buttonContainer {
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -300,7 +327,64 @@ p {
   padding: 0.5em 2em;
   color: white;
   border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
+
+.preAssessment_button {
+    border: none;
+    outline: none;
+    background-color: #FFB800;
+    padding: 0.5em 2em;
+    color: white;
+    border-radius: 10px;
+
+
+}
+
+.__requiredSkils_List {
+    margin: 0;
+    padding: 0;
+    height: 75px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.__requiredSkils_List_ITEM {
+    margin: 0;
+    padding: 0;
+    border: none;
+    padding: 0.2em 1em;
+    gap: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #0050d1 0%, #00296b 100%);
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    word-break: keep-all;
+    min-width: fit-content;
+}
+
+.userSkils_item_DeleteButton {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.userSkils_itemDeleteButton:hover {
+    cursor: pointer;
+    color: red;
+}
+
 .__inputs {
   width: 100%;
   height: 45px;
@@ -465,13 +549,35 @@ p {
 }
 
 .__PostPreviewPage_Skils span {
+
   font-size: 18px;
   word-spacing: 10px;
   width: calc(100% - 120px);
   color: #000000;
   font-weight: 400;
-}
 
+    font-size: 18px;
+    color: #000000;
+    font-weight: 400;
+
+}
+.__PostPreviewSkilsTag {
+    font-size: 14px !important;
+    font-weight: 400;
+    border: none;
+    padding: 0.2em 1em;
+    gap: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #0050d1 0%, #00296b 100%);
+    color: white !important;
+    text-transform: uppercase;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    word-break: keep-all;
+    min-width: fit-content;
+}
 .__PostPreviewPage_ButtonContainer {
   margin: 20px 0px 10px 0px;
   display: flex;
@@ -511,6 +617,13 @@ p {
   background: transparent;
 }
 
+.active {
+    border-radius: 10px;
+    text-decoration: none;
+    background: transparent;
+    background-color: #d3c0fb85;
+}
+
 .__employee_Links_Toggles {
   border-radius: 10px;
   width: 250px;
@@ -541,6 +654,7 @@ p {
 .__leaveReq_Table {
   margin: 2em 1em;
 }
+
 
 /* HR JOB DETAIL CSS */
 
@@ -1005,3 +1119,192 @@ p {
     font-size: 10px;
   }
 }
+=======
+.__leaveReq_Table_header {
+    min-height: 60px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0em 1em;
+}
+
+.__leaveReq_Table_PrimaryText {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.__leaveReq_Table_Button {
+    border: none;
+    outline: none;
+    background-color: #3354F4;
+    margin: 0;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.5em 0.6em;
+    border-radius: 10px;
+    font-weight: 400;
+}
+
+.__leaveReq_Table_ButtonICON {
+    display: block;
+    color: white;
+    font-size: 18px;
+    transform: rotate(-90deg);
+}
+
+.attachment__buttons {
+    border: none;
+    color: white;
+    padding: 0.3em 1em;
+    border-radius: 10px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.attachment__buttons:nth-child(1) {
+    background-color: #DF0202;
+    margin-right: 10px;
+}
+
+.attachment__buttons:nth-child(1):hover {
+    cursor: pointer;
+    background-color: rgb(237, 4, 4);
+}
+
+.attachment__buttons:nth-child(2) {
+    background-color: #00B707;
+}
+
+.attachment__buttons:nth-child(2):hover {
+    cursor: pointer;
+    background-color: #02ce08;
+}
+
+.attachmentButton_Icon {
+    font-size: 18px;
+    transition: all 0.4s ease-in-out;
+}
+
+.attachment__buttons:hover .attachmentButton_Icon {
+    transform: scale(1.3);
+}
+
+
+/* HR JOB DETAIL CSS */
+
+.hr_job_detail_skill_container_main {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+}
+
+.hr_job_detail_skill_container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 66vw;
+}   
+
+.hr_job_detail_location {
+    display: flex;
+}
+
+.hr_job_detail_location_childrens {
+    padding-right: 60px;
+}
+
+.hr_job_detail_skill {
+    list-style-type: none;
+    border: 1px solid rgba(255, 184, 0, 1);
+    background-color: rgba(255, 184, 0, 1);
+    padding: 5px;
+    height: fit-content;
+    width: 15vw;
+    border-radius: 30px;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.job_seeker_card {
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30vw;
+    height: fit-content;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.job_seeker_card_image {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.job_seeker_card_grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.job_seeker_card_bookmark {
+    height: 4vh;
+    width: 4vw;
+}
+
+.job_seeker_card_skills_list_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.job_seeker_card_skills {
+    border: 1px solid black;
+    border-radius: 20px;
+    list-style-type: none;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .__postDetails {
+        flex-direction: column;
+        margin: 1em 0;
+    }
+
+    .__imgContainer {
+        width: 90%;
+        height: 350px;
+    }
+
+    .__btn_Cancel,
+    .__btn_Save {
+        font-size: 18px;
+    }
+
+    .__createPost_Form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:855px) {
+
+    .__PostPreviewPage_PosterContainer,
+    .__PostPreviewPage_PostDescription_Box {
+        width: 100%;
+    }
+
+    .__PostPreviewPage_PosterName_Box {
+        width: 95%;
+    }
+}
+

@@ -20,8 +20,8 @@ const userSchema = new mongoose.Schema({
     type: Number,
     unique: true,
     required: true,
-    minlength:10,
-    maxlength:10
+    minlength: 10,
+    maxlength: 10
   },
   dob: {
     type: Date,
@@ -47,8 +47,8 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  experience:{
-    type:String
+  experience: {
+    type: String
   },
   course_end_date: {
     type: Date,
@@ -70,23 +70,17 @@ const userSchema = new mongoose.Schema({
   company_end_date: {
     type: Date,
   },
-  gender:{
-    type:String
+  gender: {
+    type: String
   },
-  website:{
-    type:String
+  website: {
+    type: String
   },
-  marital_status:{
-    type:String
+  marital_status: {
+    type: String
   },
- 
   profileImage: {
-    filename: String,
-    path: String,
-    uploadedAt: {
-      type: Date,
-      default: Date.now,
-    },
+    type: String,
   },
   biography: {
     type: String,
@@ -113,7 +107,6 @@ const userSchema = new mongoose.Schema({
   userType: {
     type: String,
   },
-
   userAppliedJob: [
     {
       jobID: {

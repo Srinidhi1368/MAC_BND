@@ -4,6 +4,11 @@ import { Table, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import tableImage from "../../../Assets/tableImage.PNG";
 import InterviewStyle from "./InterviewScheduled.module.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+
 
 const InterviewScheduled = () => {
   // Define the data for each row
@@ -76,7 +81,22 @@ const InterviewScheduled = () => {
     </tr>
   ));
 
-  return (
+  return (<>
+  
+    <div className={InterviewStyle.cardcontainer}>
+      <div className={InterviewStyle.cardcontainer1}>
+        <div className={InterviewStyle.childbox1} ><FontAwesomeIcon icon={faCalendarDays} /></div>
+        <div className={InterviewStyle.childbox1text}>Upcoming Event</div>
+      </div>
+      <div className={InterviewStyle.cardcontainer1}>
+      <div className={InterviewStyle.childbox2} ><FontAwesomeIcon icon={faCalendarXmark} /></div>
+        <div className={InterviewStyle.childbox2text}>Meeting Cancelled</div>
+      </div>
+      <div className={InterviewStyle.cardcontainer1}>
+      <div className={InterviewStyle.childbox3} ><FontAwesomeIcon icon={faCalendarCheck} /></div>
+        <div className={InterviewStyle.childbox3text}>Meeting Done</div>
+      </div>
+    </div>
     <div className={InterviewStyle.table_container}>
       <div className={InterviewStyle.table_border}>
         <div className={InterviewStyle.table_wrapper}>
@@ -98,6 +118,7 @@ const InterviewScheduled = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

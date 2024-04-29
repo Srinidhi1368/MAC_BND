@@ -121,7 +121,15 @@ const updateUserDetails = async (e,userDataToUpdate) => {
                 <div className={SettingCss.c1}>
                     <label htmlFor='education' >Education</label>
                     <input type='text' id='education' name="course" className={SettingCss.input} placeholder='Education'value={userData.course} onChange={HandleChange}></input>
+                    <label htmlFor="specialization">Specialization</label>
+                  <input
+                    type="text"
+                    id="specialization"
+                    value={userData.course}
+                    onChange={HandleChange}
+                  />
                 </div>
+                
 
             </div>
 

@@ -74,7 +74,12 @@ export default function HRDashboard() {
   };
 
   const handleJobCardClick = (jobId) => {
-    setSelectedJobId(jobId);
+    // If the clicked card is already selected, toggle to show latest posts
+    if (selectedJobId === jobId) {
+      setSelectedJobId(null); // Reset selectedJobId to show latest posts
+    } else {
+      setSelectedJobId(jobId); // Show job detail for the clicked card
+    }
   };
 
   const handleDelete = async (postID) => {
@@ -84,6 +89,7 @@ export default function HRDashboard() {
         .then((response) => {
           if (response.data.success) {
             toast.success(`Job deleted successfully`);
+            setSelectedJobId(null);
             loadJobPost();
           }
         });

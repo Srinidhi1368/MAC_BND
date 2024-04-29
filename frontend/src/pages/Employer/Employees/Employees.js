@@ -1,58 +1,129 @@
-import React, { useEffect } from 'react'
-import pages from '../Pages.module.css';
-import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import React, { useEffect } from "react";
+import pages from "../Pages.module.css";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function Employees() {
-  const { pathname } = useLocation()
-  const navigateTO = useNavigate()
+  const { pathname } = useLocation();
+  const navigateTO = useNavigate();
 
   useEffect(() => {
-    if (pathname === '/employees')
-      navigateTO('/employees/attendance')
+    if (pathname === "/employees") navigateTO("/employees/attendance");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <div>
       <nav className={pages.__employee_ToggleNav}>
-        <NavLink className={pages.__employee_Links} to='/employees/on_time'>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? pages.active : pages.__employee_Links
+          }
+          to="/employees/on_time"
+        >
           <div className={pages.__employee_Links_Toggles}>
             <h1>360</h1>
             <div>
-              <p style={{ fontSize: '18px', fontWeight: '500' }}>On Time</p>
-              <div style={{ fontSize: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>  <div className={pages.__employee_PresenceColor} /> -10% Less than yesterday</div>
+              <p style={{ fontSize: "18px", fontWeight: "500" }}>On Time</p>
+              <div
+                style={{
+                  fontSize: "15px",
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+
+                <div className={pages.__employee_PresenceColor} /> -10% Less
+                than yesterday
+              </div>
             </div>
           </div>
         </NavLink>
-        <NavLink className={pages.__employee_Links} to='/employees/absent'>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? pages.active : pages.__employee_Links
+          }
+          to="/employees/absent"
+        >
           <div className={pages.__employee_Links_Toggles}>
             <h1>30</h1>
             <div>
-              <p style={{ fontSize: '18px', fontWeight: '500' }}>Absent</p>
-              <div style={{ fontSize: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>  <div className={pages.__employee_PresenceColor} style={{background:"rgb(248, 170, 183)"}} /> +3% Increase than yesterday</div>
+              <p style={{ fontSize: "18px", fontWeight: "500" }}>Absent</p>
+              <div
+                style={{
+                  fontSize: "15px",
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+
+                <div
+                  className={pages.__employee_PresenceColor}
+                  style={{ background: "rgb(248, 170, 183)" }}
+                />
+                +3% Increase than yesterday
+              </div>
             </div>
           </div>
         </NavLink>
-        <NavLink className={pages.__employee_Links} to='/employees/late_arrivals'>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? pages.active : pages.__employee_Links
+          }
+          to="/employees/late_arrivals"
+        >
           <div className={pages.__employee_Links_Toggles}>
             <h1>62</h1>
             <div>
-              <p style={{ fontSize: '18px', fontWeight: '500' }}>Late Arrivals</p>
-              <div style={{ fontSize: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>  <div className={pages.__employee_PresenceColor} style={{background:"rgb(248, 170, 183)"}} /> +3% Increase than yesterday</div>
+              <p style={{ fontSize: "18px", fontWeight: "500" }}>
+                Late Arrivals
+              </p>
+              <div
+                style={{
+                  fontSize: "15px",
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  className={pages.__employee_PresenceColor}
+                  style={{ background: "rgb(248, 170, 183)" }}
+                />
+                +3% Increase than yesterday
+              </div>
             </div>
           </div>
         </NavLink>
-        <NavLink className={pages.__employee_Links} to='/employees/leave_requests'>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? pages.active : pages.__employee_Links
+          }
+          to="/employees/leave_requests"
+        >
           <div className={pages.__employee_Links_Toggles}>
             <h1>6</h1>
             <div>
-              <p style={{ fontSize: '18px', fontWeight: '500' }}>Leave Requests</p>
-              <div style={{ fontSize: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>  <div className={pages.__employee_PresenceColor} /> -10% Less than yesterday</div>
+              <p style={{ fontSize: "18px", fontWeight: "500" }}>
+                Leave Requests
+              </p>
+              <div
+                style={{
+                  fontSize: "15px",
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+                <div className={pages.__employee_PresenceColor} /> -10% Less
+                than yesterday
+              </div>
             </div>
           </div>
         </NavLink>
       </nav>
       <Outlet />
     </div>
-  )
+  );
 }

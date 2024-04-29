@@ -67,7 +67,7 @@ const menuItems = [
 function SideNavbar() {
   const dispatch = useDispatch();
   const navigateTO = useNavigate()
-  const { name } = useSelector((state) => state.Assessment.currentUser);
+  const { name,profileImage } = useSelector((state) => state.Assessment.currentUser);
 
   const handleLogoutClick = () => {
     dispatch(handleUserLogOut());
@@ -110,15 +110,16 @@ function SideNavbar() {
         <div className={navStyle.sidenavBar__profileBox}>
           <Tooltip title="Profile" arrow placement="right-end">
             <img
-              src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png"
+              src={profileImage}
               alt="UserProfilePicture"
               className={navStyle.sidenavBar__userProfilePicture}
+              onError={(e) => { e.target.src = `https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg`; e.onError = null; }}
             />
           </Tooltip>
 
           <p className={navStyle.sidenavBar__userName}>
             {name && name}
-            <button onClick={()=>navigateTO('/settings/editprofile')} className={navStyle.editProfileButton}>Edit Profile</button>
+            <button onClick={() => navigateTO('/settings/editprofile')} className={navStyle.editProfileButton}>Edit Profile</button>
           </p>
 
           <DropDownMENU userName={name} userLogOut={handleLogoutClick} />
@@ -136,10 +137,12 @@ function SideNavbar() {
 export default SideNavbar;
 
 function DropDownMENU({ userName, userLogOut }) {
+  const navigateTO = useNavigate()
+
   return (
     <div className={navStyle.ProfileDropDownContainer}>
       <p className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Name}`}> {userName && userName}</p>
-      <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`}>Edit Profile</button>
+      <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`} onClick={(e) => navigateTO("/settings/editprofile")}>Edit Profile</button>
       <button className={`${navStyle.dropDownITEM} ${navStyle.dropDownITEM_Button}`} onClick={userLogOut}>  <RiLogoutCircleRLine className={navStyle.logOutButtonICON} />
         Log Out </button>
     </div>

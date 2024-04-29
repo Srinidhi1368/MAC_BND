@@ -7,7 +7,6 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
 import { BiSolidDropletHalf } from "react-icons/bi";
 import { GiMoneyStack } from "react-icons/gi";
-import { FaUser } from "react-icons/fa";
 import YourApplicationStatus from './YourApplicationStatus';
 
 
@@ -18,13 +17,13 @@ function ApplicationStatus() {
         setPopUp(true)
     }
 
-    function handleClick2(){
+    function handleClick2() {
         setPopUp(false)
     }
 
     console.log(popUp)
     return (
-        <div>
+        <div className={ApplicationCss.main_container}>
             {/* ---------selection of ApplicationStatus----- */}
             <div className={ApplicationCss.selection}>
 
@@ -76,35 +75,8 @@ function ApplicationStatus() {
 
             </div>
 
-            {/*---------------- right side profile container------------ */}
-
-
-            <div className={ApplicationCss.Profile_Main}>
-
-                {/*-------------- first profile box -------------*/}
-                <div className={`${ApplicationCss.container_right1} ${ApplicationCss.profile}`}>
-
-
-                    <div className={ApplicationCss.profile_image}>
-                        <FaUser className={ApplicationCss.profile_image1} />
-                    </div>
-                    <p>Candidate_Name </p>
-                    <p className={ApplicationCss.jobTitle}>Job Title</p>
-                    <button className={ApplicationCss.Edit_Profile_btn}>Edit Profile</button>
-                </div>
-
-                {/* ---------------------second experience box ------------*/}
-                <div className={`${ApplicationCss.container_right1} ${ApplicationCss.experience}`}>
-                    <h3>Experience</h3>
-                    <p>years</p>
-                    <h3>Skills And Experience</h3>
-                    <p>UI Designer</p>
-                    <p>UX Designer</p>
-                    <button className={ApplicationCss.ViewProfile_button}>View Profile</button>
-                </div>
-            </div>
             {
-                popUp ? <div className={ApplicationCss.secondaryDiv}><YourApplicationStatus status = {popUp} toggleFunc = {handleClick2} /></div> : null
+                popUp ? <div className={ApplicationCss.secondaryDiv}><YourApplicationStatus status={popUp} toggleFunc={handleClick2} /></div> : null
             }
         </div>
     )

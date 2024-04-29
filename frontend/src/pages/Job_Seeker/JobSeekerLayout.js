@@ -10,11 +10,7 @@ import { IoMicOffOutline } from "react-icons/io5";
 import { VscSettings } from "react-icons/vsc";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import Filter from "./components/FilterBox/Filter";
-import {
-  handleSetFilterData,
-  handleRemoveFilterData,
-  handleSearchData,
-} from "../../Redux/ReduxFilterSlice";
+import { handleSetFilterData,handleRemoveFilterData,handleSearchData,} from "../../Redux/ReduxFilterSlice";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot, faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
@@ -58,6 +54,16 @@ function JobSeekerLayout() {
       <div className={JobSeekerStyle.LayoutContainer__LeftSideContainer}>
         <SideNavbar />
       </div>
+<div className={JobSeekerStyle.LayoutContainer__RightSideContainer}>
+  {pathname === '/Chatarea' || pathname === '/chatbot' ? (
+    <ChatbotNavbar />
+  ) : (
+    <header className={JobSeekerStyle.RightSideContainer__topHeaderContainer}>
+      {pathname !== '/interviews' && <DashboardTopComponent CBOnchange={handleFilterOnchange} CbToggle={handleToogleFilter} />}
+      {pathname === '/interviews' && <InterviewTopNavbar />}
+    </header>
+  )}
+
 
       <div className={JobSeekerStyle.LayoutContainer__RightSideContainer}>
         {pathname === "/Chatarea" || pathname === "/chatbot" ? (
@@ -80,6 +86,14 @@ function JobSeekerLayout() {
           <Outlet />
         </div>
       </div>
+
+  <div className={JobSeekerStyle.__OutletContainer}>
+    <Outlet />
+  </div>
+</div>
+
+
+
       {ToggleFilter && (
         <Filter
           handleOnChange={handleFilterOnchange}
@@ -310,7 +324,7 @@ function DashboardTopComponent({ CbToggle }) {
   return (
     <div className={JobSeekerStyle.Dashboard_TopHeader_Container}>
       <div className={JobSeekerStyle.searchFormContainer}>
-        <form className={JobSeekerStyle.DashboardSearchBarBox}>
+        <form className={JobSeekerStyle.DashboardSearchBarBox} onSubmit={(e)=> e.preventDefault()}>
           <div className={JobSeekerStyle.SearchInputBox}>
             <div className={JobSeekerStyle.SearchICONBox}>
               <CiSearch className={JobSeekerStyle.SearchICON} />
@@ -405,3 +419,13 @@ function InterviewTopNavbar() {
 function ChatbotNavbar() {
   return <></>;
 }
+
+
+function ChatbotNavbar(){
+  return(
+    <>   
+    {/* to keep this header part , this component should blank */}
+    </>
+  )
+}
+
