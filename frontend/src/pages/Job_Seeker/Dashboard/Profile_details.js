@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { handleAppliedJob, handleRemoveSavedJob } from "../../../Redux/ReduxSlice";
 import Loader from "../../Common-Components/Loaders/Loader";
+import { fetchJobDetails } from "../../../Redux/JobSlice";
 
 const Profile_details = () => {
   const [start_popup, setstart_popup] = useState(false);
@@ -15,11 +16,12 @@ const Profile_details = () => {
   const navigateTO =useNavigate()
 const dispatch =useDispatch()
   const Job =useLocation().state
+  console.log(Job._id)
 
   const email = localStorage.getItem("email");
   // const username = localStorage.getItem("name");
   const [userData, setuserData] = useState([]);
-  console.log(userData);
+  // console.log(userData);
 const[name,setname]=useState([])
 
 
@@ -54,12 +56,11 @@ const[name,setname]=useState([])
     const date = new Date(isoDate);
     return date.toISOString().split('T')[0]; // Extract and format YYYY-MM-DD
   };
-  
-  const [PreAssesment] =useState(false) //if there will be any skill test questions for user then it will be true
 
   const handleApply = (e,item) => {
     e.preventDefault();
- if(PreAssesment){
+    dispatch(fetchJobDetails(item._id||" "));
+ if(Job.mcq.length!==0){     //if there will be any skill test mcq questions for user then it will be true
   if(!cancelpopup&&!start_popup){
     setstart_popup(!start_popup);
    }
@@ -121,7 +122,7 @@ const[name,setname]=useState([])
                 application
               </p>
               <Link
-                to={cancelpopup?"":"/assessment-Instructions"}
+                to={cancelpopup?"":"/skill-assesment-instructions"}
                   state={Job}
                   className={Profile_style.start_assesment_btn}
               >
@@ -249,7 +250,7 @@ const[name,setname]=useState([])
                 </div>
               </div>
               <h2>Work Experience (Optional)</h2><br/>
-              {userData.experience==="Experience"?<div className={Profile_style.name_section}>
+             <div className={Profile_style.name_section}>
                 <div className={Profile_style.input_name_container}>
                   <label htmlFor="company">Title</label>
                   <input type="text" id="company" value={userData.job_title||""} readOnly />
@@ -257,7 +258,7 @@ const[name,setname]=useState([])
                   <input
                     type="date"
                     id="start"
-                    value={formatISODateForInput(userData.company_start_date)}                      
+                    value={formatISODateForInput(userData.company_start_date)||""}                      
                     readOnly
                   />
                 </div>
@@ -277,16 +278,8 @@ const[name,setname]=useState([])
                     readOnly
                   />
                 </div>
-              </div>:
-               <div className={Profile_style.input_name_container}>
-               <label htmlFor="percentage">Experience</label>
-               <input
-                 type="text"
-                 id="percentage"
-                 value={userData.experience||""}
-                 readOnly
-               />
-             </div>}
+              </div>
+              
               <div className={Profile_style.biography_section}>
           <div className={Profile_style.input_biography_container}>
           <label htmlFor="biography">Biography</label>

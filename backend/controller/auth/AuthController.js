@@ -213,11 +213,16 @@ const updateUserField = async (req, res) => {
 
 
     // change the skils structure according to the model skils structure
+
     let updatedSkils = updatedUserData.skills.map((data, index) => ({
       name: data.trim(),
       index,
     }));
     updatedUserData.skills = updatedSkils;
+
+    // let updatedSkils = updatedUserData.skills.map((data, index) => ({ name: data.trim(), index }))
+    // updatedUserData.skills = updatedSkils
+
 
     const skillArray = skills.split(",").map((skill, index) => ({ name: skill.trim(), index }));
 

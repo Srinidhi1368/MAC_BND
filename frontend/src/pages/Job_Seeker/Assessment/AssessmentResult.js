@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import assessmentStyle from "./Assessment.module.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleClearResult } from "../../../Redux/ReduxSlice";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+
 function AssessmentResult() {
   const { result, percentageResult } = useSelector((state) => state.Assessment);
   const navigateTO = useNavigate();
@@ -12,16 +12,15 @@ function AssessmentResult() {
 
   const handleDoneButtonClick = (e) => {
     e.preventDefault();
-    toast.success('You have successfully applied for a job')
     navigateTO("/assessment");
     dispatchTO(handleClearResult());
   };
 
-  useEffect(() => {
-    if (percentageResult === 0) {
-      navigateTO("/assessment");
-    }
-  }, [percentageResult]);
+  // useEffect(() => {
+  //   if (percentageResult === 0) {
+  //     navigateTO("/assessment");
+  //   }
+  // }, [percentageResult]);
   return (
     <div className={assessmentStyle.SelfAssessmentPage__ResultContainer}>
       <div className={assessmentStyle.SelfAssessmentPage__resultBox}>

@@ -47,6 +47,10 @@ const ProfileDetails = lazy(() =>
 const CandidateProfileDetails = lazy(() =>
   import("../pages/Job_Seeker/EditMyProfile/EditProfile.js")
 );
+const AssesmentInstruction =lazy(()=>import ("../pages/Job_Seeker/Assessment/JobAssesment/AssesmentInstruction.js"));
+const JobAssesment= lazy(()=>import ("../pages/Job_Seeker/Assessment/JobAssesment/JobAssesment.js")) ;
+const JobAssesmentResult =lazy(()=>import ("../pages/Job_Seeker/Assessment/JobAssesment/JobAssesmentResult.js"));
+
 const ChatBot = lazy(() => import("../pages/Job_Seeker/Chatbot/ChatBot.js"));
 const Chatarea = lazy(() => import("../pages/Job_Seeker/Chatbot/Chatarea.js"));
 
@@ -160,9 +164,61 @@ function JobSeekerRoutes() {
         <Route path="/dashboard/:id" element={<Suspense>    {" "}    <JobListDetailedView />{" "}  </Suspense>} />
         <Route path="/dashboard/profile_details" element={<Suspense>    {" "}    <ProfileDetails />{" "}  </Suspense>} />
       </Route>
+
+      <Route
+        path="/assessment-Instructions"
+        element={
+          <Suspense>
+            <InstructionPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/assessment-test"
+        element={
+          <Suspense>
+            <SelfAssessmentPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/assessment-result"
+        element={
+          <Suspense>
+            <AssessmentResult />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/skill-assesment-instructions"
+        element={
+          <Suspense>
+            <AssesmentInstruction />
+          </Suspense>
+        }
+      />
+       <Route
+        path="/job-assesment-test"
+        element={
+          <Suspense>
+            <JobAssesment/>
+          </Suspense>
+        }
+      />
+      <Route
+        path="/job-assesment-result"
+        element={
+          <Suspense>
+            <JobAssesmentResult />
+          </Suspense>
+        }
+      />
+     
+
       <Route path="/assessment-Instructions" element={<Suspense>  <InstructionPage /></Suspense>} />
       <Route path="/assessment-test" element={<Suspense>  <SelfAssessmentPage /></Suspense>} />
       <Route path="/assessment-result" element={<Suspense>  <AssessmentResult /></Suspense>} />
+
     </Routes>
   );
 }

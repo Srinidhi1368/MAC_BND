@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function Timer({ minutes }) {
+function Timer({ minutes,type }) {
     const [seconds, setSeconds] = useState(Number(minutes) * 60);
+    const navigateTo=useNavigate()
 
     useEffect(() => {
       const intervalId = setInterval(() => {
@@ -9,11 +11,18 @@ function Timer({ minutes }) {
           setSeconds(seconds - 1);
         } else {
           clearInterval(intervalId);
+          if(type==="Job_Assesment"){
+            navigateTo('/job-assesment-result')
+          }
+          else{
+            navigateTo('/assessment-result')
+          }
+
         }
       }, 1000);
   
       return () => clearInterval(intervalId);
-    }, [seconds]);
+    }, [seconds,navigateTo,type]);
   
     const formattedTime = () => {
       const mins = Math.floor(seconds / 60);
