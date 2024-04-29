@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -24,6 +24,15 @@ function HrLogin({ toggleLoginType, isHRLogin }) {
   });
 
   const [name, setName] = useState("");
+
+  const passwordRef = useRef(null);
+
+  useEffect(() => {
+    // Set focus to the password input field when step changes to 2
+    if (formData.step === 2) {
+      passwordRef.current.focus();
+    }
+  }, [formData.step]);
 
   useEffect(() => {
     // Fetch user's name based on their email
@@ -199,6 +208,7 @@ function HrLogin({ toggleLoginType, isHRLogin }) {
                           value={formData.email}
                           onChange={handleChange}
                           required
+                          autoFocus
                         />
                       </Form>
                     </div>
@@ -300,6 +310,7 @@ function HrLogin({ toggleLoginType, isHRLogin }) {
                             value={formData.password}
                             onChange={handleChange}
                             required
+                             ref={passwordRef}
                           />
                           <span
                             style={{

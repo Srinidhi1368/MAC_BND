@@ -754,27 +754,31 @@ const Signup = () => {
                   </div>
                 </div>
                 <div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      checked={stillWorking}
-                      onChange={(e) => {
-                        setStillWorking(e.target.checked);
-                        if (e.target.checked) {
-                          setFormData({ ...formData, company_end_date: null });
-                        }
-                      }}
-                    />
-                    <label
-                      style={{
-                        fontSize: "14px",
-                        paddingBottom: "10px",
-                        marginLeft: "10px",
-                      }}
-                    >
-                      Still Working
-                    </label>
-                  </div>
+                <div>
+  <input
+    type="checkbox"
+    checked={stillWorking}
+    onChange={(e) => {
+      setStillWorking(e.target.checked);
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        company_end_date: e.target.checked ? null : prevFormData.company_end_date
+      }));
+    }}
+    
+    
+  />
+  <label
+    style={{
+      fontSize: "14px",
+      paddingBottom: "10px",
+      marginLeft: "10px",
+    }}
+  >
+    Still Working
+  </label>
+</div>
+
                   <div>
                     <input
                       type="text"

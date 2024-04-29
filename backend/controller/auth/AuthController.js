@@ -52,6 +52,9 @@ const signUp = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Adjust company_end_date to null if received as "null" from the frontend
+const adjustedCompanyEndDate = company_end_date === "null" ? null : company_end_date;
+
     const newUser = new User({
       email,
       password: hashedPassword,
@@ -68,7 +71,7 @@ const signUp = async (req, res) => {
       job_title: req.body.job_title || null,
       company: req.body.company || null,
       company_start_date: req.body.company_start_date || null,
-      company_end_date: req.body.company_end_date || null,
+      company_end_date: adjustedCompanyEndDate,
       profileImage: req.body.profileImage || null,
       biography: req.body.biography || null,
       skills: req.body.skills || null,
@@ -94,7 +97,11 @@ const signUp = async (req, res) => {
       appliedJob: [],
     });
   } catch (error) {
+
     console.log(error);
+
+
+
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
