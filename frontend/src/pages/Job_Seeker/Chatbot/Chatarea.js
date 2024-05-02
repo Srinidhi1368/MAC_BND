@@ -43,20 +43,6 @@ export default function Chatarea() {
   }, []);
   return (
     <div className={ChatBotStyle.ai_full}>
-
-
-      <Helmet>
-      <style>{`
-          .JobSeeker_RightSideContainer__topHeaderContainer {
-            display: none !important;
-          }
-
-          .JobSeeker_LayoutContainer__RightSideContainer {
-            height: auto;
-          }
-        `}</style>
-      </Helmet>
-
       <Container>
         <Row>
           <Col md={12} className={ChatBotStyle.header_style_ai}>
