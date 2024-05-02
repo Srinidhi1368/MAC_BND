@@ -63,6 +63,9 @@ const jobSchema = new mongoose.Schema(
             {
                 userEmail: {
                     type: String,
+                },
+                percentageResult:{
+                    type:String
                 }
             }
         ],

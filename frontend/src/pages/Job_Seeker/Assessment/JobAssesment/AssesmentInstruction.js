@@ -7,7 +7,7 @@ import { IoMdStarOutline } from "react-icons/io";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 function AssesmentInstruction() {
   const { state } = useLocation();
-  console.log(state);
+  // console.log(state);
   const navigateTO = useNavigate();
 
   return (
@@ -35,6 +35,7 @@ function AssesmentInstruction() {
         </p>
 
         <p className={assessmentStyle.secondaryHeading__Starbox}>
+          Test Id:
           <span>{state.createdAt}</span>{" "}
           <IoStar
             className={assessmentStyle.InstructionPage__assessment_starICON}
@@ -109,7 +110,7 @@ function AssesmentInstruction() {
               <span
                 className={assessmentStyle.InstructionLIST_Item_TextBox_primary}
               >
-                Win {state.star} star
+                Win 5 star
               </span>
               <span
                 className={

@@ -110,7 +110,7 @@ function SideNavbar() {
         <div className={navStyle.sidenavBar__profileBox}>
           <Tooltip title="Profile" arrow placement="right-end">
             <img
-              src={profileImage}
+              src={profileImage ?? 'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg'}
               alt="UserProfilePicture"
               className={navStyle.sidenavBar__userProfilePicture}
               onError={(e) => { e.target.src = `https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg`; e.onError = null; }}
@@ -118,7 +118,7 @@ function SideNavbar() {
           </Tooltip>
 
           <p className={navStyle.sidenavBar__userName}>
-            {name && name}
+            {name && name?.split(" ")[0]}
             <button onClick={() => navigateTO('/settings/editprofile')} className={navStyle.editProfileButton}>Edit Profile</button>
           </p>
 
