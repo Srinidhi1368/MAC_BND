@@ -19,6 +19,7 @@ function JobAssesmentResult() {
       .post(`http://localhost:8080/api/user/My-jobs/create/apply-job`, {
         ...item,
         email,
+        percentageResult
       })
       .then((response) => {
         if (response.data.success) {
@@ -40,7 +41,8 @@ function JobAssesmentResult() {
     const handleBackButton = (event) => {
       event.preventDefault();
       // Optionally, you can display a message to the user
-      toast.error('Try Again,Your application get failed');
+      toast.error('Application not submitted');
+      dispatchTO(handleClearResult());  
       navigateTO('/')
     };
 // Prevent back navigation

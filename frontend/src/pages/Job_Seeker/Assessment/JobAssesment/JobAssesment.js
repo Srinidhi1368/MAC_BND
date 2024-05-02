@@ -8,7 +8,7 @@ import axios from "axios";
 import Timer from "../Timer";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from '../../../Common-Components/Loaders/Loader';
-import { handleSelectedOption, calculatedResult } from '../../../../Redux/ReduxSlice';
+import { handleSelectedOption, calculatedResult, handleClearResult } from '../../../../Redux/ReduxSlice';
 import toast from 'react-hot-toast';
 
 function JobAssesment() {
@@ -21,25 +21,26 @@ function JobAssesment() {
     // console.log(state)
     const [Loading, setLoading] = useState(false);
     const [question, setQuestion] = useState(null);
-    // console.log(question);
+
     useEffect(() => {
         const handleBackButton = (event) => {
-          event.preventDefault();
-          toast.error('Try Again,Your application get failed');
-          navigateTO('/')
+            event.preventDefault();
+            toast.error('Application not submitted');
+            dispatchTO(handleClearResult())
+            navigateTO('/')
         };
         window.history.pushState(null, null, window.location.pathname);
         window.addEventListener('popstate', handleBackButton);
-     return () => {
-          window.removeEventListener('popstate', handleBackButton);
+        return () => {
+            window.removeEventListener('popstate', handleBackButton);
         };
-      }, []);    
+    }, []);
 
     const handleSelectOptions = (e, questionNum, value, optionNUM) => {
         e.preventDefault();
-        console.log(questionNum)
-        console.log(optionNUM);
-        console.log(value);
+        // console.log(questionNum)
+        // console.log(optionNUM);
+        // console.log(value);
         // !Toogle the marked options
         const ansOptions = document.querySelectorAll(
             ".SelfAssessmentPage__QuestinLIST__AnsweresOTPION"
@@ -114,9 +115,10 @@ function JobAssesment() {
 
     // LOAD THE QUESTIONS
     const handleChangeQuestion = (num) => {
-
-        loadQuestion(num);
+        loadQuestion(num)
     };
+
+
 
     const loadQuestion = (num) => {
         if (state) {
@@ -151,7 +153,7 @@ function JobAssesment() {
                         <p className="SelfAssessment__TimerBox">
                             Time Remaining
                             <span className="SelfAssessment__remainigTimer">
-                                <PiTimer /> <Timer minutes={state?.time?.split(" ")[0]} type="Job_Assesment" />
+                                <PiTimer /> <Timer minutes={state?.time?.split(" ")[0]} type="Job_Assesment" AnsweredQuestion={selectedOption} correctAnswer={state.mcq}  />
                             </span>
                         </p>
                     </header>
@@ -181,7 +183,7 @@ function JobAssesment() {
                                                     handleSelectOptions(
                                                         e,
                                                         question?.meta?.pagingCounter,
-                                                        1,
+                                                        0,
                                                         "OptionA"
                                                     )
                                                 }
@@ -200,7 +202,7 @@ function JobAssesment() {
                                                     handleSelectOptions(
                                                         e,
                                                         question?.meta?.pagingCounter,
-                                                        2,
+                                                        1,
                                                         "OptionB"
                                                     )
                                                 }
@@ -219,7 +221,7 @@ function JobAssesment() {
                                                     handleSelectOptions(
                                                         e,
                                                         question?.meta?.pagingCounter,
-                                                        3,
+                                                        2,
                                                         "OptionC"
                                                     )
                                                 }
@@ -238,7 +240,7 @@ function JobAssesment() {
                                                     handleSelectOptions(
                                                         e,
                                                         question?.meta?.pagingCounter,
-                                                        4,
+                                                        3,
                                                         "OptionD"
                                                     )
                                                 }
@@ -258,7 +260,7 @@ function JobAssesment() {
                     </div>
 
                     <div className="SelfAssessmetPage__buttonBox">
-                        {question?.meta?.hasPrevPage && (
+                        {question?.meta?.page <= 10 && question?.meta?.page > 1 && (
                             <button
                                 className="selfAssessmentPage__buttons selfAssessment__prevButton"
                                 type="button"
@@ -268,15 +270,15 @@ function JobAssesment() {
                             </button>
                         )}
 
-                        {question?.meta?.hasNextPage ? (
+                        {question?.meta?.pagingCounter < 10 &&
                             <button
                                 className="selfAssessmentPage__buttons"
                                 type="button"
-                                onClick={() => handleChangeQuestion(question?.meta?.nextPage)}
+                                onClick={() => handleChangeQuestion(question?.meta?.pagingCounter + 1)}
                             >
                                 Next
-                            </button>
-                        ) : (
+                            </button>}
+                       
                             <button
                                 className="selfAssessmentPage__buttons"
                                 type="button"
@@ -284,7 +286,7 @@ function JobAssesment() {
                             >
                                 Submit
                             </button>
-                        )}
+                        
                     </div>
                 </div>
 
@@ -380,6 +382,7 @@ function JobAssesment() {
                 <AssessmentSubmissionPopup
                     CbToggle={handleTogglePopup}
                     AnsweredQuestion={selectedOption}
+                    correctAnswer={state.mcq}
                 />
             )}
         </div>
@@ -388,23 +391,31 @@ function JobAssesment() {
 
 export default JobAssesment;
 
-function AssessmentSubmissionPopup({ CbToggle, AnsweredQuestion }) {
-    console.log(AnsweredQuestion);
+export function AssessmentSubmissionPopup({ CbToggle, AnsweredQuestion, correctAnswer }) {
+    // console.log(AnsweredQuestion);
+    // console.log(correctAnswer);
     const navigateTO = useNavigate();
     const dispatch = useDispatch();
     const [Loading, setLoading] = useState(false);
     const handleSubmitAssessmentClick = (e) => {
         e.preventDefault();
         let correctCount = 0;
+        // console.log(correctCount);  
         setLoading(true);
 
-        // for (const key in AnsweredQuestion) {
-        //     if (AnsweredQuestion.hasOwnProperty(key)) {
-        //         if (AnsweredQuestion[key].value.isCorrect) {
-        //             correctCount++;
-        //         }
-        //     }
-        // }
+        Object.keys(AnsweredQuestion).forEach((questionId) => {
+            const actualAnswer = parseInt(correctAnswer[questionId - 1].correctAnswer);
+            const myAnswer = parseInt(AnsweredQuestion[questionId].option); // Parse option to integer if needed
+            // console.log(actualAnswer);
+            // console.log(myAnswer);
+            if (myAnswer === actualAnswer) { // Check if answer matches
+                correctCount++; // Increment correctCount if answers match
+            }
+
+        });
+
+        // console.log(correctCount);
+
         dispatch(calculatedResult(correctCount));
 
         setTimeout(() => {

@@ -14,8 +14,9 @@ const getUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    user.password = undefined;
 
-    res.json({ userDetails: user });
+    res.json({ userDetails: user, success: true });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -53,7 +54,7 @@ const signUp = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Adjust company_end_date to null if received as "null" from the frontend
-const adjustedCompanyEndDate = company_end_date === "null" ? null : company_end_date;
+    const adjustedCompanyEndDate = company_end_date === "null" ? null : company_end_date;
 
     const newUser = new User({
       email,
@@ -67,7 +68,7 @@ const adjustedCompanyEndDate = company_end_date === "null" ? null : company_end_
       course,
       course_start_date,
       course_end_date,
-      percentage, 
+      percentage,
       job_title: req.body.job_title || null,
       company: req.body.company || null,
       company_start_date: req.body.company_start_date || null,
@@ -132,7 +133,7 @@ const login = async (req, res) => {
       name,
       email,
       userType: "user",
-      profileImage : user.profileImage,
+      profileImage: user.profileImage,
       savedJob: user.userSavedJob,
       appliedJob: user.userAppliedJob,
     });
@@ -207,54 +208,31 @@ const resetPassword = async (req, res) => {
 const updateUserField = async (req, res) => {
   try {
     const { email } = req.params;
-    const result = await uploadonCloudinary(req.file.path);
-    const { phone_number, dob, country, course, website, gender, marital_status, biography, experience, skills
-    } = req.body;
+    const updateFields = {};
+    const result = req.file && await uploadonCloudinary(req.file.path);
+    req.body.profileImage =  result &&  result?.secure_url;
 
+    req.body.skills = req.body.skills?.length > 0 ? req.body.skills?.split(",").map((skill, index) => ({ name: skill.trim(), index })) : ""
 
-    // change the skils structure according to the model skils structure
-
-    let updatedSkils = updatedUserData.skills.map((data, index) => ({
-      name: data.trim(),
-      index,
-    }));
-    updatedUserData.skills = updatedSkils;
-
-    // let updatedSkils = updatedUserData.skills.map((data, index) => ({ name: data.trim(), index }))
-    // updatedUserData.skills = updatedSkils
-
-
-    const skillArray = skills.split(",").map((skill, index) => ({ name: skill.trim(), index }));
-
-
-    // Find the user by email
-    const user = await User.findOne({ email: email });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
+    for (const key in req.body) {
+      if (req.body[key] !== 'null' && req.body[key] !== '' && req.body[key] !== ' ' && req.body[key]) {
+        updateFields[key] = req.body[key];
+      }
     }
 
-    // Update user fields with the new data
-    Object.assign(user, {
-      profileImage: result.secure_url,
-      phone_number: phone_number,
-      dob: dob,
-      country: country,
-      course: course,
-      website: website,
-      gender: gender,
-      marital_status: marital_status,
-      biography: biography,
-      experience: experience,
-      skills: skillArray
-    });
+    const findUser = await User.findOneAndUpdate({ email: email }, updateFields, { new: true });
 
-    // Save the updated user document
-    await user.save();
-
-    return res.status(200).json({
-      message: "User updated successfully",
-      user: user.toObject(), // Convert to plain JavaScript object for response
-    });
+    if (findUser) {
+      res.status(200).json({
+        success: true,
+        msg: "User details updated successfully"
+      })
+    }else{
+      res.status(404).json({
+        success: false,
+        msg: "No user found to update"
+      })
+    }
   } catch (error) {
     console.error("Error updating user:", error);
     return res.status(500).json({ message: "Internal Server Error" });

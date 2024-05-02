@@ -4,7 +4,7 @@ const User = require("../model/users/UserModel");
 
 const createAppliedJob = async (req, res) => {
     try {
-        const { _id, email, jobTitle, employeeEmail, jobPoster, jobDescription, employmentType, location, salaryRange, skilRequired, jobExperience, createdAt,applicationStatus } = req.body;
+        const { _id, email, jobTitle, employeeEmail, jobPoster, jobDescription, employmentType, location, salaryRange, skilRequired, jobExperience, createdAt,applicationStatus,percentageResult } = req.body;
 
         // Current USER
         const mongooseUser = await User.findOne({ email: email });
@@ -16,7 +16,7 @@ const createAppliedJob = async (req, res) => {
 
         // update the jobo collection applicationCount by 1 and also update the applidBy data in collection with user emailID everytime any user applied for jobs
         const updateJobCollection = await jobCollection.updateOne({ _id }, {
-            $push: { appliedBy: { userEmail: email } },
+            $push: { appliedBy: { userEmail: email ,percentageResult:percentageResult} },
             $inc: { totalApplication: 1 },
         });
 

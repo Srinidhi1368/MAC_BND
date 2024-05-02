@@ -26,7 +26,7 @@ const photoFilter = (req, file, cb) => {
   if (file.mimetype.includes('image/')) {
     cb(null, true);
   } else {
-    cb(new Error('Only PDF files are allowed'), false);
+    cb(new Error('Only JPG/PNG files are allowed'), false);
   }
 };
 

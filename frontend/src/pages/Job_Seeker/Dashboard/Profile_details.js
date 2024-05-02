@@ -16,7 +16,7 @@ const Profile_details = () => {
   const navigateTO =useNavigate()
 const dispatch =useDispatch()
   const Job =useLocation().state
-  console.log(Job._id)
+  // console.log(Job._id)
 
   const email = localStorage.getItem("email");
   // const username = localStorage.getItem("name");
