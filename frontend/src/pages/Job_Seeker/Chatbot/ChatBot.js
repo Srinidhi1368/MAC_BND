@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Helmet } from "react-helmet";
 import icon2 from "./image/icon2.png";
 import bg from "../../../Assets/backdropimage.png";
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -26,20 +25,6 @@ function ChatBot() {
 
   return (
     <div>
-
-=======
-      <Helmet>
-        <style>{`
-          .JobSeeker_RightSideContainer__topHeaderContainer{
-            display: none !important;
-          }
-
-          .JobSeeker_LayoutContainer__RightSideContainer{
-            height: auto;
-          }
-        `}</style>
-      </Helmet>
-
       <div className={ChatBotStyle.chatbot_full}>
         {showImage && (
           <div className={ChatBotStyle.chatbot_full_image}>

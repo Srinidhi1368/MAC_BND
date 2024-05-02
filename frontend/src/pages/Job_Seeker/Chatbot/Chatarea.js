@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,23 +24,23 @@ import { GoDotFill } from "react-icons/go";
 export default function Chatarea() {
   const [iconClicked, setIconClicked] = useState(false);
 
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.innerHTML = `
-      .JobSeeker_RightSideContainer__topHeaderContainer{
-        display: none !important;
-      }
-      .JobSeeker___OutletContainer{
-        height: 100vh;
-      }
+  // useEffect(() => {
+  //   const style = document.createElement("style");
+  //   style.innerHTML = `
+  //     .JobSeeker_RightSideContainer__topHeaderContainer{
+  //       display: none !important;
+  //     }
+  //     .JobSeeker___OutletContainer{
+  //       height: 100vh;
+  //     }
       
-    `;
-    document.head.appendChild(style);
+  //   `;
+  //   document.head.appendChild(style);
 
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
+  //   return () => {
+  //     document.head.removeChild(style);
+  //   };
+  // }, []);
   return (
     <div className={ChatBotStyle.ai_full}>
       <Container>

@@ -85,7 +85,7 @@ const HrJobDetail = ({ jobId, dataId }) => {
     };
 
     getEmail();
-  }, [jobId]);
+  }, [jobId,dataId]);
 
   return (
     <>
