@@ -64,29 +64,6 @@ function JobSeekerLayout() {
     </header>
   )}
 
-
-      <div className={JobSeekerStyle.LayoutContainer__RightSideContainer}>
-        {pathname === "/Chatarea" || pathname === "/chatbot" ? (
-          <ChatbotNavbar />
-        ) : (
-          <header
-            className={JobSeekerStyle.RightSideContainer__topHeaderContainer}
-          >
-            {pathname !== "/interviews" && (
-              <DashboardTopComponent
-                CBOnchange={handleFilterOnchange}
-                CbToggle={handleToogleFilter}
-              />
-            )}
-            {pathname === "/interviews" && <InterviewTopNavbar />}
-          </header>
-        )}
-
-        <div className={JobSeekerStyle.__OutletContainer}>
-          <Outlet />
-        </div>
-      </div>
-
   <div className={JobSeekerStyle.__OutletContainer}>
     <Outlet />
   </div>
