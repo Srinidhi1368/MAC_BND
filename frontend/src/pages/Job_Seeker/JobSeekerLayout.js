@@ -416,11 +416,6 @@ function InterviewTopNavbar() {
   );
 }
 
-function ChatbotNavbar() {
-  return <></>;
-}
-
-
 function ChatbotNavbar(){
   return(
     <>   
