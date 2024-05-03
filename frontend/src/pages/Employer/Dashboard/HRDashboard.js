@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import pages from "../Pages.module.css";
 import user from "../../../Assets/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUpRightFromSquare,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare,faTrash } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
