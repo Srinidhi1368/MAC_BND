@@ -38,7 +38,7 @@ function PdfComp(props) {
 
       loadPDF();
     }
-  }, [props.pdf, error]); // Trigger effect when props.pdf changes
+  }, [props.pdf]); // Trigger effect when props.pdf changes
 
   return (
     <div className={ResumeStyle.show_pdf_box}>

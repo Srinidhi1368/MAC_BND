@@ -177,13 +177,13 @@ p {
 }
 .__appliedUsersSpace{
     /* border: 1px solid green; */
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
 }
 .__appliedUsers{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    width: 350px;
+    width: 345px;
     height: 18em;
     padding: 1em;
     border-radius: 5px;
@@ -191,6 +191,11 @@ p {
     flex-direction: column;
     /* gap: 1em; */
     justify-content: space-around;
+    cursor: pointer;
+}
+.__activeAppliedUsers{
+    border: 2px solid blue;
+    background: #3081D0;
 }
 .__userPF{
     width: 4em;
@@ -229,6 +234,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    margin-left: 1.5em;
 }
 .__applicantButtons{
     /* border: 1px solid blue; */
