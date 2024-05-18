@@ -29,7 +29,7 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
 
       return (
         <span className={ApplicationStyle.Status__poupBox_date}>
-          {day >= 10 ? "0" + day : day} {monthObj[month]}{" "}
+          {day < 10 ? "0" + day : day} {monthObj[month]}{" "}
         </span>
       );
     }
@@ -108,11 +108,11 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
 
         <ul className={ApplicationStyle.Status__poupBox_StatusTimeLineList}>
           <li
-            className={`Status__StatusTimeLineListItem ${
+            className={`${ApplicationStyle.Status__StatusTimeLineListItem} ${
               jobStatus?.some(
                 (data) =>
                   data.StatusText.toLowerCase() === "Applied".toLowerCase()
-              ) && "completedStep"
+              ) && ApplicationStyle.completedStep
             }`}
           >
             Applied
@@ -123,12 +123,12 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
           </li>
 
           <li
-            className={`Status__StatusTimeLineListItem ${
+            className={`${ApplicationStyle.Status__StatusTimeLineListItem} ${
               jobStatus?.some(
                 (data) =>
                   data.StatusText.toLowerCase() ===
                   "Application Sent".toLowerCase()
-              ) && "completedStep"
+              ) && ApplicationStyle.completedStep
             }`}
           >
             Application Sent
@@ -140,12 +140,12 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
           </li>
 
           <li
-            className={`Status__StatusTimeLineListItem ${
+            className={`${ApplicationStyle.Status__StatusTimeLineListItem} ${
               jobStatus?.some(
                 (data) =>
                   data.StatusText.toLowerCase() ===
                   "Application Viewed".toLowerCase()
-              ) && "completedStep"
+              ) && ApplicationStyle.completedStep
             }`}
           >
             Application Viewed
@@ -157,12 +157,12 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
           </li>
 
           <li
-            className={`Status__StatusTimeLineListItem ${
+            className={`${ApplicationStyle.Status__StatusTimeLineListItem} ${
               jobStatus?.some(
                 (data) =>
                   data.StatusText.toLowerCase() ===
                   "Resume Viewed".toLowerCase()
-              ) && "completedStep"
+              ) && ApplicationStyle.completedStep
             }`}
           >
             Resume Viewed
@@ -177,7 +177,7 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
               data.JobStatus.toLocaleLowerCase() ===
               "In-Progress".toLocaleLowerCase()
           ) && (
-            <li className={`Status__StatusTimeLineListItem`}>
+            <li className={`${ApplicationStyle.Status__StatusTimeLineListItem}`}>
               Waiting for recruiter
             </li>
           )}
@@ -188,7 +188,7 @@ function StatusPopup({ popupType, CbTogglePopup, jobStatus }) {
               "Shortlisted".toLocaleLowerCase()
           ) && (
             <li
-              className={`Status__StatusTimeLineListItem completedStep  Shortlisted`}
+              className={`${ApplicationStyle.Status__StatusTimeLineListItem} ${ApplicationStyle.completedStep}  ${ApplicationStyle.Shortlisted} `}
             >
               Shortlisted
               {calculateDate(

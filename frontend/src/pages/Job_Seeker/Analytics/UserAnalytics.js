@@ -402,7 +402,7 @@ function AnalyticsPageCarousel({ period }) {
 }
 
 function SplineChart() {
-  const [data, setData] = useState({
+  const [data] = useState({
     labels: [
       "Jan",
       "Feb",
@@ -433,7 +433,7 @@ function SplineChart() {
     ],
   });
 
-  // console.log(setData);
+  // console.lo);
   return (
     <div style={{ height: "420px" }}>
       <Line data={data}>Hello</Line>

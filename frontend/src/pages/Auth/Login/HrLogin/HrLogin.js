@@ -106,7 +106,7 @@ function HrLogin({ toggleLoginType, isHRLogin }) {
         headers: { "Content-Type": "application/json" },
       });
 
-      const { name, email, token } = response.data;
+      const { name, email, token,bookmarkUser } = response.data;
 
       // Store user details in local storage
       localStorage.setItem("token", token);
@@ -118,6 +118,7 @@ function HrLogin({ toggleLoginType, isHRLogin }) {
           email: email,
           name: name,
           userType: "employee",
+          bookmarkUser : bookmarkUser,
         })
       );
       toast.success(`Welcome Back Recruiter, ${name}`);

@@ -415,6 +415,79 @@ li {
     color: #fa7902;
 }
 
+/* Application status popup  */
+.Status__StatusTimeLineListItem {
+    display: block;
+    list-style-type: none;
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+    color: #585858;
+    margin-bottom: 0.2em;
+    height: 50px;
+}
+
+.Status__StatusTimeLineListItem::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    counter-increment: step;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5%;
+    z-index: 2;
+    border: none;
+    background-color: rgb(128, 128, 128);
+    color: rgba(128, 128, 128, 0.256);
+    font-size: 10px;
+}
+
+.Status__StatusTimeLineListItem::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 1px;
+    height: 120%;
+    background-color: black;
+    z-index: -1;
+}
+
+.Status__StatusTimeLineListItem:last-child::after {
+    content: none;
+}
+
+.Status__StatusTimeLineListItem.completedStep::before {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+}
+
+.Status__StatusTimeLineListItem.Shortlisted::before {
+    content: "✓";
+    background: linear-gradient(90deg, #0050D1 0%, #00296B 100%);
+    border: none;
+    color: white;
+}
+
+
+.Status__StatusTimeLineListItemNotSelected {
+    color: rgba(223, 2, 2, 1);
+}
+
+.Status__StatusTimeLineListItem.completedStepNotSelected:before {
+    content: "✕";
+    background-color: rgba(223, 2, 2, 1);
+    border: none;
+    color: white !important;
+}
+
+.Status__StatusTimeLineListItem.completedStep::after {
+    background-color: #4caf50;
+}
+
 /* Feedback popup */
 .FeedbackPopup_Container {
     position: fixed;
@@ -451,7 +524,7 @@ li {
 .FeedbackPopup_closeButton {
     font-size: 25px;
     cursor: pointer;
-    color:#fc2c0a;
+    color: #fc2c0a;
 }
 
 .FeedbackPopup_FeedbackText {

@@ -26,6 +26,7 @@ input {
 .LayoutContainer__RightSideContainer {
   height: 100%;
   width: calc(100% - 275px);
+  position: relative;
 }
 
 .RightSideContainer__topHeaderContainer {
@@ -165,7 +166,8 @@ input {
   padding: 0 4em;
 }
 
-.robo,  .sound {
+.robo,
+.sound {
   font-size: 35px;
   color: white;
 }
@@ -173,8 +175,6 @@ input {
 .sound {
   font-size: 28px;
 }
-
-
 
 @media screen and (max-width: 1025px) {
   .LayoutContainer__LeftSideContainer {

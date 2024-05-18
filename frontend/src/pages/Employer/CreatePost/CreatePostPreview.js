@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import pages from "../Pages.module.css";
+import createPost from './CreatePost.module.css'
 import { IoImageOutline } from "react-icons/io5";
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -69,65 +69,65 @@ function CreatePostPreview() {
   };
 
   return (
-    <div className={pages.__PostPreviewPage_Container}>
+    <div className={createPost.__PostPreviewPage_Container}>
       {
         loading ? <Loader /> : <>
 
-          <h1 className={pages.__PostPreviewPage_heading}>Create Post</h1>
+          <h1 className={createPost.__PostPreviewPage_heading}>Create Post</h1>
 
-          <div className={pages.__PostPreviewPage_PosterContainer}>
-            <img src={state?.jobPoster} alt={title} className={pages.__PostPreviewPage_Poster} />
+          <div className={createPost.__PostPreviewPage_PosterContainer}>
+            <img src={state?.jobPoster} alt={title} className={createPost.__PostPreviewPage_Poster} />
           </div>
 
-          <div className={pages.__PostPreviewPage_PosterName_Box}>
-            <span className={pages.__PostPreviewPage__imgUploaded}>
-              <IoImageOutline className={pages.__PostPreviewPage__imgICON} />
-              <span className={pages.__PostPreviewPage__imgUploadedText}>Image Uploaded</span>
+          <div className={createPost.__PostPreviewPage_PosterName_Box}>
+            <span className={createPost.__PostPreviewPage__imgUploaded}>
+              <IoImageOutline className={createPost.__PostPreviewPage__imgICON} />
+              <span className={createPost.__PostPreviewPage__imgUploadedText}>Image Uploaded</span>
             </span>
-            <p className={pages.__PostPreviewPage_PosterName}>
+            <p className={createPost.__PostPreviewPage_PosterName}>
               {state?.selectedImg?.name}
             </p>
           </div>
 
-          <div className={pages.__PostPreviewPage_PostDescription_Box}>
-            <p className={pages.__PostPreviewPage_Description}>
+          <div className={createPost.__PostPreviewPage_PostDescription_Box}>
+            <p className={createPost.__PostPreviewPage_Description}>
               {state?.jobDescription}
             </p>
 
-            <p className={pages.__PostPreviewPage_Description}>
+            <p className={createPost.__PostPreviewPage_Description}>
               <strong>Responsibility: </strong>  {state?.responsibility}
             </p>
 
-            <p className={`${pages.__PostPreviewPage_Description}, ${pages.__PostPreviewPage_Skils}`}>
+            <p className={`${createPost.__PostPreviewPage_Description}, ${createPost.__PostPreviewPage_Skils}`}>
               <strong>Skils: </strong>  {
                 state?.skilRequired?.map((skils, index)=>{
-                  return <span key={index} className={pages.__PostPreviewSkilsTag}>{skils}</span>
+                  return <span key={index} className={createPost.__PostPreviewSkilsTag}>{skils}</span>
                 })
                
               }
             </p>
 
-            <p className={`${pages.__PostPreviewPage_Description}, ${pages.__PostPreviewPage_Skils}`}>
+            <p className={`${createPost.__PostPreviewPage_Description}, ${createPost.__PostPreviewPage_Skils}`}>
               <strong>Qualifications: </strong>  <span> {state?.education}</span>
             </p>
 
-            <p className={`${pages.__PostPreviewPage_Description}, ${pages.__PostPreviewPage_Skils}`}>
+            <p className={`${createPost.__PostPreviewPage_Description}, ${createPost.__PostPreviewPage_Skils}`}>
               <strong>Experience: </strong>  <span> {state?.jobExperience} Years</span>
             </p>
 
-            <p className={`${pages.__PostPreviewPage_Description}, ${pages.__PostPreviewPage_Skils}`}>
+            <p className={`${createPost.__PostPreviewPage_Description}, ${createPost.__PostPreviewPage_Skils}`}>
               <strong>Salary: </strong>  <span> {state?.salaryRange} LPA</span>
             </p>
 
-            <p className={`${pages.__PostPreviewPage_Description}, ${pages.__PostPreviewPage_Skils}`}>
+            <p className={`${createPost.__PostPreviewPage_Description}, ${createPost.__PostPreviewPage_Skils}`}>
               <strong>Location: </strong>  <span> {state?.location}</span>
             </p>
 
           </div>
 
-          <div className={pages.__PostPreviewPage_ButtonContainer}>
-            <button type="button" className={pages.__PostPreviewPage_Buttons} onClick={handleCancleButtonClick}>Cancel</button>
-            <button type="button" className={pages.__PostPreviewPage_Buttons} onClick={handleCreatePost}>Post</button>
+          <div className={createPost.__PostPreviewPage_ButtonContainer}>
+            <button type="button" className={createPost.__PostPreviewPage_Buttons} onClick={handleCancleButtonClick}>Cancel</button>
+            <button type="button" className={createPost.__PostPreviewPage_Buttons} onClick={handleCreatePost}>Post</button>
           </div>
 
         </>

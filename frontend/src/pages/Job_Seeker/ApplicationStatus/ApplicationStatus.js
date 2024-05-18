@@ -130,7 +130,7 @@ function Status() {
                   statusData.JobStatus.toLowerCase() ===
                   pathname.split("/")[2].toLowerCase()
               )
-            )
+            ).sort((a, b) => b.createdAt - a.createdAt)
           );
           setLoading(false);
         } else {

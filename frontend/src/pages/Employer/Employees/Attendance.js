@@ -1,5 +1,5 @@
 import * as React from 'react';
-import pages from '../Pages.module.css';
+import employees from './Employees.module.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -24,12 +24,12 @@ const rows = [
 
 export default function Attendance() {
   return (
-    <div className={pages.__leaveReq_Table}>
+    <div className={employees.__leaveReq_Table}>
       <TableContainer component={Paper}>
-        <div className={pages.__leaveReq_Table_header}>
-          <h3 className={pages.__leaveReq_Table_PrimaryText}>Attendance Overview</h3>
+        <div className={employees.__leaveReq_Table_header}>
+          <h3 className={employees.__leaveReq_Table_PrimaryText}>Attendance Overview</h3>
           <>
-            <button type="button" className={pages.__leaveReq_Table_Button}><VscSettings className={pages.__leaveReq_Table_ButtonICON} /> View Attendance</button>
+            <button type="button" className={employees.__leaveReq_Table_Button}><VscSettings className={employees.__leaveReq_Table_ButtonICON} /> View Attendance</button>
           </>
         </div>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

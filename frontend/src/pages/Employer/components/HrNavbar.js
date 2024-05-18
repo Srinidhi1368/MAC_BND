@@ -1,7 +1,7 @@
 import layout from './RecruiterLayout.module.css';
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import user from '../../../Assets/user.png'
+// import user from '../../../Assets/user.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse, faUsers, faUser, faChartSimple, faRobot, faCalendarDays, faGear, faMoneyBill1Wave,
@@ -17,7 +17,7 @@ export default function HR_Navbar() {
   const [tabletView, setTabletView] = useState()
   const tabScreen = useMediaQuery({ maxWidth: 950 })
   const dispatch = useDispatch();
-  const { name } = useSelector((state) => state.Assessment.currentUser);
+  const { name,profileImage } = useSelector((state) => state.Assessment.currentUser);
 
   const handleLogoutClick = () => {
     dispatch(handleUserLogOut());
@@ -50,7 +50,11 @@ export default function HR_Navbar() {
 
       <div className={layout.__nav_footer_actions}>
         <div className={layout.__user_Info}>
-          <img className={layout.__user_Img} title='Profile' src={user} alt='' />
+          <img className={layout.__user_Img} title='Profile' 
+          src={profileImage ?? 'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg'}
+ alt='HrProfilePicture' 
+ onError={(e) => { e.target.src = `https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg`; e.onError = null; }}
+ />
           <div className={layout.__userSection}>
             {name}
             <button onClick={()=>navigateTo('/Setting/Editprofile')} className={layout.__btn_Edit_Profile}>EDIT MY PROFILE</button>

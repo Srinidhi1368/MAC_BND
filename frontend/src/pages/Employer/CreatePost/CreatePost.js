@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import pages from "../Pages.module.css";
+import createPost from './CreatePost.module.css'
 import toast from "react-hot-toast";
 import noImg from "../../../Assets/noImage.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -143,17 +143,17 @@ export default function CreatePost() {
 
   return (
     <>
-      <div className={pages.__create_Post_Page}>
-        <header className={pages.__create_Post_Header}>
+      <div className={createPost.__create_Post_Page}>
+        <header className={createPost.__create_Post_Header}>
           <h1 style={{ fontSize: "30px" }}>Create Post</h1>
         </header>
 
-        <div className={pages.__postDetails}>
+        <div className={createPost.__postDetails}>
 
-          <div className={pages.__imgContainer}>
-            <img className={pages.__previewImg} src={post.jobPoster} alt="preview img" onError={(e) => { e.target.src = `${noImg}`; e.onError = null; }} onClick={(e) => imgRef.current.click()} />
+          <div className={createPost.__imgContainer}>
+            <img className={createPost.__previewImg} src={post.jobPoster} alt="preview img" onError={(e) => { e.target.src = `${noImg}`; e.onError = null; }} onClick={(e) => imgRef.current.click()} />
             {
-              !post.jobPoster && <p className={pages.__previewImgText}>
+              !post.jobPoster && <p className={createPost.__previewImgText}>
                 drop your image here or <span
                   style={{ color: "blue", fontWeight: "700", cursor: "pointer", marginLeft: "5px" }} onClick={(e) => imgRef.current.click()}> browse </span>
               </p>
@@ -162,38 +162,38 @@ export default function CreatePost() {
           </div>
 
           <form
-            className={pages.__createPost_Form}
+            className={createPost.__createPost_Form}
             onSubmit={(e) => e.preventDefault()}
           >
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="jobTitle">Job Title</label> <br />
               <input
                 type="text"
                 name="jobTitle"
                 id="jobTitle"
                 value={post.jobTitle}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={handleOnChange}
               />
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="jobDescription">Job Description</label> <br />
               <input
                 type="text"
                 name="jobDescription"
                 id="jobDescription"
                 value={post.jobDescription}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={handleOnChange}
               />
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="employmentType">Employment Type</label> <br />
               <select
-                className={pages.__createPost_Select}
+                className={createPost.__createPost_Select}
                 name="employmentType"
                 id="employmentType"
                 onChange={handleOnChange}
@@ -206,22 +206,22 @@ export default function CreatePost() {
               </select>
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="location">Location</label> <br />
               <input
                 type="text"
                 name="location"
                 id="location"
                 value={post.location}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={handleOnChange}
               />
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="salaryRange">Salary Range (INR)</label> <br />
               <select
-                className={pages.__createPost_Select}
+                className={createPost.__createPost_Select}
                 name="salaryRange"
                 id="salaryRange"
                 onChange={handleOnChange}
@@ -238,15 +238,15 @@ export default function CreatePost() {
             </div>
 
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="skilRequired">Skill Required</label>
-              <span className={pages.__input_Grps_labelInfo}>Press <strong>ENTER</strong> for register the skil set</span>
+              <span className={createPost.__input_Grps_labelInfo}>Press <strong>ENTER</strong> for register the skil set</span>
                <br />
               {
-                 post.skilRequired?.length > 0 && <ul className={pages.__requiredSkils_List}>
+                 post.skilRequired?.length > 0 && <ul className={createPost.__requiredSkils_List}>
                   {
                      post.skilRequired?.map((item, index) => {
-                      return <li className={pages.__requiredSkils_List_ITEM} key={index}> <span>{item}</span> <RxCross2 className={pages.userSkils_item_DeleteButton} onClick={(e) => handleRemoveSkils(e, item)} /></li>
+                      return <li className={createPost.__requiredSkils_List_ITEM} key={index}> <span>{item}</span> <RxCross2 className={createPost.userSkils_item_DeleteButton} onClick={(e) => handleRemoveSkils(e, item)} /></li>
                     })
                   }
                 </ul>
@@ -256,17 +256,17 @@ export default function CreatePost() {
                 name="skilRequired"
                 id="skilRequired"
                 value={Skils}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={(e) => setSkils(e.target.value)}
                 placeholder="Enter your skils"
                 onKeyDown={handleSkilsKeyDown}
               />
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="jobExperience">Job Experince</label> <br />
               <select
-                className={pages.__createPost_Select}
+                className={createPost.__createPost_Select}
                 name="jobExperience"
                 id="jobExperience"
                 onChange={handleOnChange}
@@ -283,52 +283,52 @@ export default function CreatePost() {
               </select>
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="education">Education</label> <br />
               <input
                 type="text"
                 name="education"
                 id="education"
                 value={post.education}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={handleOnChange}
               />
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="responsibility">Responsibility</label> <br />
               <input
                 type="text"
                 name="responsibility"
                 id="responsibility"
                 value={post.responsibility}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={handleOnChange}
               />
             </div>
 
-            <div className={pages.__input_Grps}>
+            <div className={createPost.__input_Grps}>
               <label htmlFor="howToApply">How to Apply</label> <br />
               <input
                 type="text"
                 name="howToApply"
                 id="howToApply"
                 value={post.howToApply}
-                className={pages.__inputs}
+                className={createPost.__inputs}
                 onChange={handleOnChange}
               />
             </div>
 
-            <div className={pages.preAssessment_buttonContainer}>
-              <button type="button" className={pages.preAssessment_button} onClick={handleSetPreAssessmentButtonClick}>Set Pre-Assessment Questions</button>
+            <div className={createPost.preAssessment_buttonContainer}>
+              <button type="button" className={createPost.preAssessment_button} onClick={handleSetPreAssessmentButtonClick}>Set Pre-Assessment Questions</button>
             </div>
 
           </form>
         </div>
 
-        <div className={pages.__buttons}>
-          <button className={pages.__btn_Cancel} onClick={handleCancleClick}>Cancel</button>
-          <button className={pages.__btn_Save} onClick={handleSavePreviewClick}>
+        <div className={createPost.__buttons}>
+          <button className={createPost.__btn_Cancel} onClick={handleCancleClick}>Cancel</button>
+          <button className={createPost.__btn_Save} onClick={handleSavePreviewClick}>
             Save & Preview
           </button>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import pages from "../Pages.module.css";
+import employees from './Employees.module.css';
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function Employees() {
@@ -13,14 +13,14 @@ export default function Employees() {
 
   return (
     <div>
-      <nav className={pages.__employee_ToggleNav}>
+      <nav className={employees.__employee_ToggleNav}>
         <NavLink
           className={({ isActive }) =>
-            isActive ? pages.active : pages.__employee_Links
+            isActive ? employees.active : employees.__employee_Links
           }
           to="/employees/on_time"
         >
-          <div className={pages.__employee_Links_Toggles}>
+          <div className={employees.__employee_Links_Toggles}>
             <h1>360</h1>
             <div>
               <p style={{ fontSize: "18px", fontWeight: "500" }}>On Time</p>
@@ -33,7 +33,7 @@ export default function Employees() {
                 }}
               >
 
-                <div className={pages.__employee_PresenceColor} /> -10% Less
+                <div className={employees.__employee_PresenceColor} /> -10% Less
                 than yesterday
               </div>
             </div>
@@ -41,11 +41,11 @@ export default function Employees() {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            isActive ? pages.active : pages.__employee_Links
+            isActive ? employees.active : employees.__employee_Links
           }
           to="/employees/absent"
         >
-          <div className={pages.__employee_Links_Toggles}>
+          <div className={employees.__employee_Links_Toggles}>
             <h1>30</h1>
             <div>
               <p style={{ fontSize: "18px", fontWeight: "500" }}>Absent</p>
@@ -59,7 +59,7 @@ export default function Employees() {
               >
 
                 <div
-                  className={pages.__employee_PresenceColor}
+                  className={employees.__employee_PresenceColor}
                   style={{ background: "rgb(248, 170, 183)" }}
                 />
                 +3% Increase than yesterday
@@ -69,11 +69,11 @@ export default function Employees() {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            isActive ? pages.active : pages.__employee_Links
+            isActive ? employees.active : employees.__employee_Links
           }
           to="/employees/late_arrivals"
         >
-          <div className={pages.__employee_Links_Toggles}>
+          <div className={employees.__employee_Links_Toggles}>
             <h1>62</h1>
             <div>
               <p style={{ fontSize: "18px", fontWeight: "500" }}>
@@ -88,7 +88,7 @@ export default function Employees() {
                 }}
               >
                 <div
-                  className={pages.__employee_PresenceColor}
+                  className={employees.__employee_PresenceColor}
                   style={{ background: "rgb(248, 170, 183)" }}
                 />
                 +3% Increase than yesterday
@@ -98,11 +98,11 @@ export default function Employees() {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            isActive ? pages.active : pages.__employee_Links
+            isActive ? employees.active : employees.__employee_Links
           }
           to="/employees/leave_requests"
         >
-          <div className={pages.__employee_Links_Toggles}>
+          <div className={employees.__employee_Links_Toggles}>
             <h1>6</h1>
             <div>
               <p style={{ fontSize: "18px", fontWeight: "500" }}>
@@ -116,7 +116,7 @@ export default function Employees() {
                   alignItems: "center",
                 }}
               >
-                <div className={pages.__employee_PresenceColor} /> -10% Less
+                <div className={employees.__employee_PresenceColor} /> -10% Less
                 than yesterday
               </div>
             </div>

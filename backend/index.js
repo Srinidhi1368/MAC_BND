@@ -34,9 +34,6 @@ app.use("/api/aptitude", AptitudeQuestionRouter);
 const jobRoutes = require("./Routes/Job.Route");
 app.use("/api/jobs", jobRoutes);
 
-
-const Port = process.env.PORT;
-
 // Resume Routes
 const ResumeRoutes = require("./Routes/ResumeRoutes.js");
 app.use("/resume", ResumeRoutes);
@@ -46,11 +43,57 @@ app.use("/uploads", express.static("uploads"));
 const myJobRoutes = require("./Routes/MyJob.Route");
 app.use("/api/user/My-jobs", myJobRoutes);
 
-app.listen(Port, async () => {
+
+// !Bookmarked Routes
+const { bookmarkRoutes } = require("./Routes/Bookmark.Route.js");
+app.use("/api/user/bookmarkd", bookmarkRoutes)
+
+// ! Notifications Route
+const {notificationRoutes} = require("./Routes/Notification.Route.js");
+app.use("/api/user/notifications", notificationRoutes)
+
+const Port = process.env.PORT;
+
+
+// Socket IO 
+const httpServer = require('http').createServer(app);
+const connectedUser = []
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: "*",
+  }
+})
+io.on("connection", (socket) => {
+  socket.on("userConnect", (data) => {
+    const user = connectedUser?.find(user => user.email === JSON.parse(data).userEmail);
+    if (user) {
+      user.socketId = socket.id;
+    } else {
+      connectedUser.push({ email: JSON.parse(data).userEmail, socketId: socket.id });
+    }
+    // console.log(connectedUser)
+  })
+
+
+  socket.on("HrSendNotification", (data) => {
+    const currentSocketID = connectedUser.filter(user => user.email === JSON.parse(data).userEmail)[0]?.socketId;
+
+    if (currentSocketID) {
+      io.to(currentSocketID).emit("receiveNotification", data)
+    }
+  });
+
+
+  // socket.on("disconnect", () => {
+  //   console.log("user disconnected");
+  // });
+})
+
+httpServer.listen(Port, async () => {
   try {
     await ConnectDb();
     console.log(`SERVER STARED  : http://localhost:${process.env.PORT}`);
   } catch (err) {
-    console.log(`SOMETHING WENT WRONG : ${err}`); 
+    console.log(`SOMETHING WENT WRONG : ${err}`);
   }
 });

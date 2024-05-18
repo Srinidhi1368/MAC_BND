@@ -6,7 +6,7 @@ function PdfComp(props) {
   const [numPages, setNumPages] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
     // Set PDF.js worker source URL when component mounts
     pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
@@ -38,7 +38,7 @@ function PdfComp(props) {
 
       loadPDF();
     }
-  }, [props.pdf, error]); // Trigger effect when props.pdf changes
+  }, [props.pdf, ]); // Trigger effect when props.pdf changes
 
   return (
     <div className={ResumeStyle.show_pdf_box}>

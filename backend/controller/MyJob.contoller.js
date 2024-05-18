@@ -111,6 +111,9 @@ const removeAppliedJob = async (req, res) => {
             jobID: jobId,
             userEmail: email,
         });
+
+        const mongooseUser = await User.findOne({ email });
+
         await User.updateOne({ email }, {
             userSavedJob: mongooseUser.userSavedJob.filter((data) => data.jobID !== jobId)
         });
@@ -128,11 +131,41 @@ const removeAppliedJob = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: `server failed! Try again ${error.message}`
+            msg: `${error.message}`
         })
     }
 }
 
+const updateApplicationStatus = async (req, res) => {
+    const { email } = req.params;
+    const { applicationStatus, userJobID } = req.body;
+
+    const filterdAppliedJob = await appliedJobCollection.findOne({ jobID: userJobID, userEmail: email })
+
+    if (!filterdAppliedJob?.applicationStatus.some((status) => status.StatusText.toLowerCase() === applicationStatus.StatusText.toLowerCase())) {
+        const mongooseUpdateResponse = await appliedJobCollection.updateOne({ jobID: userJobID, userEmail: email }, {
+            $push: { applicationStatus: applicationStatus }
+        });
+        if (mongooseUpdateResponse.modifiedCount > 0) {
+            res.status(200).json({
+                status: true,
+                msg: "Application status updated"
+            })
+        } else {
+            res.status(200).json({
+                status: false,
+                msg: "Application status Already updated"
+            })
+        }
+
+    } else {
+        res.status(200).json({
+            status: false,
+            msg: "Application status already updated"
+        })
+    }
+
+}
 
 //! Saved job related controllers
 const createSavedJob = async (req, res) => {
@@ -236,4 +269,5 @@ module.exports = {
     createSavedJob,
     getSavedJob,
     removeSavedJob,
+    updateApplicationStatus
 }

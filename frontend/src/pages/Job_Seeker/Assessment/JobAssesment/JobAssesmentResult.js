@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useEffect } from "react";
+import { io } from "socket.io-client"
 function JobAssesmentResult() {
+  const socket = io("http://localhost:8080")
   const { result, percentageResult } = useSelector((state) => state.Assessment);
-  const { jobDetails} = useSelector((state) => state.Job);
+  const { jobDetails } = useSelector((state) => state.Job);
   const User = useSelector((state) => state.User.UserDetails);
-const userData=User.userDetails;
-// console.log(userData);
+  const userData = User.userDetails;
   const email = localStorage.getItem("email");
   const navigateTO = useNavigate();
   const dispatchTO = useDispatch();
@@ -20,19 +21,16 @@ const userData=User.userDetails;
   const day = currentDate.getDate();
   const month = currentDate.getMonth() + 1; // January is 0, so we add 1
   const year = currentDate.getFullYear();
-  
-  const AppliedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`;
-  
-  // console.log(AppliedDate); //this is date of application
-  
 
-  const handleDoneButtonClick = (e,item) => {
+  const AppliedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`;
+
+
+  const handleDoneButtonClick = (e, item) => {
     e.preventDefault();
     axios
       .post(`http://localhost:8080/api/user/My-jobs/create/apply-job`, {
         ...item,
         email,
-
         userData,
         percentageResult,
         AppliedDate,
@@ -52,13 +50,19 @@ const userData=User.userDetails;
       .then((response) => {
         if (response.data.success) {
           toast.success(`${response.data.msg}`);
+          socket.emit("HrSendNotification", JSON.stringify({
+            userEmail: item?.employeeEmail,
+            NotificatioNText: `${userData?.name} applied for ${item?.jobTitle} job role.`,
+            notificationStatus: 'Unread',
+            updatedAt: Date.now()
+          }));
           dispatchTO(handleAppliedJob(item._id));
           dispatchTO(handleRemoveSavedJob(item._id));
           navigateTO("/");
           dispatchTO(handleClearResult());
         } else {
           toast.error(`${response.data.msg}`);
-          }
+        }
       })
       .catch((error) => {
         toast.error(`server failed! Try again ${error.message}`);
@@ -70,10 +74,10 @@ const userData=User.userDetails;
       event.preventDefault();
       // Optionally, you can display a message to the user
       toast.error('Application not submitted');
-      dispatchTO(handleClearResult());  
+      dispatchTO(handleClearResult());
       navigateTO('/')
     };
-// Prevent back navigation
+    // Prevent back navigation
     window.history.pushState(null, null, window.location.pathname);
     window.addEventListener('popstate', handleBackButton);
 
@@ -82,7 +86,7 @@ const userData=User.userDetails;
     };
   }, []);
 
- 
+
   return (
     <div className={assessmentStyle.SelfAssessmentPage__ResultContainer}>
       <div className={assessmentStyle.SelfAssessmentPage__resultBox}>
@@ -99,7 +103,7 @@ const userData=User.userDetails;
 
         <button
           className={assessmentStyle.ResultBox__doneBUtton}
-          onClick={(e)=>handleDoneButtonClick(e,jobDetails.jobs)}
+          onClick={(e) => handleDoneButtonClick(e, jobDetails.jobs)}
         >
           Done
         </button>

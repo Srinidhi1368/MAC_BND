@@ -13,6 +13,11 @@
     overflow-y: auto;
     scrollbar-width: none;
     scroll-behavior: smooth;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 0.5em;
 }
 
 .sidenavBar__AppLOGOBOX {
@@ -47,7 +52,7 @@
     justify-content: center;
     text-decoration: none;
     width: 95%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 16px;
     font-weight: 400;
 }
@@ -231,6 +236,7 @@
 @media screen and (max-width: 1025px) {
     .SidenavBar__Container {
         overflow: visible;
+        padding: 0;
     }
 
     .JobSeeker_nav {
