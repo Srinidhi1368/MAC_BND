@@ -10,7 +10,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Brush,
+  // Brush,
   ResponsiveContainer,
   Legend,
   BarChart,
