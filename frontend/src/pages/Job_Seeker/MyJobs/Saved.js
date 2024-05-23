@@ -8,6 +8,8 @@ import { CalculateTimeAgo } from "../../Common-Components/TimeAgo";
 import { useSelector, useDispatch } from "react-redux"
 import { handleRemoveSavedJob } from "../../../Redux/ReduxSlice";
 import fill_fav from "../../../Assets/Filled_favoutite.png"
+
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 const Saved = () => {
   const { email } = useSelector((state) => state.Assessment.currentUser);
   const [IsLoading, setIsLoading] = useState(false);
@@ -19,7 +21,7 @@ const Saved = () => {
   const handleRemoveSaveClick = (e, jobId) => {
     e.preventDefault();
     setIsLoading(true);
-    axios.delete(`http://localhost:8080/api/user/My-jobs/delete/save-job/${email + '-' + jobId}`).then((response) => {
+    axios.delete(`${baseUrl}/user/My-jobs/delete/save-job/${email + '-' + jobId}`).then((response) => {
       if (response.data.success) {
         toast.success(`${response.data.msg}`);
         dispatch(handleRemoveSavedJob(jobId));
@@ -40,7 +42,7 @@ const Saved = () => {
 
   const loadSavedJobs = () => {
     setIsLoading(true)
-    axios.get(`http://localhost:8080/api/user/My-jobs/get/save-job/${email}`).then((response) => {
+    axios.get(`${baseUrl}/user/My-jobs/get/save-job/${email}`).then((response) => {
       if (response.data.success) {
         setSaved_jobs(response.data.savedJob);
         setIsLoading(false)

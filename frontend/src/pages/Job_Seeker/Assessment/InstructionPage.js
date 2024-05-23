@@ -7,7 +7,6 @@ import { IoMdStarOutline } from "react-icons/io";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 function InstructionPage() {
   const { state } = useLocation();
-  console.log(state);
   const navigateTO = useNavigate();
 
   return (

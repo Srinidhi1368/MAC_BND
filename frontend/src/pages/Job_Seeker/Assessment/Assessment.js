@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../Common-Components/Loaders/Loader";
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 function Assessment() {
   const [Loading, setLoading] = useState(false);
   const [assessmentData, setAssessmentData] = useState([]);
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:8080/api/assessment/getAll-assessment")
+      .get(`${baseUrl}/assessment/getAll-assessment`)
       .then((res) => {
         setAssessmentData(res.data.data);
         setLoading(false);

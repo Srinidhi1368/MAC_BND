@@ -34,10 +34,11 @@ function Dashboard() {
   const navigateTO = useNavigate();
   const [selectedSort, setSelectedSort] = useState("Sort By");
   const { FilterOptions, SearchOptions } = useSelector((state) => state.Filter);
+  const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:8080/api/jobs/All-jobs")
+      .get(`${baseUrl}/jobs/All-jobs`)
       .then((response) => {
         if (response.data.success) {
           setAllJobData(
@@ -55,12 +56,13 @@ function Dashboard() {
         toast.error(`Server failed to load! Reload your page`);
         setLoading(false);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email,dispatch]);
 
   const handleSaveToLaterClick = (e, item) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:8080/api/user/My-jobs/create/save-job`, {
+      .post(`${baseUrl}/user/My-jobs/create/save-job`, {
         ...item,
         email,
       })
@@ -81,7 +83,7 @@ function Dashboard() {
     e.preventDefault();
     axios
       .delete(
-        `http://localhost:8080/api/user/My-jobs/delete/save-job/${
+        `${baseUrl}/user/My-jobs/delete/save-job/${
           email + "-" + jobId
         }`
       )

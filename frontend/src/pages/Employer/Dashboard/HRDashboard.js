@@ -12,7 +12,7 @@ import { CalculateTimeAgo } from "../../Common-Components/TimeAgo";
 import HrJobDetail from "./HrJobDetail";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 4 },
   desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
@@ -40,7 +40,7 @@ export default function HRDashboard() {
     setLoading(true);
     axios
       .get(
-        `http://localhost:8080/api/jobs/get-job/${localStorage.getItem(
+        `${baseUrl}/jobs/get-job/${localStorage.getItem(
           "email"
         )}`
       )
@@ -86,7 +86,7 @@ export default function HRDashboard() {
   const handleDelete = async (postID) => {
     try {
       await axios
-        .delete(`http://localhost:8080/api/jobs/delete-job/${postID}`)
+        .delete(`${baseUrl}/jobs/delete-job/${postID}`)
         .then((response) => {
           if (response.data.success) {
             toast.success(`Job deleted successfully`);

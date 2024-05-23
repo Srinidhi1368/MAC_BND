@@ -9,7 +9,7 @@ import Loader from "../../Common-Components/Loaders/Loader";
 import Timer from "./Timer";
 import { useSelector, useDispatch } from "react-redux";
 import { handleSelectedOption, calculatedResult } from "../../../Redux/ReduxSlice";
-
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 function SelfAssessmentPage() {
   const navigateTO = useNavigate();
   const [ShowPopup, setShowPopup] = useState(false);
@@ -104,7 +104,7 @@ function SelfAssessmentPage() {
       setLoading(true);
       axios
         .get(
-          `http://localhost:8080/api/questions/list-question/${state.id}?page=${
+          `${baseUrl}/questions/list-question/${state.id}?page=${
             num ? num : 1
           }`
         )

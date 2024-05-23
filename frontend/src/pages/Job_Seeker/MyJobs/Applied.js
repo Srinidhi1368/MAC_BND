@@ -5,6 +5,7 @@ import axios from "axios";
 import Loader from "../../Common-Components/Loaders/Loader"
 import { useSelector } from 'react-redux'
 import toast from "react-hot-toast";
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 const Applied = () => {
   const { email } = useSelector((state) => state.Assessment.currentUser);
   const navi = useNavigate()
@@ -12,7 +13,7 @@ const Applied = () => {
   const [IsLoading, setIsLoading] = useState(false)
   useEffect(() => {
     setIsLoading(true)
-    axios.get(`http://localhost:8080/api/user/My-jobs/get/apply-job/${email}`).then((response) => {
+    axios.get(`${baseUrl}/user/My-jobs/get/apply-job/${email}`).then((response) => {
       if (response.data.success) {
         setAppliedJobs(response.data.appliedJob);
         setIsLoading(false)

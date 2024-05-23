@@ -11,7 +11,7 @@ import axios from 'axios';
 // import Loader from '../../../Common-Components/Loaders/Loader';
 
 
-
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 function Candidate() {
     console.log(candidatecss)
     const hremail = localStorage.getItem("email")
@@ -26,7 +26,7 @@ function Candidate() {
     // const offset = circumference - (progress / 100) * circumference;
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/jobs/get-job/${hremail}`).then((res) => {
+        axios.get(`${baseUrl}/jobs/get-job/${hremail}`).then((res) => {
             setAllJobs(res.data.jobs)
         }).catch((err) => console.log(err))
     }, [hremail, setAllJobs])
@@ -288,7 +288,7 @@ function Candidate() {
     // useEffect(() => {
     //     const fetchUserData = async (email) => {
     //         try {
-    //             const response = await axios.get(`http://localhost:8080/api/user?email=${email}`);
+    //             const response = await axios.get(`${baseUrl}/user?email=${email}`);
     //             return response.data.userDetails;
     //         } catch (error) {
     //             console.error("Error fetching user data:", error);

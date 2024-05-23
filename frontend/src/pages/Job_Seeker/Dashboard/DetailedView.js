@@ -56,7 +56,7 @@ const handleView = async () =>{
   const loadJobDetails = (e, jobID) => {
     setJobDetailsLoad(true);
     axios
-      .get(`http://localhost:8080/api/jobs/job/${jobID}`)
+      .get(`${baseUrl}/jobs/job/${jobID}`)
       .then((response) => {
         if (response.data.success) {
           setJobDetails(response.data.jobs);
@@ -78,7 +78,7 @@ const handleView = async () =>{
   const handleSaveToLaterClick = (e, item) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:8080/api/user/My-jobs/create/save-job`, {
+      .post(`${baseUrl}/user/My-jobs/create/save-job`, {
         ...item,
         email,
       })
@@ -99,7 +99,7 @@ const handleView = async () =>{
     e.preventDefault();
     axios
       .delete(
-        `http://localhost:8080/api/user/My-jobs/delete/save-job/${email + "-" + jobId
+        `${baseUrl}/user/My-jobs/delete/save-job/${email + "-" + jobId
         }`
       )
       .then((response) => {
@@ -120,8 +120,8 @@ const handleView = async () =>{
       setLoading(true);
       try {
         const [allJobsResponse, jobDetailsResponse] = await Promise.all([
-          axios.get("http://localhost:8080/api/jobs/All-jobs"),
-          axios.get(`http://localhost:8080/api/jobs/job/${id}`),
+          axios.get(`${baseUrl}/jobs/All-jobs`),
+          axios.get(`${baseUrl}/jobs/job/${id}`),
         ]);
 
         if (allJobsResponse.data.success) {

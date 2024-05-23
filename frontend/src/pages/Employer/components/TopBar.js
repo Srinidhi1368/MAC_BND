@@ -19,7 +19,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 export default function TopBar() {
-  const socket = io("http://localhost:8080");
+  const socket = io("http://localhost:8585");
   const { email } = useSelector((state) => state.Assessment.currentUser);
   const [searhOption, setSearchOption] = useState({ searchText: "" });
   const [notificationCount, setNotificationCount] = useState(0);

@@ -9,8 +9,9 @@ import { handleAppliedJob, handleRemoveSavedJob } from "../../../Redux/ReduxSlic
 import Loader from "../../Common-Components/Loaders/Loader";
 import { fetchJobDetails } from "../../../Redux/JobSlice";
 import { io } from "socket.io-client"
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 const Profile_details = () => {
-  const socket = io("http://localhost:8080")
+  const socket = io("http://localhost:8585")
   const [start_popup, setstart_popup] = useState(false);
   const [cancelpopup, setcancelpopup] = useState(false);
   const [IsLoading, setIsLoading] = useState(false);
@@ -25,7 +26,7 @@ const Profile_details = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:8080/api/user?email=${email}`
+        `${baseUrl}/user?email=${email}`
       );
       setuserData(response.data.userDetails);
       setname(response.data.userDetails.name.split(" "))
@@ -66,7 +67,7 @@ const Profile_details = () => {
     else {
       e.preventDefault();
       axios
-        .post(`http://localhost:8080/api/user/My-jobs/create/apply-job`, {
+        .post(`${baseUrl}/user/My-jobs/create/apply-job`, {
           ...item,
           userData,
           email,

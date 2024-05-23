@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 // Define the async action creator
 export const fetchUserData = createAsyncThunk(
   'userDetails/fetchUserData',
   async (email, thunkAPI) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/user?email=${email}`);
+      const response = await axios.get(`${baseUrl}/user?email=${email}`);
       // Return the data fetched from the API
       return response.data;
     } catch (error) {

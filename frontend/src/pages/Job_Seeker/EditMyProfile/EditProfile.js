@@ -108,7 +108,7 @@ function EditProfile() {
     formData.append("marital_status", userDetails?.marital_status);
     formData.append("skills", SkilsTags);
 
-    axios.patch(`http://localhost:8080/api/update-user/${email}`, formData, {
+    axios.patch(`${baseURL}/update-user/${email}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     }).then((response) => {
       if (response.data.success) {

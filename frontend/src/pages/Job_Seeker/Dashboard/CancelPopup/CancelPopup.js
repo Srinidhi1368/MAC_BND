@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { handleSavedJob } from '../../../../Redux/ReduxSlice';
-
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 const CancelPopup = () => {
     const navigateTO =useNavigate()
     const Job =useLocation().state
@@ -16,7 +16,7 @@ const CancelPopup = () => {
     const handleSaveToLaterClick = (e, item) => {
         e.preventDefault();
         axios
-          .post(`http://localhost:8080/api/user/My-jobs/create/save-job`, {
+          .post(`${baseUrl}/user/My-jobs/create/save-job`, {
             ...item,
             email,
           })

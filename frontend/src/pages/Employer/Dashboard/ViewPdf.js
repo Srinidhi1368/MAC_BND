@@ -3,13 +3,14 @@ import pageStyle from "./HrDashboard.module.css";
 import { GiTireIronCross } from "react-icons/gi";
 import axios from "axios";
 import Loader from "../../Common-Components/Loaders/Loader";
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 function ViewPdf({ CbTogglePDF, SelectedResume }) {
   const [resumeError, setError] = useState(false);
   const [Loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:8080/${SelectedResume?.userResume?.path}`)
+      .get(`${baseUrl}/${SelectedResume?.userResume?.path}`)
       .then((response) => {
         if(response.status === 200){
             setLoading(false);

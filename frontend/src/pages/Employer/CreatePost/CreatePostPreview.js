@@ -5,6 +5,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import Loader from "../../Common-Components/Loaders/Loader";
+const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 function CreatePostPreview() {
   const [loading, setLoading] = useState(false);
   const navigateTO = useNavigate();
@@ -47,7 +48,7 @@ function CreatePostPreview() {
       });
     }
     setLoading(true);
-    axios.post("http://localhost:8080/api/jobs/create-job", formData, {
+    axios.post(`${baseUrl}/jobs/create-job`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
       .then((response) => {

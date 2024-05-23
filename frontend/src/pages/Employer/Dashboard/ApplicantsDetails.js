@@ -15,7 +15,7 @@ import {
 import { io } from "socket.io-client"
 const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
 function ApplicantsDetails({ jobData, selectedUser, CbToogleDetails }) {
-  const socket = io("http://localhost:8080")
+  const socket = io("http://localhost:8585")
   const { bookmarkUser } = useSelector((state) => state.Assessment.currentUser);
   const dispatch = useDispatch();
   const [selectedUserEmail, setSelectedUserEmail] = useState(selectedUser);
