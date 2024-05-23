@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { checkAuth } from "../Redux/UserSlice.js"; 
+import GoogleCallback from "../pages/Auth/GoogleCallback.js";
 //! These All Files are imported for the JobSeeker Routes
 const JobSeekerLayout = lazy(() =>
   import("../pages/Job_Seeker/JobSeekerLayout")
@@ -98,6 +99,7 @@ const EditProfile = lazy(() =>
 );
 
 //! These All Files are imported for the Auth Routes
+
 const LoginPage = lazy(() =>
   import("../pages/Auth/Login/ToggleLogin/LoginPage")
 );
@@ -115,10 +117,18 @@ const HrResetPassword = lazy(() =>
 const HrForgotPassword = lazy(() =>
   import("../pages/Auth/Password/Hr/ForgotPassword/HrForgotPassword")
 );
+
 //! These All Files are imported for the Auth Routes
 
 function AppRoute() {
+  // const { userType } = useSelector((state) => state.Assessment.currentUser);
   const { userType } = useSelector((state) => state.Assessment.currentUser);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
 
   return (
     <>
@@ -261,6 +271,7 @@ function AuthRouter() {
       <Route path="/hr/reset-password/:token" element={<Suspense>    <HrResetPassword /></Suspense>} />
       <Route path="/hr/forgot-password" element={<Suspense>    <HrForgotPassword /></Suspense>} />
       <Route path="/*" element={<Suspense>    <LoginPage /></Suspense>} />
+      <Route path="/auth/google/callback" element={<GoogleCallback />} />
     </Routes>
   );
 }

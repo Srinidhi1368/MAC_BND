@@ -124,6 +124,15 @@ function UserLogin({ toggleLoginType, isHRLogin }) {
     nav("/forgot-password");
   };
 
+  const handleGoogleSignup = (userType) => {
+    try {
+      const googleSignupUrl = `http://localhost:8080/auth/google?userType=${userType}`;
+      window.location.href = googleSignupUrl;
+    } catch (error) {
+      console.error('Google signup error:', error);
+    }
+  };
+
   return (
       <div onKeyDown={handleEnterKey}>
         {formData.step === 1 ? (
@@ -227,6 +236,7 @@ function UserLogin({ toggleLoginType, isHRLogin }) {
                           src={google}
                           alt="network-error"
                           className={LoginStyle.social_image_google}
+                          onClick={() => handleGoogleSignup(formData.userType)}
                         />
                       </li>
 

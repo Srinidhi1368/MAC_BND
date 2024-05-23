@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { handleUserLogin } from "../../../../Redux/ReduxSlice";
 
 const baseUrl = process.env.REACT_APP_BACKEND_BASE_URL;
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
 
 const Signup = () => {
   const dispatchTO = useDispatch();
@@ -287,6 +288,25 @@ const Signup = () => {
     }
   };
 
+  // const handleGoogleSignup = async () => {
+  //   try {
+  //     window.location.href = 'http://localhost:8080/auth/google'
+  //     // // Redirect to dashboard after successful authentication
+  //     // window.location.href = `${clientUrl}/dashboard`;
+  //   } catch (error) {
+  //     console.error('Google signup error:', error);
+  //   }
+  // };
+
+  const handleGoogleSignup = (userType) => {
+    try {
+      const googleSignupUrl = `http://localhost:8080/auth/google?userType=${userType}`;
+      window.location.href = googleSignupUrl;
+    } catch (error) {
+      console.error('Google signup error:', error);
+    }
+  };
+
   return (
     <>
       {/* first card */}
@@ -350,6 +370,7 @@ const Signup = () => {
                       src={google}
                       alt="network-error"
                       className={signupStyle.social_image_google}
+                      onClick={() => handleGoogleSignup(formData.userType)}
                     />
                   </li>
 
